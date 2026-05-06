@@ -20,6 +20,7 @@
   <meta property="og:locale" content="de_DE" />
 
   <link rel="canonical" href="https://www.mickelaloeffel.de/" />
+  <link rel="sitemap" type="application/xml" href="sitemap.xml" />
 
   <script type="application/ld+json">
   {
@@ -682,6 +683,7 @@
     @media (max-width: 900px) {
       nav { padding: 1.25rem 2rem; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
       #hero {
         grid-template-columns: 1fr;
         min-height: 100vh;
@@ -732,8 +734,68 @@
       #gefuehl { padding: 5rem 2rem; }
       #gesangsunterricht > div { grid-template-columns: 1fr !important; gap: 2rem; }
       #gesangsunterricht > div > div:last-child { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(201,169,110,0.2); padding-top: 2rem; }
+      .seo-footer-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+      .seo-footer-wrap { padding: 2rem 1.5rem !important; }
       footer { padding: 1.5rem 2rem; }
     }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--green-deep);
+      transition: all 0.2s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--green-deep);
+      z-index: 300;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .mobile-menu ul { list-style: none; text-align: center; }
+    .mobile-menu ul li { padding: 1rem 0; }
+    .mobile-menu ul li a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .mobile-menu ul li a:hover { color: var(--gold); }
+    .mobile-menu ul li:last-child a {
+      color: var(--gold);
+      font-size: 1.2rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
     /* ===== ANIMATIONEN ===== */
     @keyframes heroFadeUp {
       from { opacity: 0; transform: translateY(28px); }
@@ -852,7 +914,7 @@
 
   <!-- ===== NAVIGATION ===== -->
   <nav aria-label="Hauptnavigation">
-    <a href="#hero" class="nav-logo">Mickela Löffel</a>
+    <a href="index.html" class="nav-logo">Mickela Löffel</a>
     <ul class="nav-links">
       <li><a href="#about">Über mich</a></li>
       <li><a href="#leistungen">Angebot</a></li>
@@ -861,7 +923,23 @@
       <li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer" aria-label="Mickela auf Instagram – öffnet in neuem Tab">Instagram</a></li>
       <li><a href="#kontakt">Anfragen</a></li>
     </ul>
+    <button class="nav-hamburger" aria-label="Menü öffnen" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Menü schließen">✕</button>
+    <ul>
+      <li><a href="#about" onclick="toggleMobileMenu()">Über mich</a></li>
+      <li><a href="#leistungen" onclick="toggleMobileMenu()">Angebot</a></li>
+      <li><a href="#hoerbeispiele" onclick="toggleMobileMenu()">Hörbeispiele</a></li>
+      <li><a href="#faq" onclick="toggleMobileMenu()">FAQ</a></li>
+      <li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+      <li><a href="#kontakt" onclick="toggleMobileMenu()">Jetzt anfragen</a></li>
+    </ul>
+  </div>
 
   <!-- ===== HERO ===== -->
   <!-- ================================================
@@ -1221,14 +1299,49 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <p class="footer-copy">© 2025 Mickela Löffel – Hochzeitssängerin Karlsruhe</p>
-    <nav class="footer-links" aria-label="Rechtliche Links">
-      <a href="/impressum.html">Impressum</a>
-      <a href="/datenschutz.html">Datenschutz</a>
-    </nav>
-  </footer>
+  <!-- ===== SEO FOOTER LINKS ===== -->
+  <div style="background:var(--green-deep); border-top:1px solid rgba(201,169,110,0.15); padding:3rem 4rem 2rem;">
+    <div style="max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-bottom:2.5rem;">
+
+      <div>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-family:var(--font-body);">Hochzeiten</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li><a href="hochzeitssaengerin-karlsruhe.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Karlsruhe</a></li>
+          <li><a href="hochzeitssaengerin-stuttgart.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Stuttgart</a></li>
+          <li><a href="hochzeitssaengerin-mannheim.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Mannheim</a></li>
+          <li><a href="hochzeitssaengerin-mannheim.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Heidelberg</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-family:var(--font-body);">Angebot</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li><a href="index.html#leistungen" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Sängerin für Trauung</a></li>
+          <li><a href="index.html#leistungen" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Sektempfang & Abendprogramm</a></li>
+          <li><a href="index.html#leistungen" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Band ICONICS buchen</a></li>
+          <li><a href="index.html#gesangsunterricht" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Gesangsunterricht</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-family:var(--font-body);">Wichtiges</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li><a href="index.html#faq" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">FAQ</a></li>
+          <li><a href="index.html#hoerbeispiele" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hörbeispiele</a></li>
+          <li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Instagram</a></li>
+          <li><a href="https://www.iconicsband.de" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">ICONICS Band</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div style="border-top:1px solid rgba(201,169,110,0.15);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;max-width:900px;margin:0 auto;">
+      <p style="font-size:0.78rem;color:rgba(250,247,242,0.4);">© 2025 Mickela Löffel – Hochzeitssängerin Karlsruhe</p>
+      <div style="display:flex;gap:2rem;">
+        <a href="impressum.html" style="font-size:0.78rem;color:rgba(250,247,242,0.4);text-decoration:none;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.4)'">Impressum</a>
+        <a href="datenschutz.html" style="font-size:0.78rem;color:rgba(250,247,242,0.4);text-decoration:none;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.4)'">Datenschutz</a>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== ANFRAGE-MODAL ===== -->
   <div class="modal-overlay" id="anfrageModal" role="dialog" aria-modal="true" aria-label="Anfrage senden">
@@ -1354,7 +1467,7 @@
             <div class="field"><label for="wemail">E-Mail-Adresse *</label><input type="email" id="wemail" placeholder="eure@email.de" required /></div>
             <div class="field"><label for="wtelefon">Handynummer (optional)</label><input type="tel" id="wtelefon" placeholder="+49 ..." /></div>
             <div class="field"><label for="wnachricht">Eure Nachricht / Wünsche (optional)</label><textarea id="wnachricht" placeholder="Gibt es Lieblingssongs, besondere Wünsche oder etwas das ich wissen sollte?"></textarea></div>
-            <p style="font-size:0.75rem;color:var(--text-light);line-height:1.6;margin:0;">Mit dem Absenden stimmst du zu, dass deine Angaben zur Bearbeitung deiner Anfrage gespeichert werden. Deine Daten werden nicht weitergegeben. Mehr dazu in der <a href="/datenschutz.html" target="_blank" style="color:var(--green-mid);">Datenschutzerklärung</a>.</p>
+            <p style="font-size:0.75rem;color:var(--text-light);line-height:1.6;margin:0;">Mit dem Absenden stimmst du zu, dass deine Angaben zur Bearbeitung deiner Anfrage gespeichert werden. Deine Daten werden nicht weitergegeben. Mehr dazu in der <a href="datenschutz.html" target="_blank" style="color:var(--green-mid);">Datenschutzerklärung</a>.</p>
           </div>
           <div class="wizard-nav"><button class="btn-back" onclick="wGoBack(5)">← Zurück</button><button class="btn-next" id="wnext5" onclick="wGoNext(5)">Weiter →</button></div>
         </div>
@@ -1431,6 +1544,13 @@
 
   <!-- ===== SCROLL ANIMATION SCRIPT ===== -->
   <script>
+    // Mobile Menu
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+
     // Fade-in on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1741,7 +1861,7 @@
             <div class="field"><label for="uemail">E-Mail-Adresse *</label><input type="email" id="uemail" placeholder="deine@email.de" required /></div>
             <div class="field"><label for="utelefon">Handynummer (optional)</label><input type="tel" id="utelefon" placeholder="+49 ..." /></div>
             <div class="field"><label for="uwunsch">Dein Wunsch / Ziel (optional)</label><textarea id="uwunsch" placeholder="z. B. Ich möchte sicherer werden, ein Lied für eine Hochzeit einstudieren ..." style="min-height:80px;"></textarea></div>
-            <p style="font-size:0.75rem;color:var(--text-light);line-height:1.6;margin:0;">Mit dem Absenden stimmst du zu, dass deine Daten zur Bearbeitung deiner Anfrage gespeichert werden. Mehr dazu in der <a href="/datenschutz.html" target="_blank" style="color:var(--green-mid);">Datenschutzerklärung</a>.</p>
+            <p style="font-size:0.75rem;color:var(--text-light);line-height:1.6;margin:0;">Mit dem Absenden stimmst du zu, dass deine Daten zur Bearbeitung deiner Anfrage gespeichert werden. Mehr dazu in der <a href="datenschutz.html" target="_blank" style="color:var(--green-mid);">Datenschutzerklärung</a>.</p>
           </div>
           <div class="status-msg" id="ustatusMsg"></div>
           <div class="wizard-nav"><button class="btn-back" onclick="uGoBack(3)">← Zurück</button><button class="btn-next" id="usubmitBtn" onclick="uSubmitForm()">Anfrage senden ✓</button></div>
