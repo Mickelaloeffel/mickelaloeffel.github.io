@@ -60,7 +60,7 @@
     footer{background:var(--green-deep);padding:1.5rem 4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
     footer p,footer a{font-size:0.78rem;color:rgba(250,247,242,0.5);text-decoration:none;}
     footer a:hover{color:var(--gold-light);}
-    @media(max-width:600px){nav{padding:1.25rem 1.5rem;} main{padding:2rem 1.5rem 4rem;} .grid-2{grid-template-columns:1fr;} footer{padding:1.5rem;}}
+    @media(max-width:600px){nav{padding:1.25rem 1.5rem;} main{padding:2rem 1.5rem 4rem;} .grid-2{grid-template-columns:1fr;} footer{padding:1.5rem;} .img-duo{grid-template-columns:1fr !important;}}
   </style>
 </head>
 <body>
@@ -69,16 +69,30 @@
   <a href="index.html" class="nav-back">← Zur Startseite</a>
 </nav>
 
+  <!-- Hero Banner -->
+  <div style="position:relative;width:100%;height:420px;overflow:hidden;margin-bottom:3rem;">
+    <img
+      src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=85"
+      alt="Romantische Hochzeitslocation in Karlsruhe"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;"
+      loading="eager"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(44,62,45,0.45) 0%, rgba(44,62,45,0.7) 100%);"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;">
+      <span style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;">Hochzeitssängerin in Karlsruhe</span>
+      <h1 style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:var(--cream);line-height:1.2;margin:0;">Live-Musik für eure Trauung<br /><em>in Karlsruhe.</em></h1>
+    </div>
+  </div>
+
 <main>
+
   <p class="breadcrumb"><a href="index.html">Startseite</a> › Hochzeitssängerin Karlsruhe</p>
-  <span class="eyebrow">Hochzeitssängerin in Karlsruhe</span>
-  <h1>Live-Musik für eure Trauung<br /><em>in Karlsruhe.</em></h1>
 
   <p>Ihr plant eure Hochzeit in Karlsruhe und sucht eine Sängerin, die diesen besonderen Moment unvergesslich macht? Ich bin Mickela Löffel – gebürtige Karlsruherin, ausgebildete Sängerin mit Bachelor der Popakademie Baden-Württemberg und bekannt aus dem Halbfinale von The Voice of Germany 2020.</p>
 
   <p>Seit 2018 begleite ich Brautpaare in Karlsruhe und der Region mit emotionalen Pop-Balladen – live, mit Gefühl und aus vollem Herzen.</p>
 
-  <img src="mickela-hero.jpg" alt="Mickela Löffel – Hochzeitssängerin in Karlsruhe bei einer Trauung" width="860" height="480" loading="lazy" class="hero-img" />
+  <img src="mickela-braut-umarmung.jpg" alt="Mickela Löffel umarmt die Braut nach der Trauung in Karlsruhe" width="860" height="400" loading="lazy" style="width:100%;height:360px;object-fit:cover;object-position:center 30%;display:block;margin:2rem 0;" />
 
   <h2>Warum Live-Musik für eure Karlsruher Hochzeit?</h2>
   <p>Karlsruhe ist eine Stadt mit wunderschönen Hochzeits-Locations – vom Schloss Karlsruhe über das Regierungspräsidium bis hin zu romantischen Weingütern in der Umgebung. Eine Live-Sängerin verleiht jedem dieser Orte eine ganz besondere Atmosphäre, die keine Playlist ersetzen kann.</p>
