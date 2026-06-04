@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silvester 2026 – ICONICS Live Band</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:    #0A0A0A;
+  --black-2:  #111111;
+  --black-3:  #1A1A1A;
+  --black-4:  #242424;
+  --white:    #FFFFFF;
+  --white-dim:#F5F5F5;
+  --gold:     #C8A85A;
+  --gold-2:   #E0C07A;
+  --gold-dim: #8A6E35;
+  --gold-pale:#2A2318;
+  --muted:    #C8BFB0;
+  --muted-2:  #A09080;
+  --border:   rgba(200,168,90,0.18);
+  --border-2: rgba(200,168,90,0.38);
+  --border-3: rgba(255,255,255,0.07);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body {
+  background: var(--black);
+  color: var(--white-dim);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes lineGrow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+
+.fu{animation:fadeUp .8s ease both;}
+.fi{animation:fadeIn .6s ease both;}
+.d1{animation-delay:.08s;} .d2{animation-delay:.18s;} .d3{animation-delay:.28s;}
+.d4{animation-delay:.38s;} .d5{animation-delay:.5s;}  .d6{animation-delay:.65s;}
+
+/* ── LAYOUT ── */
+.page{max-width:740px;margin:0 auto;padding:0 28px 100px;}
+
+/* ── TOP BAR ── */
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 0 18px;
+  border-bottom:0.5px solid var(--border-3);
+  margin-bottom:64px;
+}
+.topbar-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;
+  letter-spacing:0.12em;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.topbar-logo span{color:var(--gold);}
+.topbar-tag{
+  font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ── HERO ── */
+.hero{padding:0 0 60px;border-bottom:0.5px solid var(--border);}
+.hero-kicker{
+  font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:22px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-kicker::before{
+  content:'';display:block;width:32px;height:0.5px;
+  background:var(--gold);
+  animation:lineGrow .6s ease both;transform-origin:left;
+}
+.hero-h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,9vw,72px);
+  font-weight:300;line-height:1.0;
+  color:var(--white);
+  margin-bottom:10px;
+}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-venue{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:300;font-style:italic;
+  color:var(--muted);margin-bottom:36px;
+}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.pill{
+  display:inline-flex;align-items:center;gap:7px;
+  border:0.5px solid var(--border-2);
+  border-radius:2px;
+  padding:6px 14px;font-size:12px;color:var(--white-dim);font-weight:400;
+}
+.pill svg{width:13px;height:13px;stroke:var(--gold);flex-shrink:0;}
+
+/* ── SECTION HEADER ── */
+.sec-head{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:28px;
+}
+.sec-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;font-weight:300;color:var(--black-4);
+  line-height:1;user-select:none;
+}
+.sec-label{
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);
+}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;color:var(--white);
+  line-height:1.2;
+}
+
+/* ── USP QUOTE ── */
+.usp-wrap{padding:48px 0;}
+.usp-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(20px,3.5vw,26px);
+  font-weight:300;font-style:italic;
+  color:var(--white-dim);
+  line-height:1.5;
+  border-left:2px solid var(--gold);
+  padding-left:24px;
+  margin-bottom:16px;
+}
+.usp-meta{
+  padding-left:26px;
+  font-size:12px;color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:16px;
+}
+.usp-meta span{display:inline-flex;align-items:center;gap:6px;}
+.usp-meta svg{width:13px;height:13px;stroke:var(--gold-dim);}
+
+/* ── TIMELINE ── */
+.tl-wrap{padding:0 0 48px;}
+.tl{display:flex;flex-direction:column;}
+.tl-row{display:grid;grid-template-columns:68px 20px 1fr;gap:0 16px;align-items:stretch;}
+.tl-time{
+  font-size:12px;color:var(--gold);font-weight:500;
+  text-align:right;padding-top:13px;align-self:start;
+}
+.tl-spine{display:flex;flex-direction:column;align-items:center;}
+.tl-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;margin-top:16px;
+}
+.tl-line{width:0.5px;background:var(--border);flex:1;}
+.tl-row:last-child .tl-line{display:none;}
+.tl-body{padding:10px 0 22px;}
+.tl-title{font-size:14px;font-weight:500;color:var(--white);margin-bottom:2px;}
+.tl-desc{font-size:14px;color:var(--muted);line-height:1.55;}
+
+/* ── POSITIONS ── */
+.pos-wrap{padding:48px 0;}
+.pos-list{display:flex;flex-direction:column;gap:2px;}
+
+.pos-card{
+  border:0.5px solid var(--border);
+  background:var(--black-2);
+  transition:border-color .2s,background .2s;
+}
+.pos-card:first-child{border-radius:8px 8px 0 0;}
+.pos-card:last-child{border-radius:0 0 8px 8px;}
+.pos-card:only-child{border-radius:8px;}
+.pos-card:hover{border-color:var(--border-2);background:var(--black-3);}
+
+.pos-head{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:22px 24px 18px;gap:16px;
+}
+.pos-meta{flex:1;min-width:0;}
+.pos-n{
+  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:5px;
+}
+.pos-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;font-weight:400;color:var(--white);
+  line-height:1.25;
+}
+.pos-badge{
+  display:inline-block;
+  margin-top:6px;
+  font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  background:var(--gold-pale);
+  color:var(--gold-2);
+  border:0.5px solid var(--gold-dim);
+  border-radius:2px;
+  padding:3px 9px;
+}
+.pos-price-col{text-align:right;flex-shrink:0;}
+.pos-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:300;color:var(--white);
+  white-space:nowrap;line-height:1;
+}
+.pos-price-unit{font-size:14px;color:var(--muted);}
+.pos-optional{
+  font-size:11px;color:var(--gold-dim);margin-top:4px;
+  letter-spacing:0.05em;
+}
+
+.pos-div{height:0.5px;background:var(--border);margin:0 24px;}
+
+.pos-items{padding:16px 24px 20px;display:flex;flex-direction:column;gap:7px;}
+.pos-item{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:14px;color:var(--muted);line-height:1.55;
+}
+.pos-item::before{
+  content:'';width:3px;height:3px;border-radius:50%;
+  background:var(--gold-dim);flex-shrink:0;margin-top:8px;
+}
+
+/* ── TOTAL ── */
+.total-wrap{
+  border-top:0.5px solid var(--border-2);
+  border-bottom:0.5px solid var(--border-2);
+  padding:28px 0;margin:0 0 48px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  flex-wrap:wrap;gap:16px;
+}
+.total-left{}
+.total-lbl{
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.total-breakdown{font-size:13px;color:var(--muted);line-height:1.8;}
+.total-breakdown strong{color:var(--white-dim);font-weight:400;}
+.total-right{text-align:right;}
+.total-amount{
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px;font-weight:300;color:var(--gold);
+  line-height:1;
+}
+.total-sub{font-size:12px;color:var(--muted);margin-top:6px;}
+
+/* ── CONDITIONS ── */
+.cond-wrap{padding:0 0 48px;}
+.cond-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;}
+.cond-card{
+  background:var(--black-2);
+  border:0.5px solid var(--border);
+  padding:20px;
+}
+.cond-card:first-child{border-radius:8px 0 0 0;}
+.cond-card:nth-child(2){border-radius:0 8px 0 0;}
+.cond-card:nth-child(3){border-radius:0 0 0 8px;}
+.cond-card:last-child{border-radius:0 0 8px 0;}
+.cond-icon{
+  width:20px;height:20px;stroke:var(--gold);
+  margin-bottom:12px;display:block;
+}
+.cond-t{font-size:13px;font-weight:500;color:var(--white);margin-bottom:5px;}
+.cond-d{font-size:13px;color:var(--muted);line-height:1.6;}
+.cond-highlight{color:var(--gold-2);font-weight:500;}
+
+/* ── PAYMENT ── */
+.pay-wrap{padding:0 0 48px;}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:0;}
+@media(max-width:500px){.pay-grid{grid-template-columns:1fr;}}
+.pay-card{
+  background:var(--black-2);border:0.5px solid var(--border);
+  padding:20px 22px;
+}
+.pay-card:first-child{border-radius:8px 0 0 8px;}
+.pay-card:last-child{border-radius:0 8px 8px 0;}
+@media(max-width:500px){
+  .pay-card:first-child{border-radius:8px 8px 0 0;}
+  .pay-card:last-child{border-radius:0 0 8px 8px;}
+}
+.pay-lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.pay-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;color:var(--white);
+  margin-bottom:4px;
+}
+.pay-note{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* ── STORNO ── */
+.storno-wrap{padding:0 0 48px;}
+.storno-table{width:100%;border-collapse:collapse;}
+.storno-table tr{border-bottom:0.5px solid var(--border);}
+.storno-table tr:last-child{border-bottom:none;}
+.storno-table td{padding:11px 0;font-size:13px;color:var(--muted);vertical-align:top;}
+.storno-table td:first-child{
+  width:55%;color:var(--white-dim);font-weight:400;padding-right:16px;
+}
+
+/* ── CTA ── */
+.cta-wrap{
+  border:0.5px solid var(--border-2);
+  border-radius:8px;
+  padding:40px 32px;
+  text-align:center;
+  margin-bottom:56px;
+}
+.cta-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(24px,4vw,32px);font-weight:300;
+  color:var(--white);margin-bottom:8px;
+}
+.cta-sub{font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+.cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 26px;border-radius:2px;
+  font-family:'Jost',sans-serif;font-size:13px;font-weight:400;
+  text-decoration:none;cursor:pointer;
+  transition:opacity .15s;border:none;
+  letter-spacing:0.04em;
+}
+.btn:hover{opacity:.8;}
+.btn-gold{background:var(--gold);color:var(--black);}
+.btn-ghost{
+  background:transparent;color:var(--white-dim);
+  border:0.5px solid var(--border-2);
+}
+.btn svg{width:14px;height:14px;}
+
+/* ── FOOTER ── */
+.footer{
+  font-size:12px;color:var(--muted-2);line-height:1.7;
+  padding-top:28px;border-top:0.5px solid var(--border-3);
+}
+.footer strong{color:var(--muted);font-weight:400;}
+.footer p+p{margin-top:5px;}
+
+@media(max-width:480px){
+  .page{padding:0 18px 80px;}
+  .total-wrap{flex-direction:column;align-items:flex-start;}
+  .total-right{text-align:left;}
+  .hero-h1{font-size:40px;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP BAR -->
+  <div class="topbar fi">
+    <div class="topbar-logo">ICON<span>I</span>CS</div>
+    <div class="topbar-tag">Unverbindliches Angebot</div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-kicker fu d1">Live Band · Silvester 2026</div>
+    <h1 class="hero-h1 fu d2">Die Nacht,<br>die <em>bleibt.</em></h1>
+    <p class="hero-venue fu d3">CAMPUS Hotel Bad Herrenalb &nbsp;·&nbsp; z.&nbsp;Hd. David Hintze</p>
+    <div class="hero-pills fu d4">
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="1"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        31. Dezember 2026
+      </span>
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+        18:30 – 02:00 Uhr
+      </span>
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        ca. 140 Gäste
+      </span>
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Bad Herrenalb
+      </span>
+    </div>
+  </header>
+
+  <!-- USP -->
+  <section class="usp-wrap fu d3">
+    <div class="usp-quote">ICONICS steht für Live-Energie die man spürt — von der ersten eleganten Note bis zum letzten Countdown-Schlag nach Mitternacht. Kein Abend wie der andere.</div>
+    <div class="usp-meta">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Live Band aus einer Hand
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        2 Vocalists · Live-Band · Professionelle Technik
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        150+ Events, u.a. Galas & Hotellerie
+      </span>
+    </div>
+  </section>
+
+  <!-- ABLAUF -->
+  <section class="tl-wrap fu d3">
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div><div class="sec-label">Ablauf</div><div class="sec-title">Der Abend im Überblick</div></div>
+    </div>
+    <div class="tl">
+      <div class="tl-row">
+        <div class="tl-time">18:30</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><div class="tl-title">Live-Opening</div><div class="tl-desc">Elegante Live-Musik zum Empfang & Aperitif (ca. 10–15 Min.)</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">ca. 19:00</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><div class="tl-title">Dinner-Begleitung</div><div class="tl-desc">Live-Musik-Sets zwischen den Menü-Gängen — atmosphärisch, nie störend</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">ca. 22:30</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><div class="tl-title">Party-Phase</div><div class="tl-desc">Vollgas — Live-Performance, Dance Floor, maximale Energie bis in die Nacht.</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">00:00</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><div class="tl-title">Countdown & Neujahr</div><div class="tl-desc">Gemeinsamer Countdown, Sekt-Anstoß, Live-Einstieg ins neue Jahr</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">02:00</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><div class="tl-title">Veranstaltungsende</div><div class="tl-desc">Abbau durch Crew · Abreise</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSITIONEN -->
+  <section class="pos-wrap fu d4">
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div><div class="sec-label">Leistungen</div><div class="sec-title">Positionen & Preise</div></div>
+    </div>
+    <div class="pos-list">
+
+      <div class="pos-card">
+        <div class="pos-head">
+          <div class="pos-meta">
+            <div class="pos-n">Position 01</div>
+            <div class="pos-name">ICONICS Party Set — Silvester-Edition</div>
+            <div class="pos-badge">2 Vocalists inklusive</div>
+          </div>
+          <div class="pos-price-col">
+            <div class="pos-price">7.600,00 <span class="pos-price-unit">€</span></div>
+          </div>
+        </div>
+        <div class="pos-div"></div>
+        <div class="pos-items">
+          <div class="pos-item">Gesamte Präsenzzeit 18:30–02:00 Uhr (7,5 Stunden)</div>
+          <div class="pos-item">Live-Opening ca. 10–15 Min. zum Start um 18:30 Uhr</div>
+          <div class="pos-item">Begleitende Live-Musik-Sets zwischen den Menü-Gängen</div>
+          <div class="pos-item">Ausgiebige Party-Phase ab ca. 22:30 Uhr inkl. Countdown-Programm zum Jahreswechsel</div>
+          <div class="pos-item">Musik-Beschallung in allen Pausen über Soundsystem (kein stiller Moment)</div>
+          <div class="pos-item">2 Lead-Vocalist — Duo-Performance für maximale Bühnen- und Stimmungsenergie</div>
+        </div>
+      </div>
+
+      <div class="pos-card">
+        <div class="pos-head">
+          <div class="pos-meta">
+            <div class="pos-n">Position 02</div>
+            <div class="pos-name">Technik-Paket Premium</div>
+          </div>
+          <div class="pos-price-col">
+            <div class="pos-price">1.500,00 <span class="pos-price-unit">€</span></div>
+          </div>
+        </div>
+        <div class="pos-div"></div>
+        <div class="pos-items">
+          <div class="pos-item">Erweitertes Sound- & Lichtsystem, angepasst an Location & 140 Gäste</div>
+          <div class="pos-item">Professionelles Bühnen- & Frontlicht sowie Tanzflächen-Beleuchtung</div>
+          <div class="pos-item">Fester Ton- & Lichttechniker vor Ort für den gesamten Abend</div>
+          <div class="pos-item">Funkmikrofon für Reden, Ansagen & Countdown inklusive</div>
+        </div>
+      </div>
+
+      <div class="pos-card">
+        <div class="pos-head">
+          <div class="pos-meta">
+            <div class="pos-n">Position 03</div>
+            <div class="pos-name">Fahrtkostenpauschale</div>
+          </div>
+          <div class="pos-price-col">
+            <div class="pos-price">70,00 <span class="pos-price-unit">€</span></div>
+          </div>
+        </div>
+        <div class="pos-div"></div>
+        <div class="pos-items">
+          <div class="pos-item">An- & Abfahrt Karlsruhe–Bad Herrenalb für Band, Crew & Equipment (alle Fahrzeuge)</div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+  <!-- TOTAL -->
+  <div class="total-wrap fu d4">
+    <div class="total-left">
+      <div class="total-lbl">Zusammenfassung</div>
+      <div class="total-breakdown">
+        <strong>Pos 01</strong> ICONICS Party Set (inkl. 2 Vocalist) &nbsp;·&nbsp; 7.600,00 €<br>
+        <strong>Pos 02</strong> Technik-Paket Premium &nbsp;·&nbsp; 1.500,00 €<br>
+        <strong>Pos 03</strong> Fahrtkosten &nbsp;·&nbsp; 70,00 €<br>
+      </div>
+    </div>
+    <div class="total-right">
+      <div class="total-amount">9.170,00 €</div>
+      <div class="total-sub">§19 UStG · Rein netto</div>
+    </div>
+  </div>
+
+  <!-- CONDITIONS -->
+  <section class="cond-wrap fu d4">
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div><div class="sec-label">Logistik</div><div class="sec-title">Anforderungen vor Ort</div></div>
+    </div>
+    <div class="cond-grid">
+      <div class="cond-card">
+        <svg class="cond-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <div class="cond-t">Auf- & Abbau</div>
+        <div class="cond-d">Zugang zur Location mind. <span class="cond-highlight">2–3 Stunden</span> vor Veranstaltungsbeginn. Zeitraum nach Absprache.</div>
+      </div>
+      <div class="cond-card">
+        <svg class="cond-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div class="cond-t">Strom</div>
+        <div class="cond-d">Mind. <span class="cond-highlight">3 × 16A</span> Steckdosen nahe der Bühne. Bereitstellung durch den Veranstalter.</div>
+      </div>
+      <div class="cond-card">
+        <svg class="cond-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <div class="cond-t">Catering</div>
+        <div class="cond-d">Warme Mahlzeit & Getränke für <span class="cond-highlight">7 Personen</span> (6 Bandmitglieder + Techniker). Ruhiger Backstage-Bereich.</div>
+      </div>
+      <div class="cond-card">
+        <svg class="cond-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <div class="cond-t">Parkplätze & Zufahrt</div>
+        <div class="cond-d">Stellplätze für mehrere Fahrzeuge. Laderampe oder Zufahrt für Equipment-Transport.</div>
+      </div>
+      <div class="cond-card" style="border-color:rgba(200,168,90,0.35);grid-column:1/-1;">
+        <svg class="cond-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="cond-t">Unterkunft <span style="color:var(--gold);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-left:8px;">Bedingung</span></div>
+        <div class="cond-d">Gig-Ende ist 02:00 Uhr — eine Rückfahrt ist zu diesem Zeitpunkt nicht zumutbar. Wir benötigen eine Unterkunft für <span class="cond-highlight">7 Personen</span> in der Nähe der Veranstaltung. Jede Person benötigt ein eigenes Zimmer bzw. einen eigenen Schlafplatz. Wie die Unterkunft organisiert wird, bleibt dem Veranstalter überlassen — wir bitten jedoch darum, die konkrete Lösung im Vorfeld mit uns abzustimmen.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT -->
+  <section class="pay-wrap fu d5">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div><div class="sec-label">Zahlung</div><div class="sec-title">Zahlungskonditionen</div></div>
+    </div>
+    <div class="pay-grid">
+      <div class="pay-card">
+        <div class="pay-lbl">Anzahlung bei Buchung</div>
+        <div class="pay-val">50 % · 4.585,00 €</div>
+        <div class="pay-note">Fällig innerhalb 14 Tagen nach Auftragsbestätigung. Sichert die Buchung verbindlich.</div>
+      </div>
+      <div class="pay-card">
+        <div class="pay-lbl">Restzahlung</div>
+        <div class="pay-val">50 % · 4.585,00 €</div>
+        <div class="pay-note">Fällig spätestens 4 Wochen vor Veranstaltung — bis zum <strong>03. Dezember 2026.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORNO -->
+  <section class="storno-wrap fu d5">
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div><div class="sec-label">Rücktritt</div><div class="sec-title">Stornierungsbedingungen</div></div>
+    </div>
+    <table class="storno-table">
+      <tr><td>Kündigung bis 6 Monate vor Event</td><td>Kostenfrei — Anzahlung wird zurückerstattet</td></tr>
+      <tr><td>3–6 Monate vorher (bis 30.06.2026)</td><td>25 % des Gesamtbetrags (2.292,50 €)</td></tr>
+      <tr><td>1–3 Monate vorher (bis 30.09.2026)</td><td>50 % des Gesamtbetrags (4.585,00 €)</td></tr>
+      <tr><td>Weniger als 1 Monat vorher</td><td>100 % des Gesamtbetrags (9.170,00 €)</td></tr>
+    </table>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap fu d6">
+    <div class="cta-h">Bereit für den besten Silvester, den Bad Herrenalb je gesehen hat?</div>
+    <p class="cta-sub">Unverbindliches Angebot · Gültig 2 Wochen ab Ausstellungsdatum<br>Bei Fragen stehen wir gerne persönlich zur Verfügung.</p>
+    <div class="cta-btns">
+      <a href="mailto:info@mickelaloeffel.de?subject=Buchungsanfrage%20Silvester%202026%20ICONICS&body=Hallo%20liebes%20ICONICS-Team%2C%0A%0Awir%20m%C3%B6chten%20das%20Angebot%20f%C3%BCr%20den%2031.12.2026%20im%20CAMPUS%20Bad%20Herrenalb%20annehmen." class="btn btn-gold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Angebot annehmen
+      </a>
+      <a href="tel:+49" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.26h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Rückruf anfragen
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer fu d6">
+    <p><strong>Ausgestellt:</strong> Juni 2026 &nbsp;·&nbsp; <strong>Gültig:</strong> 2 Wochen ab Ausstellungsdatum</p>
+    <p><strong>ICONICS</strong> · Mickela Löffel · Karlsruhe · info@mickelaloeffel.de</p>
+    <p style="margin-top:8px;">Umsatzsteuerfrei gem. §19 UStG. Mit Auftragserteilung gelten die Zahlungs- und Stornobedingungen als akzeptiert. Dieses Angebot ist unverbindlich und freibleibend.</p>
+  </footer>
+
+</div>
+</body>
+</html>
