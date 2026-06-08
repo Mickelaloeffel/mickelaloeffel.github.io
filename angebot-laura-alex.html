@@ -371,16 +371,18 @@ footer img{height:26px}
       <div class="iprice">600 &euro; <span class="vat">&middot; netto</span></div>
     </div>
 
-    <!-- Late Night info -->
-    <div class="icard info-only">
-      <span class="itag only">Nur in Kombi buchbar</span>
-      <h3 class="icard-title" style="color:var(--muted)">Late Night Session</h3>
+    <!-- Late Night -->
+    <div class="icard dimmed" id="ic-latenight" onclick="toggleLatenight(this)">
+      <div class="ichk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="itag">Nur mit Partyband</span>
+      <h3 class="icard-title">Late Night Session</h3>
       <ul>
-        <li>Kuratierte Playlist nach der Live-Show</li>
-        <li>Bis ca. 03:00&ndash;04:00 Uhr</li>
-        <li>Kein Einzelpreis &ndash; Teil der Pakete 02 &amp; 03</li>
+        <li>Kuratierte Playlist nahtlos nach der Live-Show</li>
+        <li>Nutzung des vorhandenen Band-Equipments</li>
+        <li>Wunschtitel-Anfragen willkommen</li>
+        <li>Bis sp&auml;testens 03:00 Uhr</li>
       </ul>
-      <div class="iprice" style="color:var(--subtle);font-size:16px">In Paket 02 &amp; 03 enthalten</div>
+      <div class="iprice">500 &euro; <span class="vat">&middot; netto</span></div>
     </div>
 
   </div>
@@ -464,12 +466,12 @@ footer img{height:26px}
 </div>
 
 <script>
-const IP={trauung:700,sekt:500,band5:3700,band4:3300,zusatzset:600};
+const IP={trauung:700,sekt:500,band5:3700,band4:3300,zusatzset:600,latenight:500};
 const CP={ceremony:990,party5:4200,party4:3800,all5:5000,all4:4600};
 
 let activeCombo=null;
 const CP2={party:5,all:5};
-const sel={trauung:false,sekt:false,band:null,zusatzset:false};
+const sel={trauung:false,sekt:false,band:null,zusatzset:false,latenight:false};
 let drawerOpen=false;
 
 function hasBand(){return sel.band||(activeCombo&&activeCombo!=='ceremony');}
@@ -478,7 +480,7 @@ function toggleCombo(type){
   const key=type==='ceremony'?'ceremony':type+CP2[type];
   if(activeCombo===key){
     activeCombo=null;
-    sel.trauung=false;sel.sekt=false;sel.band=null;sel.zusatzset=false;
+    sel.trauung=false;sel.sekt=false;sel.band=null;sel.zusatzset=false;sel.latenight=false;
   }else{
     activeCombo=key;
     if(type==='ceremony'){sel.trauung=true;sel.sekt=true;sel.band=null;}
@@ -544,20 +546,39 @@ function updateAll(){
   document.getElementById('ic-band4').classList.toggle('on',sel.band==='band4');
   document.getElementById('ic-zusatz').classList.toggle('on',sel.zusatzset);
   document.getElementById('ic-zusatz').classList.toggle('dimmed',!hasBand());
+  // Late Night: highlighted individually OR when active combo includes it
+  const comboHasLN=activeCombo&&activeCombo!=='ceremony';
+  document.getElementById('ic-latenight').classList.toggle('on',sel.latenight||comboHasLN);
+  document.getElementById('ic-latenight').classList.toggle('dimmed',!hasBand()&&!comboHasLN);
   ['ceremony','party','all'].forEach(t=>{
     const k=t==='ceremony'?'ceremony':t+CP2[t];
     document.getElementById('cc-'+t).classList.toggle('on',activeCombo===k);
   });
 }
 
+function toggleLatenight(card){
+  if(!hasBand()){
+    card.classList.add('shake');
+    setTimeout(()=>card.classList.remove('shake'),400);
+    return;
+  }
+  sel.latenight=!sel.latenight;
+  updateAll();render();
+}
+
 function calcTotal(){
-  if(activeCombo)return CP[activeCombo]+(sel.zusatzset&&activeCombo!=='ceremony'?IP.zusatzset:0);
+  if(activeCombo){
+    let t=CP[activeCombo];
+    if(sel.zusatzset&&activeCombo!=='ceremony')t+=IP.zusatzset;
+    return t;
+  }
   let t=0;
   if(sel.trauung)t+=IP.trauung;
   if(sel.sekt)t+=IP.sekt;
   if(sel.band==='band5')t+=IP.band5;
   if(sel.band==='band4')t+=IP.band4;
   if(sel.zusatzset&&sel.band)t+=IP.zusatzset;
+  if(sel.latenight&&sel.band)t+=IP.latenight;
   return t;
 }
 
@@ -573,6 +594,7 @@ function buildRows(){
     if(sel.band==='band4')rows.push({n:'ICONICS Quartett (4 Mskr.)',p:IP.band4});
   }
   if(sel.zusatzset&&hasBand())rows.push({n:'Zusatzset – 4. Live-Set',p:IP.zusatzset});
+  if(sel.latenight&&sel.band)rows.push({n:'Late Night Session',p:IP.latenight});
   return rows;
 }
 
