@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICONICS – Euer persönliches Angebot | Laura & Alex</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#080808;--dark:#111;--card:#161616;--card-h:#1d1d1d;
+  --gold:#C9A96E;--gold-b:#E0BF85;--gold-p:rgba(201,169,110,.09);
+  --gold-bd:rgba(201,169,110,.26);--sel-bg:rgba(201,169,110,.07);
+  --cream:#FAF7F2;--muted:rgba(250,247,242,.52);--subtle:rgba(250,247,242,.26);
+  --r:14px;--t:.22s cubic-bezier(.4,0,.2,1)
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;padding-bottom:110px}
+
+/* HEADER */
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:20px 48px;border-bottom:1px solid var(--gold-bd);position:sticky;top:0;background:rgba(8,8,8,.97);backdrop-filter:blur(10px);z-index:100}
+.logo img{height:34px}
+.ometa{text-align:right;font-size:12px;color:var(--muted);line-height:1.9}
+.ometa strong{color:var(--gold);font-weight:400}
+
+/* HERO */
+.hero{min-height:68vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 48px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(201,169,110,.055) 0%,transparent 68%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-lbl{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;position:relative;z-index:1;animation:fup .8s ease .15s both}
+.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,9vw,108px);font-weight:300;line-height:.95;position:relative;z-index:1;animation:fup .9s ease .3s both}
+.hero-names em{font-style:italic;color:var(--gold)}
+.hero-date{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--muted);margin-top:22px;position:relative;z-index:1;animation:fup .9s ease .44s both}
+.hero-line{width:54px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:28px auto;position:relative;z-index:1;animation:fup .9s ease .55s both}
+.hero-sub{font-size:15px;color:var(--muted);max-width:560px;line-height:1.9;position:relative;z-index:1;animation:fup .9s ease .65s both}
+@keyframes fup{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+.sec{max-width:980px;margin:0 auto;padding:68px 32px;opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.sec.vis{opacity:1;transform:translateY(0)}
+.step-lbl{font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.step-lbl::after{content:'';flex:1;height:1px;background:var(--gold-bd)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4.5vw,46px);font-weight:300;line-height:1.1}
+.sec-desc{font-size:15px;color:var(--muted);margin-top:12px;line-height:1.88;max-width:580px}
+
+/* GRIDS */
+.grid{display:grid;gap:16px;margin-top:34px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+
+/* ─── COMBO CARDS ─── */
+.ccard{background:var(--card);border:1px solid var(--gold-bd);border-radius:var(--r);padding:28px;cursor:pointer;position:relative;overflow:hidden;transition:background var(--t),border-color var(--t),transform var(--t);user-select:none}
+.ccard:hover{background:var(--card-h);border-color:rgba(201,169,110,.5);transform:translateY(-3px)}
+.ccard.on{background:var(--sel-bg);border-color:var(--gold)}
+.ccard.on::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+.ccard.feat{border-color:rgba(201,169,110,.4)}
+.cchk{position:absolute;top:18px;right:18px;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--gold-bd);display:flex;align-items:center;justify-content:center;transition:all var(--t)}
+.ccard.on .cchk{background:var(--gold);border-color:var(--gold)}
+.cchk svg{width:13px;height:13px;stroke:var(--black);opacity:0;transition:opacity var(--t)}
+.ccard.on .cchk svg{opacity:1}
+.cbadge{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:12px}
+.cbadge.a{background:var(--gold-p);color:var(--gold);border:1px solid var(--gold-bd)}
+.cbadge.b{background:var(--gold);color:var(--black)}
+.ccard-icon{font-size:22px;margin-bottom:10px}
+.ccard-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--cream);margin-bottom:6px}
+.ccard-sub{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+.cincludes{list-style:none;margin-bottom:16px}
+.cincludes li{font-size:12.5px;color:var(--muted);padding:3.5px 0 3.5px 17px;position:relative;line-height:1.5}
+.cincludes li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-size:10.5px;top:5px}
+
+/* PERSON TOGGLE inside combo card */
+.pers-row{display:flex;gap:8px;margin:12px 0;cursor:default}
+.pb{flex:1;padding:8px 6px;border:1px solid var(--gold-bd);border-radius:8px;background:transparent;color:var(--muted);font-family:'Jost',sans-serif;font-size:11.5px;cursor:pointer;transition:all var(--t);line-height:1.4;text-align:center}
+.pb.on{background:var(--gold-p);border-color:var(--gold);color:var(--gold)}
+
+.cdivider{height:1px;background:var(--gold-bd);margin:14px 0}
+.cprices{list-style:none}
+.cprices li{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);padding:2.5px 0}
+.ctotal{padding-top:8px!important;margin-top:4px;border-top:1px solid var(--gold-bd)}
+.ctotal span:first-child{color:var(--cream);font-size:13px}
+.ctotal span:last-child{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:20px}
+.cselect-hint{font-size:11px;color:var(--gold);margin-top:12px;opacity:.75}
+
+/* ─── PACKAGE CARDS ─── */
+.pcard{background:var(--card);border:1px solid var(--gold-bd);border-radius:var(--r);padding:24px 24px 20px;cursor:pointer;position:relative;overflow:hidden;transition:background var(--t),border-color var(--t),transform var(--t);user-select:none}
+.pcard:hover{background:var(--card-h);border-color:rgba(201,169,110,.5);transform:translateY(-3px)}
+.pcard.on{background:var(--sel-bg);border-color:var(--gold)}
+.pcard.on::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+.pcard.dimmed{opacity:.42;cursor:not-allowed}
+.pcard.dimmed:hover{transform:none;background:var(--card);border-color:var(--gold-bd)}
+.pchk{position:absolute;top:16px;right:16px;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--gold-bd);display:flex;align-items:center;justify-content:center;transition:all var(--t)}
+.pcard.on .pchk{background:var(--gold);border-color:var(--gold)}
+.pchk svg{width:12px;height:12px;stroke:var(--black);opacity:0;transition:opacity var(--t)}
+.pcard.on .pchk svg{opacity:1}
+.ptag{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;background:var(--gold-p);color:var(--gold);border:1px solid var(--gold-bd);border-radius:20px;padding:3px 9px;display:inline-block;margin-bottom:10px}
+.ptag.only{background:rgba(201,169,110,.04);color:var(--subtle);border-color:rgba(201,169,110,.14)}
+.pcard-icon{font-size:22px;margin-bottom:10px}
+.pcard-title{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;color:var(--cream);margin-bottom:12px}
+.pcard ul{list-style:none;margin-bottom:18px}
+.pcard ul li{font-size:12.5px;color:var(--muted);padding:3.5px 0 3.5px 15px;position:relative;line-height:1.5}
+.pcard ul li::before{content:'–';position:absolute;left:0;color:var(--gold)}
+.pprice{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--gold)}
+.pprice .vat{font-family:'Jost',sans-serif;font-size:11px;color:var(--subtle);font-weight:300}
+.rec-flag{position:absolute;top:-1px;right:22px;background:var(--gold);color:var(--black);font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:0 0 6px 6px}
+.shake{animation:shk .3s ease}
+@keyframes shk{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* NOTE */
+.note{background:var(--card);border:1px solid var(--gold-bd);border-left:3px solid var(--gold);border-radius:var(--r);padding:15px 20px;margin-top:16px}
+.note p{font-size:13px;color:var(--muted);line-height:1.75}
+.note strong{color:var(--cream);font-weight:400}
+.note.warn{border-left-color:#9a7a3a}
+
+/* DIVIDER */
+.alt-div{display:flex;align-items:center;gap:22px;max-width:980px;margin:8px auto 0;padding:0 32px 52px}
+.alt-line{flex:1;height:1px;background:var(--gold-bd)}
+.alt-text{font-size:13px;color:var(--muted);white-space:nowrap;font-style:italic}
+
+/* STEPPER */
+.stepper{background:var(--card);border:1px solid var(--gold-bd);border-radius:var(--r);padding:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:34px}
+.stepper-info{flex:1}
+.sc{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.sbtn{width:36px;height:36px;border-radius:50%;border:1px solid var(--gold-bd);background:transparent;color:var(--gold);font-size:21px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--t);line-height:1}
+.sbtn:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.sbtn:disabled{opacity:.28;cursor:not-allowed}
+.scnt{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--gold);min-width:28px;text-align:center}
+
+/* REQ */
+.req-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:13px;margin-top:34px}
+.req{background:var(--card);border:1px solid var(--gold-bd);border-radius:var(--r);padding:18px}
+.req-ico{font-size:20px;margin-bottom:8px}
+.req-t{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:5px}
+.req-d{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* STORNO TABLE */
+.storno{width:100%;border-collapse:collapse;margin-top:22px}
+.storno th,.storno td{padding:12px 18px;text-align:left;border-bottom:1px solid rgba(201,169,110,.1);font-size:14px}
+.storno th{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:400;background:rgba(201,169,110,.04)}
+.storno td{color:var(--muted)}
+.storno tr:last-child td{border-bottom:none}
+
+/* CTA */
+.cta{background:var(--dark);border-top:1px solid var(--gold-bd);text-align:center;padding:80px 32px}
+.cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,50px);font-weight:300;margin-bottom:16px}
+.cta-title em{font-style:italic;color:var(--gold)}
+.cta-desc{color:var(--muted);font-size:15px;line-height:1.88;max-width:480px;margin:0 auto 38px}
+.btn-p{display:inline-block;background:var(--gold);color:var(--black);font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:14px 34px;border-radius:4px;text-decoration:none;transition:all var(--t);cursor:pointer;border:none}
+.btn-p:hover{background:var(--gold-b);transform:translateY(-1px)}
+.btn-s{display:inline-block;background:transparent;color:var(--gold);font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;padding:14px 34px;border-radius:4px;text-decoration:none;border:1px solid var(--gold-bd);margin-left:12px;transition:all var(--t)}
+.btn-s:hover{border-color:var(--gold);background:var(--gold-p)}
+.legal-note{font-size:12px;color:var(--subtle);margin-top:34px;padding-top:24px;border-top:1px solid var(--gold-bd);line-height:1.8}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(201,169,110,.1);padding:36px 48px;display:flex;justify-content:space-between;align-items:flex-start;gap:28px}
+.finfo{font-size:12px;color:var(--subtle);line-height:1.9;margin-top:8px}
+.finfo a{color:var(--gold);text-decoration:none}
+.flegal{font-size:12px;color:var(--subtle);text-align:right;line-height:1.9}
+footer img{height:26px}
+
+/* PRICE BAR */
+.pbar{position:fixed;bottom:0;left:0;right:0;background:rgba(12,12,12,.98);border-top:1px solid var(--gold-bd);backdrop-filter:blur(14px);z-index:200}
+.drawer{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.drawer.open{max-height:360px}
+.drawer-inner{max-width:980px;margin:0 auto;padding:20px 32px 6px}
+.drow{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(201,169,110,.07);font-size:13.5px}
+.drow .dn{color:var(--muted)}
+.drow .dp{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--cream)}
+.dtotal{margin-top:8px;padding-top:10px!important;border-top:1px solid var(--gold-bd)!important}
+.dtotal .dn{color:var(--cream)!important}
+.dtotal .dp{font-size:22px!important;color:var(--gold)!important}
+.dvat{font-size:11.5px;color:var(--subtle);padding:8px 0 4px;line-height:1.7}
+.pbar-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:11px 32px}
+.pbar-left{flex:1;min-width:0}
+.pbar-lbl{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;min-height:20px}
+.tag{font-size:11.5px;color:var(--muted);background:var(--card);border:1px solid var(--gold-bd);border-radius:20px;padding:2px 9px;animation:tpop .2s ease}
+@keyframes tpop{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+.ehint{font-size:13px;color:var(--subtle);font-style:italic}
+.pbar-right{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.ptoggle{font-size:12px;color:var(--muted);cursor:pointer;background:none;border:none;font-family:'Jost',sans-serif;font-weight:300;text-decoration:underline;text-underline-offset:3px}
+.ptoggle:hover{color:var(--cream)}
+.ptotal{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold)}
+.pvat{font-size:11px;color:var(--subtle);margin-left:4px}
+
+/* MEDIA */
+@media(max-width:780px){
+  .g2,.g3{grid-template-columns:1fr}
+  .hdr{padding:14px 18px}
+  .sec{padding:52px 18px}
+  .hero{padding:52px 18px}
+  .pbar-inner{padding:9px 14px;flex-wrap:wrap}
+  .btn-s{margin-left:0;margin-top:8px}
+  footer{flex-direction:column}
+  .flegal{text-align:left}
+  .stepper{flex-direction:column;align-items:flex-start}
+  .alt-div{padding:0 18px 44px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="logo">
+    <img src="https://iconicsband.de/wp-content/uploads/2026/02/ICONICS-Logo-01-Gold.webp" alt="ICONICS">
+  </div>
+  <div class="ometa">
+    <div>Angebotsnr.: <strong>AG0010</strong></div>
+    <div>Datum: <strong>08.06.2026</strong></div>
+    <div>Gültig bis: <strong>22.06.2026</strong></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lbl">&#10022; &nbsp; Euer pers&ouml;nliches Angebot &nbsp; &#10022;</div>
+  <h1 class="hero-names">Laura<br><em>&amp;</em><br>Alex</h1>
+  <p class="hero-date">2. September 2028 &nbsp;&middot;&nbsp; Bingen am Rhein</p>
+  <div class="hero-line"></div>
+  <p class="hero-sub">Von der Trauung bis zum letzten Tanz &ndash; w&auml;hlt euer Paket aus oder stellt euren Tag ganz individuell zusammen. Der Preis aktualisiert sich in Echtzeit.</p>
+</section>
+
+<!-- COMBO SECTION -->
+<section class="sec" id="combos">
+  <div class="step-lbl">Unsere Empfehlungen</div>
+  <h2 class="sec-title">Fertige Kombi-Pakete</h2>
+  <p class="sec-desc">Klickt auf das Paket, das zu euch passt &ndash; alles wird automatisch vorausgew&auml;hlt. Ihr k&ouml;nnt danach im Baukasten unten noch beliebig anpassen.</p>
+
+  <div class="grid g3">
+
+    <!-- COMBO 1: CEREMONY -->
+    <div class="ccard" id="cc-ceremony" onclick="toggleCombo('ceremony')">
+      <div class="cchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="cbadge a">Sch&ouml;ner Auftakt</span>
+      <div class="ccard-icon">&#128154;</div>
+      <h3 class="ccard-title">Trauung &amp; Empfang</h3>
+      <p class="ccard-sub">Mickela begleitet euch durch den emotionalsten Teil eures Tages &ndash; live, pers&ouml;nlich, unvergesslich.</p>
+      <ul class="cincludes">
+        <li>Solo Gesang &ndash; Trauung / Kirche</li>
+        <li>Solo Gesang &ndash; Sektempfang (1&nbsp;Std.)</li>
+        <li>Akustische Begleitung nach Wunsch</li>
+        <li>Bis zu 4 einstudierte Wunschsongs</li>
+        <li>Anreise inklusive</li>
+      </ul>
+      <div class="cdivider"></div>
+      <ul class="cprices">
+        <li><span>Trauung Solo</span><span>700 &euro;</span></li>
+        <li><span>Sektempfang Solo</span><span>500 &euro;</span></li>
+        <li><span>Kombi-Vorteil</span><span style="color:var(--gold)">&#8722; 210 &euro;</span></li>
+        <li class="ctotal"><span>Gesamt</span><span>990 &euro;</span></li>
+      </ul>
+      <p class="cselect-hint">&#8594; Klicken zum Vorausw&auml;hlen</p>
+    </div>
+
+    <!-- COMBO 2: PARTY & NACHT -->
+    <div class="ccard feat" id="cc-party" onclick="toggleCombo('party')">
+      <div class="cchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="cbadge b">Beliebt</span>
+      <div class="ccard-icon">&#127925;</div>
+      <h3 class="ccard-title">Party &amp; Late Night</h3>
+      <p class="ccard-sub">Die vollst&auml;ndige Abendunterhaltung &ndash; Liveband plus nahtlose After-Party-Musik.</p>
+      <ul class="cincludes">
+        <li>ICONICS Band &ndash; 3 Live-Sets &agrave; 45 Min.</li>
+        <li>Professionelle Pausen-Playlist</li>
+        <li>Late Night Session bis ca. 03:00 Uhr</li>
+        <li>Vollst&auml;ndiges Technik-Paket (PA &amp; Licht)</li>
+        <li>Anreise inklusive</li>
+      </ul>
+      <div class="pers-row" onclick="event.stopPropagation()">
+        <button class="pb on" id="pb-party-5" onclick="setPersonen('party',5)">5 Musiker<br><strong>4.200 &euro;</strong></button>
+        <button class="pb" id="pb-party-4" onclick="setPersonen('party',4)">4 Musiker<br><strong>3.800 &euro;</strong></button>
+      </div>
+      <div class="cdivider"></div>
+      <ul class="cprices">
+        <li><span>Partyband</span><span id="party-band-price">3.700 &euro;</span></li>
+        <li><span>Technik-Paket</span><span>450 &euro;</span></li>
+        <li><span>Late Night inklusive</span><span style="color:var(--gold)">&#10003;</span></li>
+        <li class="ctotal"><span>Gesamt</span><span id="party-combo-price">4.200 &euro;</span></li>
+      </ul>
+      <p class="cselect-hint">&#8594; Klicken zum Vorausw&auml;hlen</p>
+    </div>
+
+    <!-- COMBO 3: RUNDUM SORGLOS -->
+    <div class="ccard" id="cc-all" onclick="toggleCombo('all')">
+      <div class="cchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="cbadge a">Der volle Tag</span>
+      <div class="ccard-icon">&#10024;</div>
+      <h3 class="ccard-title">Rundum Sorglos</h3>
+      <p class="ccard-sub">ICONICS begleitet euch von der Trauung bis zum allerletzten Song der Nacht.</p>
+      <ul class="cincludes">
+        <li>Trauung &amp; Empfang (Paket 1)</li>
+        <li>Party &amp; Late Night (Paket 2)</li>
+        <li>Alles aus einem Guss &ndash; kein Organisations-Stress</li>
+      </ul>
+      <div class="pers-row" onclick="event.stopPropagation()">
+        <button class="pb on" id="pb-all-5" onclick="setPersonen('all',5)">5 Musiker<br><strong>5.000 &euro;</strong></button>
+        <button class="pb" id="pb-all-4" onclick="setPersonen('all',4)">4 Musiker<br><strong>4.600 &euro;</strong></button>
+      </div>
+      <div class="cdivider"></div>
+      <ul class="cprices">
+        <li><span>Trauung &amp; Empfang</span><span>990 &euro;</span></li>
+        <li><span>Party &amp; Late Night</span><span id="all-party-price">4.200 &euro;</span></li>
+        <li><span>Kombi-Vorteil</span><span style="color:var(--gold)">&#8722; <span id="all-savings">190</span> &euro;</span></li>
+        <li class="ctotal"><span>Gesamt</span><span id="all-combo-price">5.000 &euro;</span></li>
+      </ul>
+      <p class="cselect-hint">&#8594; Klicken zum Vorausw&auml;hlen</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="alt-div">
+  <div class="alt-line"></div>
+  <span class="alt-text">Oder: Stellt euer Paket selbst zusammen</span>
+  <div class="alt-line"></div>
+</div>
+
+<!-- STEP 1: TRAUUNG -->
+<section class="sec" id="s1">
+  <div class="step-lbl">Schritt 1 &nbsp;&ndash; optional</div>
+  <h2 class="sec-title">Die Trauung</h2>
+  <p class="sec-desc">Der Moment, der alles ver&auml;ndert. Mickela war Halbfinalistin bei <em>The Voice of Germany</em> &ndash; wenn sie euren Wunschsong live singt, h&auml;lt der ganze Raum den Atem an.</p>
+  <div class="grid">
+    <div class="pcard" id="pc-trauung" data-id="trauung" onclick="toggleBox(this)">
+      <div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="pcard-icon">&#128150;</div>
+      <span class="ptag">Solo Gesang &ndash; Trauung</span>
+      <h3 class="pcard-title">Mickela in der Kirche</h3>
+      <ul>
+        <li>Bis zu 4 einstudierte Wunschsongs &ndash; Einzug, Zeremonie &amp; Auszug</li>
+        <li>Pers&ouml;nliche Absprache &amp; professionelle Probe inklusive</li>
+        <li>Akustische Begleitung (Playback oder Live-Instrument nach Wunsch)</li>
+        <li>Anreise &amp; Technik vollst&auml;ndig inklusive</li>
+      </ul>
+      <div class="pprice">700 &euro; <span class="vat">&middot; netto &middot; &sect;19 UStG</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 2: SEKTEMPFANG -->
+<section class="sec" id="s2">
+  <div class="step-lbl">Schritt 2 &nbsp;&ndash; optional</div>
+  <h2 class="sec-title">Der Sektempfang</h2>
+  <p class="sec-desc">Die ersten Gl&uuml;ckw&uuml;nsche, das erste Glas zu zweit. Live-Musik macht diesen Empfang zu mehr als einer Wartepause.</p>
+  <div class="grid">
+    <div class="pcard" id="pc-sekt" data-id="sektempfang" onclick="toggleBox(this)">
+      <div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="pcard-icon">&#127754;</div>
+      <span class="ptag">Solo Gesang &ndash; Sektempfang</span>
+      <h3 class="pcard-title">Mickela zum Empfang</h3>
+      <ul>
+        <li>1 Stunde eleganter Live-Gesang zur Untermalung</li>
+        <li>Pop, Soul &amp; Balladen &ndash; dezent &amp; atmosph&auml;risch</li>
+        <li>Ideal f&uuml;r Open-Air direkt am Rhein</li>
+        <li>Technik &amp; Anreise inklusive</li>
+      </ul>
+      <div class="pprice">500 &euro; <span class="vat">&middot; netto &middot; &sect;19 UStG</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 3: PARTYBAND -->
+<section class="sec" id="s3">
+  <div class="step-lbl">Schritt 3 &nbsp;&ndash; optional, exklusiv</div>
+  <h2 class="sec-title">Die Partyband</h2>
+  <p class="sec-desc">3 kraftvolle Live-Sets &agrave; 45 Minuten &ndash; w&auml;hlt die Besetzung, die zu eurer Location und eurem Budget passt.</p>
+  <div class="grid g2">
+
+    <div class="pcard" id="pc-band5" data-id="band5" onclick="toggleBand(this)">
+      <div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="ptag">5 Musiker</span>
+      <div class="pcard-icon" style="margin-top:8px">&#127908;</div>
+      <h3 class="pcard-title">ICONICS Full Band</h3>
+      <ul>
+        <li>Vocals &middot; Gitarre &middot; Keys &middot; Bass &middot; Drums</li>
+        <li>3 Live-Sets &agrave; 45 Minuten &ndash; maximale Energie</li>
+        <li>Professionelle Pause-Playlist</li>
+        <li>1 Wunschsong inkl. (z.B. Er&ouml;ffnungstanz)</li>
+        <li>Mikrofon f&uuml;r Reden inkl.</li>
+        <li>Premium PA-System &amp; B&uuml;hnen-/Frontlicht</li>
+      </ul>
+      <div class="pprice">3.700 &euro; <span class="vat">&middot; inkl. 450 &euro; Technik &middot; &sect;19 UStG</span></div>
+    </div>
+
+    <div class="pcard" id="pc-band4" data-id="band4" onclick="toggleBand(this)">
+      <div class="rec-flag">400 &euro; sparen</div>
+      <div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="ptag">4 Musiker</span>
+      <div class="pcard-icon" style="margin-top:8px">&#127926;</div>
+      <h3 class="pcard-title">ICONICS Quartett</h3>
+      <ul>
+        <li>Vocals &middot; Gitarre &middot; Keys &middot; Bass</li>
+        <li>3 Live-Sets &agrave; 45 Minuten &ndash; kompakt &amp; stark</li>
+        <li>Professionelle Pause-Playlist</li>
+        <li>1 Wunschsong inkl. (z.B. Er&ouml;ffnungstanz)</li>
+        <li>Mikrofon f&uuml;r Reden inkl.</li>
+        <li>PA-System &amp; B&uuml;hnen-/Frontlicht</li>
+      </ul>
+      <div class="pprice">3.300 &euro; <span class="vat">&middot; inkl. 450 &euro; Technik &middot; &sect;19 UStG</span></div>
+    </div>
+
+  </div>
+  <div class="note">
+    <p>&#127968; <strong>Unterkunftshinweis:</strong> Da Bingen am Rhein &uuml;ber einer Stunde Anfahrt liegt, organisiert ihr bitte eine &Uuml;bernachtung f&uuml;r die Bandmitglieder vor Ort (z.B. B&amp;B Hotels, Ibis). Schickt uns den Hotelnamen kurz zu &ndash; wir pr&uuml;fen Parkplatz und Late-Check-In. Die Kosten &uuml;bernehmt ihr direkt beim Hotel.</p>
+  </div>
+</section>
+
+<!-- STEP 4: ZUSATZSET -->
+<section class="sec" id="s4">
+  <div class="step-lbl">Schritt 4 &nbsp;&ndash; optional</div>
+  <h2 class="sec-title">Verl&auml;ngerung</h2>
+  <p class="sec-desc">Die Party l&auml;uft so gut, dass ihr nicht aufh&ouml;ren wollt? Verl&auml;ngert die Live-Show um ein weiteres Set.</p>
+  <div class="grid">
+    <div class="pcard dimmed" id="pc-zusatz" data-id="zusatzset" onclick="toggleZusatz(this)">
+      <div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="pcard-icon">&#128293;</div>
+      <span class="ptag">Nur mit Partyband</span>
+      <h3 class="pcard-title">Zusatzset &ndash; 4. Live-Set</h3>
+      <ul>
+        <li>Ein weiteres 45-Min&uuml;ten Live-Set on top</li>
+        <li>Ideal wenn die Stimmung einfach nicht abbricht</li>
+        <li>Spontan am Abend buchbar (nach Absprache)</li>
+      </ul>
+      <div class="pprice">600 &euro; <span class="vat">&middot; netto &middot; &sect;19 UStG</span></div>
+    </div>
+  </div>
+  <div class="note" id="zusatz-hint" style="display:none">
+    <p>&#128161; W&auml;hlt zuerst eine Partyband (Schritt 3) um das Zusatzset hinzuzuf&uuml;gen.</p>
+  </div>
+</section>
+
+<!-- STEP 5: LATE NIGHT -->
+<section class="sec" id="s5">
+  <div class="step-lbl">Schritt 5 &nbsp;&ndash; nur in Kombi</div>
+  <h2 class="sec-title">Late Night Session</h2>
+  <p class="sec-desc">Kuratierte Playlist-Musik nach der Live-Show &ndash; nahtlos, atmosph&auml;risch, bis in die Nacht. Nur als Teil der Kombi-Pakete buchbar.</p>
+  <div class="grid">
+    <div class="pcard dimmed" style="cursor:default" onclick="showDjHint()">
+      <div class="pcard-icon">&#127771;</div>
+      <span class="ptag only">Nur in Kombi buchbar</span>
+      <h3 class="pcard-title">Late Night Session</h3>
+      <ul>
+        <li>Nahtloser &Uuml;bergang nach der Live-Show</li>
+        <li>Kuratierte Playlists mit flie&szlig;enden &Uuml;berg&auml;ngen</li>
+        <li>Wunschtitel-Anfragen willkommen</li>
+        <li>Verl&auml;ngerung bis ca. 03:00&ndash;04:00 Uhr m&ouml;glich</li>
+        <li>Nutzung des vorhandenen Band-Equipments</li>
+      </ul>
+      <div class="pprice" style="color:var(--muted);font-size:16px">Enthalten in &bdquo;Party &amp; Late Night&ldquo; und &bdquo;Rundum Sorglos&ldquo;</div>
+    </div>
+  </div>
+  <div class="note warn" id="dj-hint" style="display:none">
+    <p>&#128161; Die Late Night Session ist nur als Teil der Kombi-Pakete buchbar. W&auml;hlt oben &bdquo;Party &amp; Late Night&ldquo; oder &bdquo;Rundum Sorglos&ldquo; um sie hinzuzuf&uuml;gen.</p>
+  </div>
+  <div class="note">
+    <p>&#127911; <strong>Transparenz:</strong> Die Late Night Session ist kein klassisches DJ-Set, sondern eine sorgf&auml;ltig kuratierte Playlist mit flie&szlig;enden &Uuml;berg&auml;ngen &ndash; ideal um die Energie des Abends weiterzutragen. F&uuml;r profi Dancefloor empfehlen wir gern externe DJ-Partner auf Anfrage.</p>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="sec" id="s6">
+  <h2 class="sec-title" style="font-size:clamp(26px,4vw,40px)">Was wir brauchen</h2>
+  <p class="sec-desc">F&uuml;r einen reibungslosen Ablauf brauchen wir ein paar organisatorische Dinge. Wir besprechen alles gerne gemeinsam!</p>
+  <div class="req-grid">
+    <div class="req"><div class="req-ico">&#127917;</div><div class="req-t">B&uuml;hne</div><div class="req-d">Mind. 3&times;5 m Fl&auml;che sowie 2 separate Stromkreise (Schuko 16A)</div></div>
+    <div class="req"><div class="req-ico">&#128663;</div><div class="req-t">Parken &amp; Anlieferung</div><div class="req-d">Be- &amp; Entladen direkt an der Spielfl&auml;che + 2 Parkpl&auml;tze f&uuml;r den Bandbus</div></div>
+    <div class="req"><div class="req-ico">&#127869;</div><div class="req-t">Catering</div><div class="req-d">Warme Mahlzeit &amp; alkoholfreie Getr&auml;nke f&uuml;r alle beteiligten Musiker</div></div>
+    <div class="req"><div class="req-ico">&#127968;</div><div class="req-t">Unterkunft</div><div class="req-d">Anfahrt &gt; 1&thinsp;h: &Uuml;bernachtung f&uuml;r Bandmitglieder (ihr w&auml;hlt, wir pr&uuml;fen)</div></div>
+    <div class="req"><div class="req-ico">&#9728;&#65039;</div><div class="req-t">Witterungsschutz</div><div class="req-d">Bei Open-Air: trockener &amp; sonnengesch&uuml;tzter Bereich f&uuml;r Musiker &amp; Technik</div></div>
+    <div class="req"><div class="req-ico">&#128222;</div><div class="req-t">Ansprechpartner</div><div class="req-d">Kontaktdaten einer verantwortlichen Person vor Ort (z.B. Trauzeuge) f&uuml;r Aufbau</div></div>
+  </div>
+</section>
+
+<!-- STORNO -->
+<section class="sec" id="s7" style="padding-top:0">
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,34px)">Stornobedingungen</h2>
+  <table class="storno">
+    <thead><tr><th>Zeitpunkt</th><th>Ausfallhonorar</th></tr></thead>
+    <tbody>
+      <tr><td>Nach Buchungsbest&auml;tigung</td><td>Anzahlung (20&thinsp;%) wird einbehalten</td></tr>
+      <tr><td>Ab 12 Wochen vor der Hochzeit</td><td>50&thinsp;% des Gesamtbetrags</td></tr>
+      <tr><td>Ab 4 Wochen vor der Hochzeit</td><td>100&thinsp;% des Gesamtbetrags</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-top:14px">
+    <p>&#128155; <strong>F&uuml;r alle F&auml;lle:</strong> Sollten wir aus gravierenden Gr&uuml;nden (z.B. pl&ouml;tzliche Krankheit) ausfallen, erhaltet ihr alle geleisteten Zahlungen umgehend zur&uuml;ck. Wir unterst&uuml;tzen euch aktiv bei der Suche nach einem Ersatz.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2 class="cta-title">Bereit f&uuml;r euren<br><em>unvergesslichen</em> Tag?</h2>
+  <p class="cta-desc">Wenn euch das Angebot gef&auml;llt, reicht eine kurze R&uuml;ckmeldung per E-Mail. Wir schicken euch dann euren pers&ouml;nlichen Dienstleistungsvertrag &ndash; mit Gegenzeichnung und Anzahlung ist euer Datum fest geblockt.</p>
+  <a href="mailto:info@iconicsband.de?subject=Buchungsanfrage%20Laura%20%26%20Alex%20%7C%2002.09.2028" class="btn-p">Jetzt verbindlich anfragen</a>
+  <a href="https://iconicsband.de" target="_blank" class="btn-s">Mehr &uuml;ber ICONICS</a>
+  <p class="legal-note">* Alle Preise netto. Umsatzsteuerfreie Leistungen gem&auml;&szlig; &sect; 19 UStG. Anzahlung 20&thinsp;% bei Vertragsunterzeichnung f&auml;llig. Restbetrag zahlbar per &Uuml;berweisung innerhalb von 7 Tagen nach der Hochzeit.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <img src="https://iconicsband.de/wp-content/uploads/2026/02/ICONICS-Logo-01-Gold.webp" alt="ICONICS">
+    <div class="finfo">
+      ICONICS GbR &middot; Sch&uuml;tzenstra&szlig;e 17 &middot; 76137 Karlsruhe<br>
+      <a href="mailto:info@iconicsband.de">info@iconicsband.de</a> &middot; <a href="https://iconicsband.de" target="_blank">iconicsband.de</a><br>
+      Steuernummer: 35029/70085 &middot; Gesellschafter: Mickela L&ouml;ffel &amp; Benjamin Braun
+    </div>
+  </div>
+  <div class="flegal">
+    ICONICS GbR &middot; Banking Circle (Vivid)<br>
+    IBAN: DE56 2022 0800 0056 9788 05<br>
+    BIC: SXPYDEHHXXX
+  </div>
+</footer>
+
+<!-- PRICE BAR -->
+<div class="pbar">
+  <div class="drawer" id="drawer">
+    <div class="drawer-inner" id="drawer-inner"></div>
+  </div>
+  <div class="pbar-inner">
+    <div class="pbar-left">
+      <div class="pbar-lbl">Euer Angebot</div>
+      <div class="tags" id="tags"><span class="ehint">W&auml;hlt oben eure Pakete aus &#8593;</span></div>
+    </div>
+    <div class="pbar-right">
+      <button class="ptoggle" id="ptoggle" onclick="toggleDrawer()" style="display:none">Details</button>
+      <div><span class="ptotal">&euro;&thinsp;<span id="ptotal">0</span></span><span class="pvat">netto</span></div>
+      <a href="mailto:info@iconicsband.de?subject=Buchungsanfrage%20Laura%20%26%20Alex%20%7C%2002.09.2028" class="btn-p" style="padding:10px 18px;font-size:11px;white-space:nowrap">Jetzt anfragen</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── PREISE (bei Bedarf hier anpassen) ────────────────────────────
+const IP = { trauung:700, sektempfang:500, band5:3700, band4:3300, zusatzset:600 };
+const CP = { ceremony:990, party5:4200, party4:3800, all5:5000, all4:4600 };
+// ─────────────────────────────────────────────────────────────────
+
+let activeCombo = null;  // null | 'ceremony' | 'party5' | 'party4' | 'all5' | 'all4'
+const comboPersonen = { party:5, all:5 };
+
+const sel = { trauung:false, sektempfang:false, band:null, zusatzset:false };
+let drawerOpen = false;
+
+function hasBand() {
+  return sel.band || (activeCombo && activeCombo !== 'ceremony');
+}
+
+// ── COMBO LOGIC ───────────────────────────────────────────────────
+function toggleCombo(type) {
+  const key = type === 'ceremony' ? 'ceremony' : type + comboPersonen[type];
+  if (activeCombo === key) {
+    activeCombo = null;
+    sel.trauung = false; sel.sektempfang = false;
+    sel.band = null; sel.zusatzset = false;
+  } else {
+    activeCombo = key;
+    if (type === 'ceremony') {
+      sel.trauung = true; sel.sektempfang = true; sel.band = null;
+    } else if (type === 'party') {
+      sel.trauung = false; sel.sektempfang = false;
+      sel.band = comboPersonen.party === 5 ? 'band5' : 'band4';
+    } else if (type === 'all') {
+      sel.trauung = true; sel.sektempfang = true;
+      sel.band = comboPersonen.all === 5 ? 'band5' : 'band4';
+    }
+  }
+  updateAllHighlights();
+  render();
+}
+
+function setPersonen(type, n) {
+  comboPersonen[type] = n;
+  // update toggle buttons
+  document.querySelectorAll('#pb-' + type + '-4, #pb-' + type + '-5').forEach(b => {
+    b.classList.toggle('on', parseInt(b.id.slice(-1)) === n);
+  });
+  // update displayed prices in card
+  if (type === 'party') {
+    const p = n === 5 ? 3700 : 3300;
+    document.getElementById('party-band-price').textContent = fmt(p) + ' \u20AC';
+    document.getElementById('party-combo-price').textContent = fmt(n === 5 ? 4200 : 3800) + ' \u20AC';
+  }
+  if (type === 'all') {
+    const pp = n === 5 ? 4200 : 3800;
+    const total = n === 5 ? 5000 : 4600;
+    const sav = 990 + pp - total;
+    document.getElementById('all-party-price').textContent = fmt(pp) + ' \u20AC';
+    document.getElementById('all-savings').textContent = sav;
+    document.getElementById('all-combo-price').textContent = fmt(total) + ' \u20AC';
+  }
+  // if this combo is currently active, update it
+  if (activeCombo && activeCombo.startsWith(type)) {
+    activeCombo = type + n;
+    sel.band = n === 5 ? 'band5' : 'band4';
+    updateAllHighlights();
+    render();
+  }
+}
+
+// ── INDIVIDUAL ITEMS ──────────────────────────────────────────────
+function toggleBox(card) {
+  const id = card.dataset.id;
+  activeCombo = null;
+  sel[id] = !sel[id];
+  if (!hasBand()) sel.zusatzset = false;
+  updateAllHighlights();
+  render();
+}
+
+function toggleBand(card) {
+  const id = card.dataset.id;
+  activeCombo = null;
+  sel.band = sel.band === id ? null : id;
+  if (!sel.band) sel.zusatzset = false;
+  updateAllHighlights();
+  render();
+}
+
+function toggleZusatz(card) {
+  if (!hasBand()) {
+    card.classList.add('shake');
+    document.getElementById('zusatz-hint').style.display = 'block';
+    setTimeout(() => {
+      card.classList.remove('shake');
+      setTimeout(() => { document.getElementById('zusatz-hint').style.display = 'none'; }, 3000);
+    }, 400);
+    return;
+  }
+  sel.zusatzset = !sel.zusatzset;
+  card.classList.toggle('on', sel.zusatzset);
+  render();
+}
+
+function showDjHint() {
+  const h = document.getElementById('dj-hint');
+  h.style.display = 'block';
+  setTimeout(() => { h.style.display = 'none'; }, 4000);
+}
+
+// ── HIGHLIGHTS ────────────────────────────────────────────────────
+function updateAllHighlights() {
+  // Individual cards
+  document.getElementById('pc-trauung').classList.toggle('on', sel.trauung);
+  document.getElementById('pc-sekt').classList.toggle('on', sel.sektempfang);
+  document.getElementById('pc-band5').classList.toggle('on', sel.band === 'band5');
+  document.getElementById('pc-band4').classList.toggle('on', sel.band === 'band4');
+  document.getElementById('pc-zusatz').classList.toggle('on', sel.zusatzset);
+  document.getElementById('pc-zusatz').classList.toggle('dimmed', !hasBand());
+
+  // Combo cards
+  ['ceremony','party','all'].forEach(type => {
+    const key = type === 'ceremony' ? 'ceremony' : type + comboPersonen[type];
+    document.getElementById('cc-' + type).classList.toggle('on', activeCombo === key);
+  });
+}
+
+// ── PRICE CALC ────────────────────────────────────────────────────
+function calcTotal() {
+  if (activeCombo) {
+    return CP[activeCombo] + (sel.zusatzset ? IP.zusatzset : 0);
+  }
+  let t = 0;
+  if (sel.trauung) t += IP.trauung;
+  if (sel.sektempfang) t += IP.sektempfang;
+  if (sel.band === 'band5') t += IP.band5;
+  if (sel.band === 'band4') t += IP.band4;
+  if (sel.zusatzset && sel.band) t += IP.zusatzset;
+  return t;
+}
+
+function buildRows() {
+  const rows = [];
+  if (activeCombo) {
+    const labels = {
+      ceremony: 'Trauung & Empfang (Kombi)',
+      party5: 'Party & Late Night · 5 Mskr. (Kombi)',
+      party4: 'Party & Late Night · 4 Mskr. (Kombi)',
+      all5: 'Rundum Sorglos · 5 Mskr. (Kombi)',
+      all4: 'Rundum Sorglos · 4 Mskr. (Kombi)'
+    };
+    rows.push({ n: labels[activeCombo], p: CP[activeCombo] });
+  } else {
+    if (sel.trauung) rows.push({ n: 'Solo Gesang \u2013 Trauung', p: IP.trauung });
+    if (sel.sektempfang) rows.push({ n: 'Solo Gesang \u2013 Sektempfang', p: IP.sektempfang });
+    if (sel.band === 'band5') rows.push({ n: 'ICONICS Full Band (5 Mskr.)', p: IP.band5 });
+    if (sel.band === 'band4') rows.push({ n: 'ICONICS Quartett (4 Mskr.)', p: IP.band4 });
+  }
+  if (sel.zusatzset && hasBand()) rows.push({ n: 'Zusatzset \u2013 4. Live-Set', p: IP.zusatzset });
+  return rows;
+}
+
+// ── RENDER ────────────────────────────────────────────────────────
+function render() {
+  const total = calcTotal();
+  const rows = buildRows();
+  const tagsEl = document.getElementById('tags');
+  const tog = document.getElementById('ptoggle');
+
+  if (rows.length === 0) {
+    tagsEl.innerHTML = '<span class="ehint">W\u00e4hlt oben eure Pakete aus \u2191</span>';
+    tog.style.display = 'none';
+    if (drawerOpen) toggleDrawer();
+  } else {
+    tagsEl.innerHTML = rows.map(r => '<span class="tag">' + r.n + '</span>').join('');
+    tog.style.display = 'block';
+  }
+
+  animNum(document.getElementById('ptotal'), total);
+
+  const dep = Math.round(total * .2);
+  document.getElementById('drawer-inner').innerHTML = rows.length === 0 ? '' :
+    rows.map(r => '<div class="drow"><span class="dn">' + r.n + '</span><span class="dp">' + fmt(r.p) + ' \u20AC</span></div>').join('') +
+    '<div class="drow dtotal"><span class="dn">Gesamtbetrag (netto)</span><span class="dp">' + fmt(total) + ' \u20AC</span></div>' +
+    '<div class="drow" style="opacity:.5"><span class="dn">Anzahlung bei Buchung (20\u202f%)</span><span class="dp">' + fmt(dep) + ' \u20AC</span></div>' +
+    '<div class="dvat">* Umsatzsteuerfreie Leistungen gem. \u00a7\u202f19 UStG. Restbetrag innerhalb von 7 Tagen nach der Hochzeit.</div>';
+}
+
+function fmt(n) { return n.toLocaleString('de-DE'); }
+
+function animNum(el, target) {
+  const start = parseInt(el.textContent.replace(/\./g,'')) || 0;
+  const diff = target - start, dur = 360, t0 = performance.now();
+  function step(now) {
+    const p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmt(Math.round(start + diff * e));
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function toggleDrawer() {
+  drawerOpen = !drawerOpen;
+  document.getElementById('drawer').classList.toggle('open', drawerOpen);
+  document.getElementById('ptoggle').textContent = drawerOpen ? 'Ausblenden' : 'Details';
+}
+
+// Scroll reveal
+const io = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis'); }); }, { threshold: .07 });
+document.querySelectorAll('.sec').forEach(s => io.observe(s));
+</script>
+</body>
+</html>
