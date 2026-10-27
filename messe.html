@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#F5EFE4">
+<title>Mickela Löffel · Messe</title>
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1F1C1A;--cream:#F5EFE4;--paper:#FBF8F2;--gold:#B8955C;--line:#E3D6BE;--mute:#7A716A;--err:#A23B2A}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--cream);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-size:18px;line-height:1.5}
+body{min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.wrap{max-width:860px;margin:0 auto;padding:28px 28px 120px}
+header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:26px}
+.brand{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;letter-spacing:.02em}
+.brand small{display:block;font-family:'DM Sans';font-size:11px;letter-spacing:.3em;color:var(--gold);font-weight:500}
+.steps{display:flex;gap:6px}.steps i{width:28px;height:3px;background:var(--line)}.steps i.on{background:var(--gold)}
+.queue{font-size:13px;color:var(--mute);margin-top:6px;text-align:right}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:40px;line-height:1.1;margin-bottom:6px}
+.lead{color:var(--mute);font-weight:300;margin-bottom:22px}
+.step{display:none}.step.on{display:block;animation:in .25s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.pk{display:block;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);padding:18px 20px;margin-bottom:12px;cursor:pointer;font:inherit;color:inherit;position:relative}
+.pk.sel{border:2px solid var(--gold);padding:17px 19px;background:#fff}
+.pk .t{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;letter-spacing:.03em}
+.pk .d{font-size:15px;color:var(--mute);font-weight:300}
+.pk .row{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
+.pk .old{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--gold);font-size:15px;margin-right:12px}
+.pk .new{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;font-variant-numeric:lining-nums}
+.tag{position:absolute;top:-10px;right:18px;background:var(--gold);color:#fff;font-size:11px;letter-spacing:.18em;font-weight:500;padding:3px 9px}
+.grp{font-size:12px;letter-spacing:.25em;color:var(--gold);font-weight:500;margin:22px 0 10px}
+label.f{display:block;margin-bottom:16px;font-size:15px;color:var(--mute)}
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=number],input[type=password],textarea{display:block;width:100%;margin-top:6px;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);padding:14px 16px;border-radius:0;-webkit-appearance:none}
+input:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:-1px}
+textarea{min-height:150px;resize:vertical}
+.chk{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);padding:16px 18px;margin-bottom:10px;cursor:pointer}
+.chk input{width:24px;height:24px;margin-top:2px;accent-color:var(--gold);flex:none}
+.chk span small{display:block;color:var(--mute);font-size:14px;font-weight:300}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media(max-width:620px){.two{grid-template-columns:1fr}h1{font-size:32px}}
+.sum{background:var(--paper);border:1px solid var(--gold);padding:20px 22px}
+.sum div{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--line);font-size:16px}
+.sum div:last-child{border:0}.sum b{font-weight:500}
+.note{font-size:14px;color:var(--mute);margin-top:14px;font-weight:300}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(245,239,228,.96);border-top:1px solid var(--line);padding:14px 28px calc(14px + env(safe-area-inset-bottom))}
+.bar .in{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;gap:12px}
+button.b{font:inherit;font-size:17px;font-weight:500;padding:15px 28px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;min-width:140px}
+button.p{background:var(--ink);color:var(--cream)}
+button.b:disabled{opacity:.35}
+.msg{color:var(--err);font-size:15px;margin-top:10px;min-height:22px}
+.done{text-align:center;padding-top:60px}
+.done .rule{width:60px;height:1px;background:var(--gold);margin:22px auto}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">Mickela Löffel<small>HOCHZEITSSÄNGERIN</small></div>
+    <div><div class="steps" id="dots"></div><div class="queue" id="queue"></div></div>
+  </header>
+
+  <!-- PIN -->
+  <section class="step" id="s-pin">
+    <h1>Messe-Modus</h1>
+    <p class="lead">Einmal die PIN eingeben. Das Tablet merkt sie sich.</p>
+    <label class="f">PIN<input type="password" id="pin" inputmode="numeric" autocomplete="off"></label>
+    <button class="b p" onclick="savePin()">Starten</button>
+  </section>
+
+  <!-- 1 Paket -->
+  <section class="step" id="s1">
+    <h1>Welche Musik wünscht ihr euch?</h1>
+    <p class="lead">Euer Messepreis gilt bei Buchung bis zum 30.11.2026.</p>
+    <div id="pakete"></div>
+  </section>
+
+  <!-- 2 Extras -->
+  <section class="step" id="s2">
+    <h1>Darf es noch etwas mehr sein?</h1>
+    <p class="lead">Optional. Ich melde mich dazu mit den Details.</p>
+    <label class="chk"><input type="checkbox" value="dinner"><span>Dinnerbegleitung<small>Ruhige Musik zum Essen</small></span></label>
+    <label class="chk"><input type="checkbox" value="dj"><span>DJ bis zum letzten Gast<small id="djtxt">Mit eigener Technik, Preis auf Anfrage</small></span></label>
+    <label class="chk"><input type="checkbox" value="streicher"><span>Streicher<small>Zum Beispiel Violine zur Trauung</small></span></label>
+    <label class="f" style="margin-top:20px">Wie viele Gäste erwartet ihr ungefähr?<input type="number" id="gaeste" inputmode="numeric" min="0"></label>
+  </section>
+
+  <!-- 3 Datum & Ort -->
+  <section class="step" id="s3">
+    <h1>Wann und wo feiert ihr?</h1>
+    <p class="lead">Die Anfahrt berechne ich automatisch ab Karlsruhe. Bis 25 km ist sie inklusive.</p>
+    <label class="f">Hochzeitsdatum<input type="date" id="datum"></label>
+    <label class="f">Location oder Ort<input type="text" id="ort" placeholder="z. B. Schloss Bruchsal"></label>
+  </section>
+
+  <!-- 4 Wünsche -->
+  <section class="step" id="s4">
+    <h1>Eure Wünsche</h1>
+    <p class="lead">Lieblingssongs, Ablauf, alles was mir hilft. Gerne auch Stichworte.</p>
+    <label class="f">Notizen<textarea id="notizen" placeholder="z. B. Einzug zu Perfect, freie Trauung im Garten"></textarea></label>
+  </section>
+
+  <!-- 5 Kontakt -->
+  <section class="step" id="s5">
+    <h1>Wohin darf ich euer Angebot schicken?</h1>
+    <p class="lead">Ihr bekommt es direkt per Mail.</p>
+    <label class="f">Eure Namen<input type="text" id="name" placeholder="z. B. Anna & Ben" autocomplete="off"></label>
+    <div class="two">
+      <label class="f">E-Mail<input type="email" id="email" autocomplete="off" autocapitalize="off"></label>
+      <label class="f">Telefon (optional)<input type="tel" id="telefon" autocomplete="off"></label>
+    </div>
+    <label class="chk"><input type="checkbox" id="dsgvo"><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden und ich das Angebot per Mail erhalte.<small>Details in der <a href="datenschutz.html" target="_blank" style="color:inherit">Datenschutzerklärung</a>. Widerruf jederzeit per Mail.</small></span></label>
+  </section>
+
+  <!-- 6 Übersicht -->
+  <section class="step" id="s6">
+    <h1>Alles richtig so?</h1>
+    <p class="lead">Mit dem Absenden ist euer Datum 7 Tage für euch reserviert.</p>
+    <div class="sum" id="sum"></div>
+    <p class="note">Die genaue Anfahrt steht in eurer Angebotsmail. Bei der Band werden die Fahrtkosten individuell abgesprochen.</p>
+    <p class="msg" id="msg"></p>
+  </section>
+
+  <!-- Fertig -->
+  <section class="step" id="s-done">
+    <div class="done">
+      <h1 id="doneTitle">Euer Angebot ist unterwegs</h1>
+      <div class="rule"></div>
+      <p class="lead" id="doneText">Schaut in den nächsten Minuten in euer Postfach, auch im Spam-Ordner. Ich freue mich auf euch.</p>
+      <button class="b p" onclick="reset()">Neue Anfrage</button>
+    </div>
+  </section>
+</div>
+
+<div class="bar" id="bar">
+  <div class="in">
+    <button class="b" id="back" onclick="go(-1)">Zurück</button>
+    <button class="b p" id="next" onclick="go(1)">Weiter</button>
+  </div>
+</div>
+
+<script>
+const URL_ = 'https://script.google.com/macros/s/AKfycbyCTqnsQ4g1HnYq5gJ4x_I5k250EEYOVr_IJGGp7PLwxjpchEzIJvg3474PqyKLtaYJDQ/exec';
+const PAKETE = [
+  { id:'solo_t',  t:'SOLO', d:'Trauung · Live gesungen zu hochwertigen Instrumentalaufnahmen', l:750, m:650 },
+  { id:'solo_ts', t:'SOLO + SEKTEMPFANG', d:'Trauung und Sektempfang (60 Min.)', l:1050, m:950 },
+  { id:'duo_t',   t:'DUO',  d:'Trauung · Mit Pianist oder Gitarrist', l:1350, m:1250, tag:'100 % LIVE' },
+  { id:'duo_ts',  t:'DUO + SEKTEMPFANG',  d:'Trauung und Sektempfang (60 Min.)', l:1750, m:1650, tag:'100 % LIVE' },
+  { id:'band',    t:'MICKELA MIT BAND', d:'Trauung und Sektempfang im Duo, am Abend Partyband mit Doppel-Front, inklusive Ton- und Lichttechnik', l:6200, m:6100, ab:true, tag:'VOM JA BIS ZUR PARTY' }
+];
+const EXTRA_TXT = { dinner:'Dinnerbegleitung', dj:'DJ bis zum letzten Gast', streicher:'Streicher' };
+const STEPS = ['s1','s2','s3','s4','s5','s6'];
+let cur = 0, paket = null;
+const $ = id => document.getElementById(id);
+const eur = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.') + ' €';
+const store = { get(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d }catch(e){ return d } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)) }catch(e){} } };
+
+$('pakete').innerHTML = PAKETE.map(p => `<button class="pk" data-id="${p.id}">${p.tag?`<span class="tag">${p.tag}</span>`:''}
+  <div class="t">${p.t}</div><div class="d">${p.d}</div>
+  <div class="row"><span class="d">Messepreis</span><span><span class="old">${p.ab?'ab ':''}${eur(p.l)}</span><span class="new">${p.ab?'ab ':''}${eur(p.m)}</span></span></div></button>`).join('');
+document.querySelectorAll('.pk').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.pk').forEach(x => x.classList.remove('sel'));
+  b.classList.add('sel'); paket = PAKETE.find(p => p.id === b.dataset.id); render();
+});
+$('dots').innerHTML = STEPS.map(() => '<i></i>').join('');
+
+function show(id){ document.querySelectorAll('.step').forEach(s => s.classList.toggle('on', s.id === id)); window.scrollTo(0,0); }
+function render(){
+  show(STEPS[cur]);
+  $('bar').classList.remove('hide');
+  document.querySelectorAll('#dots i').forEach((d,i) => d.classList.toggle('on', i <= cur));
+  $('back').style.visibility = cur ? 'visible' : 'hidden';
+  $('next').textContent = cur === STEPS.length-1 ? 'Datum reservieren' : 'Weiter';
+  $('next').disabled = (cur === 0 && !paket);
+  if (STEPS[cur] === 's6') summary();
+  if (paket) $('djtxt').textContent = paket.ab ? 'Im Anschluss an die Band, ca. 700 bis 800 €' : 'Mit eigener Technik, Preis auf Anfrage';
+}
+function valid(){
+  const s = STEPS[cur];
+  if (s === 's5') {
+    if (!$('name').value.trim()) return 'Bitte eure Namen eintragen.';
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('email').value.trim())) return 'Bitte eine gültige E-Mail-Adresse eintragen.';
+    if (!$('dsgvo').checked) return 'Bitte die Einwilligung bestätigen.';
+  }
+  return '';
+}
+function go(dir){
+  if (dir > 0) {
+    const err = valid(); if (err) { alertInline(err); return; }
+    if (cur === STEPS.length-1) return submit();
+  }
+  cur = Math.max(0, Math.min(STEPS.length-1, cur + dir)); render();
+}
+function alertInline(t){
+  let m = document.querySelector('.step.on .msg');
+  if (!m) { m = document.createElement('p'); m.className = 'msg'; document.querySelector('.step.on').appendChild(m); }
+  m.textContent = t;
+}
+function extras(){ return [...document.querySelectorAll('#s2 input[type=checkbox]:checked')].map(c => c.value); }
+function data(){
+  return { paket: paket.id, extras: extras(), gaeste: $('gaeste').value, datum: $('datum').value, ort: $('ort').value.trim(),
+    notizen: $('notizen').value.trim(), name: $('name').value.trim(), email: $('email').value.trim(), telefon: $('telefon').value.trim() };
+}
+function summary(){
+  const d = data(), ex = d.extras.map(x => EXTRA_TXT[x]);
+  const rows = [
+    ['Paket', paket.t.charAt(0) + paket.t.slice(1).toLowerCase().replace('mit band','mit Band').replace('sektempfang','Sektempfang').replace('mickela','Mickela')],
+    ['Messepreis', `<b>${paket.ab?'ab ':''}${eur(paket.m)}</b> statt ${eur(paket.l)}`],
+    ex.length ? ['Zusätzlich', ex.join(', ')] : null,
+    ['Datum', d.datum ? d.datum.split('-').reverse().join('.') : 'noch offen'],
+    ['Ort', d.ort || 'noch offen'],
+    ['Angebot an', d.email]
+  ].filter(Boolean);
+  $('sum').innerHTML = rows.map(r => `<div><span>${r[0]}</span><span style="text-align:right">${r[1]}</span></div>`).join('');
+}
+
+async function post(item){
+  const res = await fetch(URL_, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(item) });
+  return res.json();
+}
+async function submit(){
+  const item = { source:'messe', pin: store.get('pin',''), data: data() };
+  $('next').disabled = true; $('next').textContent = 'Wird gesendet …'; $('msg').textContent = '';
+  try {
+    const j = await post(item);
+    if (!j.ok) { $('msg').textContent = j.error || 'Fehler beim Senden.'; if (/PIN/.test(j.error||'')) { store.set('pin',''); } render(); return; }
+    finish(true);
+  } catch (e) {
+    const q = store.get('queue', []); q.push(item); store.set('queue', q); updQueue();
+    finish(false);
+  }
+}
+function finish(sent){
+  $('doneTitle').textContent = sent ? 'Euer Angebot ist unterwegs' : 'Eure Anfrage ist gespeichert';
+  $('doneText').textContent = sent ? 'Schaut in den nächsten Minuten in euer Postfach, auch im Spam-Ordner. Ich freue mich auf euch.'
+    : 'Das Netz ist gerade schwach. Euer Angebot wird automatisch verschickt, sobald das Tablet wieder online ist.';
+  $('bar').classList.add('hide'); show('s-done');
+}
+function reset(){
+  paket = null; cur = 0;
+  document.querySelectorAll('.pk').forEach(x => x.classList.remove('sel'));
+  document.querySelectorAll('input,textarea').forEach(el => { if (el.id === 'pin') return; if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
+  document.querySelectorAll('.msg').forEach(m => m.textContent = '');
+  render();
+}
+async function flush(){
+  const q = store.get('queue', []); if (!q.length || !navigator.onLine) return updQueue();
+  const rest = [];
+  for (const item of q) { try { const j = await post(item); if (!j.ok && !/PIN/.test(j.error||'')) rest.push(item); } catch (e) { rest.push(item); } }
+  store.set('queue', rest); updQueue();
+}
+function updQueue(){ const n = store.get('queue', []).length; $('queue').textContent = n ? `${n} Anfrage${n>1?'n':''} warten auf Netz` : ''; }
+function savePin(){ const p = $('pin').value.trim(); if (!p) return; store.set('pin', p); render(); }
+
+window.addEventListener('online', flush); setInterval(flush, 30000); updQueue(); flush();
+if (store.get('pin','')) render(); else { show('s-pin'); $('bar').classList.add('hide'); }
+</script>
+</body>
+</html>

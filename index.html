@@ -1761,8 +1761,12 @@
   <!-- ===== MODAL + WIZARD SCRIPT ===== -->
   <script>
     // ── Konfiguration ──────────────────────────────
-    const MONDAY_API_KEY  = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjY1MTIxNDI0MiwiYWFpIjoxMSwidWlkIjo5NTMxNTMwNCwiaWFkIjoiMjAyNi0wNC0yOFQxNDowNzozNC4zMjRaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MzIyNTQ3MTgsInJnbiI6ImV1YzEifQ.7NmQblrPYcK14t92XkpBx5lazozquMtz9ONqJGuO6C4';
-    const MONDAY_BOARD_ID = '5071267522';
+    const ANFRAGE_URL = 'https://script.google.com/macros/s/AKfycbyCTqnsQ4g1HnYq5gJ4x_I5k250EEYOVr_IJGGp7PLwxjpchEzIJvg3474PqyKLtaYJDQ/exec';
+    async function sendAnfrage(source, data) {
+      const res = await fetch(ANFRAGE_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ source, data }) });
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.error || 'Fehler');
+    }
 
     // ── Modal ──────────────────────────────────────
     const modalOverlay = document.getElementById('anfrageModal');
@@ -1885,7 +1889,7 @@
       ).join('');
     }
 
-    // ── Monday.com Submit ──────────────────────────
+    // ── Anfrage senden ──────────────────────────
     async function wSubmitForm() {
       const btn = document.getElementById('wsubmitBtn');
       const msg = document.getElementById('wstatusMsg');
@@ -1893,42 +1897,14 @@
       btn.textContent = 'Wird gesendet …';
       msg.className = 'status-msg loading';
       msg.style.display = 'block';
-      msg.textContent = 'Anfrage wird an Monday.com übermittelt …';
-
-      const itemName = `${wData.vorname || 'Anfrage'} – ${wData.datum ? new Date(wData.datum).toLocaleDateString('de-DE') : 'Datum offen'}`;
-
-      const colVals = JSON.stringify({
-        "text9"            : wData.anlass    || '',
-        "text_mm2vmf3c"    : wData.paket     || '',
-        "text_mm2v9ces"    : wData.budget    || '',
-        "text_mm2vny5"     : wData.ort       || '',
-        "text_mm2vd4n3"    : wData.region    || '',
-        "text_mm2vzhep"    : wData.email     || '',
-        "text_mm2vbt4z"    : wData.telefon   || '',
-        "text_mm2vdncg"    : wData.gaeste    || '',
-        "text_mm2vtbrq"    : wData.nachricht || '',
-      });
-
-      const mutation = `mutation {
-        create_item(
-          board_id: ${MONDAY_BOARD_ID},
-          item_name: "${itemName.replace(/"/g,'\\"')}",
-          column_values: ${JSON.stringify(colVals)}
-        ) { id }
-      }`;
+      msg.textContent = 'Anfrage wird übermittelt …';
 
       try {
-        const res  = await fetch('https://api.monday.com/v2', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': MONDAY_API_KEY,
-            'API-Version':   '2024-01'
-          },
-          body: JSON.stringify({ query: mutation })
+        await sendAnfrage('website', {
+          name: wData.vorname, email: wData.email, telefon: wData.telefon, datum: wData.datum,
+          anlass: wData.anlass, paketText: wData.paket, budget: wData.budget, ort: wData.ort,
+          region: wData.region, gaeste: wData.gaeste, nachricht: wData.nachricht
         });
-        const json = await res.json();
-        if (json.errors || !json.data?.create_item?.id) throw new Error(json.errors?.[0]?.message || 'Fehler');
 
         // Erfolg
         document.querySelectorAll('#anfrageModal .wstep').forEach(s => s.classList.remove('active'));
@@ -2132,33 +2108,11 @@
       msg.style.display = 'block';
       msg.textContent = 'Anfrage wird übermittelt …';
 
-      const itemName = `[Unterricht] ${uData.name || 'Anfrage'}`;
-      const colVals = JSON.stringify({
-        "text9"         : 'Gesangsunterricht',
-        "text_mm2vmf3c" : uData.format     || '',
-        "text_mm2v9ces" : uData.erfahrung  || '',
-        "text_mm2vny5"  : uData.alter ? `Alter: ${uData.alter}` : '',
-        "text_mm2vzhep" : uData.email      || '',
-        "text_mm2vbt4z" : uData.telefon    || '',
-        "text_mm2vtbrq" : uData.wunsch     || '',
-      });
-
-      const mutation = `mutation {
-        create_item(
-          board_id: ${MONDAY_BOARD_ID},
-          item_name: "${itemName.replace(/"/g,'\\"')}",
-          column_values: ${JSON.stringify(colVals)}
-        ) { id }
-      }`;
-
       try {
-        const res  = await fetch('https://api.monday.com/v2', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Authorization': MONDAY_API_KEY, 'API-Version': '2024-01' },
-          body: JSON.stringify({ query: mutation })
+        await sendAnfrage('unterricht', {
+          name: uData.name, email: uData.email, telefon: uData.telefon, format: uData.format,
+          erfahrung: uData.erfahrung, alter: uData.alter, wunsch: uData.wunsch
         });
-        const json = await res.json();
-        if (json.errors || !json.data?.create_item?.id) throw new Error(json.errors?.[0]?.message || 'Fehler');
         document.querySelectorAll('#unterrichtModal .wstep').forEach(s => s.classList.remove('active'));
         document.getElementById('ustepSuccess').classList.add('active');
         document.getElementById('upb-wrap').style.display = 'none';
