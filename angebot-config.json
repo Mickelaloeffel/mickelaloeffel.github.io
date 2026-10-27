@@ -1,0 +1,75 @@
+{
+  "_hinweis": "Inhalte für Angebotsmails. Wird vom Google-Skript gelesen.",
+  "pakete": {
+    "solo_t": {
+      "name": "Solo · Trauung",
+      "liste": 750,
+      "messe": 650
+    },
+    "solo_ts": {
+      "name": "Solo + Sektempfang · Trauung und Sektempfang (60 Min.)",
+      "liste": 1050,
+      "messe": 950
+    },
+    "duo_t": {
+      "name": "Duo · Trauung",
+      "liste": 1350,
+      "messe": 1250
+    },
+    "duo_ts": {
+      "name": "Duo + Sektempfang · Trauung und Sektempfang (60 Min.)",
+      "liste": 1750,
+      "messe": 1650
+    },
+    "band": {
+      "name": "Mickela mit Band · Der ganze Tag",
+      "liste": 6200,
+      "messe": 6100,
+      "ab": true
+    }
+  },
+  "bandFahrt": [
+    {
+      "bis": 30,
+      "preis": 0
+    },
+    {
+      "bis": 80,
+      "preis": 200
+    },
+    {
+      "bis": 150,
+      "preis": 400
+    }
+  ],
+  "gutZuWissen": {
+    "klein": [
+      "Ein Stromanschluss (230 V) in der Nähe des Spielorts",
+      "Bei Trauungen im Freien ein schattiger, trockener Platz für mich und die Technik und ein Plan B bei Regen",
+      "Ein Parkplatz in der Nähe zum Ausladen",
+      "Getränke während des Auftritts, vor allem Wasser",
+      "Eure Wunschsongs bis 6 Wochen vor der Hochzeit, dazu ein kurzes Telefonat zum Ablauf"
+    ],
+    "band": [
+      "Spielzeit am Abend: 3 × 45 Minuten oder 2 × 60 Minuten nach Absprache, zwischen 20 und 1 Uhr",
+      "Verlängerung: je 45 Minuten 595 € (inkl. USt.)",
+      "Bühnenfläche mindestens 6 × 4 m, eben und überdacht",
+      "Strom: 2 × 230 V (16 A) auf getrennten Stromkreisen, nah an der Bühne",
+      "Parkplätze für 2 Fahrzeuge direkt an der Location zum Ausladen",
+      "Zugang zur Location mindestens 3 Stunden vor Beginn, nach Absprache",
+      "Warme Mahlzeit und Getränke für 7 Personen (6 Musiker und Technik)",
+      "Endet der Auftritt nach 1 Uhr oder dauert die Anfahrt über eine Stunde: Übernachtung für 7 Personen, gestellt von euch oder als Pauschale von 90 € pro Person",
+      "Anfahrt der Band: bis 30 km inklusive, bis 80 km 200 €, bis 150 km 400 €, darüber nach Absprache"
+    ]
+  },
+  "extras": {
+    "dinner": "Dinnerbegleitung",
+    "dj": "DJ bis zum letzten Gast",
+    "streicher": "Streicher"
+  },
+  "freeKm": 25,
+  "perKm": 0.6,
+  "roundTrip": true,
+  "reserveDays": 7,
+  "messeDeadline": "30.11.2026"
+}

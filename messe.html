@@ -56,6 +56,7 @@ button.b:disabled{opacity:.35}
 .msg{color:var(--err);font-size:15px;margin-top:10px;min-height:22px}
 .done{text-align:center;padding-top:60px}
 .done .rule{width:60px;height:1px;background:var(--gold);margin:22px auto}
+.gzw{font-size:15px;font-weight:300;padding-left:20px;line-height:1.6}.gzw li{margin-bottom:4px}
 .hide{display:none!important}
 </style>
 </head>
@@ -123,7 +124,9 @@ button.b:disabled{opacity:.35}
     <h1>Alles richtig so?</h1>
     <p class="lead">Mit dem Absenden ist euer Datum 7 Tage für euch reserviert.</p>
     <div class="sum" id="sum"></div>
-    <p class="note">Die genaue Anfahrt steht in eurer Angebotsmail. Bei der Band werden die Fahrtkosten individuell abgesprochen.</p>
+    <p class="grp">GUT ZU WISSEN</p>
+    <ul class="gzw" id="gzw"></ul>
+    <p class="note">Die genaue Anfahrt und alle Details stehen in eurer Angebotsmail.</p>
     <p class="msg" id="msg"></p>
   </section>
 
@@ -217,6 +220,17 @@ function summary(){
     ['Ort', d.ort || 'noch offen'],
     ['Angebot an', d.email]
   ].filter(Boolean);
+  $('gzw').innerHTML = (paket.ab ? [
+    'Abends 3 × 45 oder 2 × 60 Minuten zwischen 20 und 1 Uhr, Verlängerung je 45 Minuten 595 €',
+    'Bühne mindestens 6 × 4 m, 2 Stromkreise (230 V, 16 A), 2 Parkplätze zum Ausladen',
+    'Warme Mahlzeit und Getränke für 7 Personen',
+    'Nach 1 Uhr oder über eine Stunde Anfahrt: Übernachtung für 7 Personen oder 90 € pro Person',
+    'Anfahrt der Band: bis 30 km inklusive, bis 80 km 200 €, bis 150 km 400 €'
+  ] : [
+    'Ein Stromanschluss in der Nähe, im Freien ein schattiger Platz und ein Plan B bei Regen',
+    'Ein Parkplatz zum Ausladen und Getränke während des Auftritts',
+    'Anfahrt bis 25 km ab Karlsruhe inklusive, darüber 0,60 € pro km'
+  ]).map(x => `<li>${x}</li>`).join('');
   $('sum').innerHTML = rows.map(r => `<div><span>${r[0]}</span><span style="text-align:right">${r[1]}</span></div>`).join('');
 }
 
