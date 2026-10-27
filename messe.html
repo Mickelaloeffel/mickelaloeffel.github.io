@@ -162,7 +162,8 @@ const PAKETE = [
   { id:'solo_ts', t:'SOLO + SEKTEMPFANG', d:'Trauung und Sektempfang (60 Min.)', l:1050, m:950 },
   { id:'duo_t',   t:'DUO',  d:'Trauung · Mit Pianist oder Gitarrist', l:1350, m:1250, tag:'100 % LIVE' },
   { id:'duo_ts',  t:'DUO + SEKTEMPFANG',  d:'Trauung und Sektempfang (60 Min.)', l:1750, m:1650, tag:'100 % LIVE' },
-  { id:'band',    t:'MICKELA MIT BAND', d:'Trauung und Sektempfang im Duo, am Abend Partyband mit Doppel-Front, inklusive Ton- und Lichttechnik', l:6200, m:6100, ab:true, tag:'VOM JA BIS ZUR PARTY' }
+  { id:'band',    t:'MICKELA MIT BAND', d:'Trauung und Sektempfang im Duo, am Abend Partyband mit Doppel-Front, inklusive Ton- und Lichttechnik', l:6200, m:6100, ab:true, tag:'VOM JA BIS ZUR PARTY' },
+  { id:'individuell', t:'INDIVIDUELL', d:'Ihr wünscht euch etwas anderes, zum Beispiel eine andere Besetzung oder einen besonderen Ablauf? Ich schicke euch ein persönliches Angebot.', indiv:true }
 ];
 const EXTRA_TXT = { dinner:'Dinnerbegleitung', dj:'DJ bis zum letzten Gast', streicher:'Streicher' };
 const STEPS = ['s1','s2','s3','s4','s5','s6'];
@@ -173,7 +174,7 @@ const store = { get(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d }
 
 $('pakete').innerHTML = PAKETE.map(p => `<button class="pk" data-id="${p.id}">${p.tag?`<span class="tag">${p.tag}</span>`:''}
   <div class="t">${p.t}</div><div class="d">${p.d}</div>
-  <div class="row"><span class="d">Messepreis</span><span><span class="old">${p.ab?'ab ':''}${eur(p.l)}</span><span class="new">${p.ab?'ab ':''}${eur(p.m)}</span></span></div></button>`).join('');
+  ${p.indiv ? '<div class="row"><span class="d">Persönliches Angebot innerhalb von 48 Stunden, mit Messepreis</span></div>' : `<div class="row"><span class="d">Messepreis</span><span><span class="old">${p.ab?'ab ':''}${eur(p.l)}</span><span class="new">${p.ab?'ab ':''}${eur(p.m)}</span></span></div>`}</button>`).join('');
 document.querySelectorAll('.pk').forEach(b => b.onclick = () => {
   document.querySelectorAll('.pk').forEach(x => x.classList.remove('sel'));
   b.classList.add('sel'); paket = PAKETE.find(p => p.id === b.dataset.id); render();
@@ -221,7 +222,7 @@ function summary(){
   const d = data(), ex = d.extras.map(x => EXTRA_TXT[x]);
   const rows = [
     ['Paket', paket.t.charAt(0) + paket.t.slice(1).toLowerCase().replace('mit band','mit Band').replace('sektempfang','Sektempfang').replace('mickela','Mickela')],
-    ['Messepreis', `<b>${paket.ab?'ab ':''}${eur(paket.m)}</b> statt ${eur(paket.l)}`],
+    paket.indiv ? ['Angebot', 'Persönlich innerhalb von 48 Stunden, mit Messepreis'] : ['Messepreis', `<b>${paket.ab?'ab ':''}${eur(paket.m)}</b> statt ${eur(paket.l)}`],
     ex.length ? ['Zusätzlich', ex.join(', ')] : null,
     ['Datum', d.datum ? d.datum.split('-').reverse().join('.') : 'noch offen'],
     ['Ort', d.ort || 'noch offen'],
@@ -246,7 +247,12 @@ async function post(item){
   return res.json();
 }
 async function submit(){
-  const item = { source:'messe', pin: store.get('pin',''), data: data() };
+  const d0 = data();
+  const item = paket.indiv
+    ? { source:'website', data: { name:d0.name, email:d0.email, telefon:d0.telefon, datum:d0.datum, ort:d0.ort, gaeste:d0.gaeste,
+        anlass:'Hochzeit (Messe, individuell)', paketText:'Individuelles Angebot' + (d0.extras.length ? ' · ' + d0.extras.map(x => EXTRA_TXT[x]).join(', ') : ''),
+        nachricht:(d0.notizen ? d0.notizen + ' | ' : '') + 'Messepreis zugesagt (bis 30.11.2026)' } }
+    : { source:'messe', pin: store.get('pin',''), data: d0 };
   $('next').disabled = true; $('next').textContent = 'Wird gesendet …'; $('msg').textContent = '';
   try {
     const j = await post(item);
@@ -258,8 +264,8 @@ async function submit(){
   }
 }
 function finish(sent){
-  $('doneTitle').textContent = sent ? 'Euer Angebot ist unterwegs' : 'Eure Anfrage ist gespeichert';
-  $('doneText').textContent = sent ? 'Schaut in den nächsten Minuten in euer Postfach, auch im Spam-Ordner. Ich freue mich auf euch.'
+  $('doneTitle').textContent = sent ? (paket && paket.indiv ? 'Eure Anfrage ist angekommen' : 'Euer Angebot ist unterwegs') : 'Eure Anfrage ist gespeichert';
+  $('doneText').textContent = sent ? (paket && paket.indiv ? 'Ihr bekommt gleich eine Bestätigung per Mail und innerhalb von 48 Stunden euer persönliches Angebot. Schaut auch im Spam-Ordner nach.' : 'Schaut in den nächsten Minuten in euer Postfach, auch im Spam-Ordner. Ich freue mich auf euch.')
     : 'Das Netz ist gerade schwach. Euer Angebot wird automatisch verschickt, sobald das Tablet wieder online ist.';
   $('bar').classList.add('hide'); show('s-done');
 }
