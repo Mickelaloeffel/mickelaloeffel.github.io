@@ -71,5 +71,10 @@
   "perKm": 0.6,
   "roundTrip": true,
   "reserveDays": 7,
-  "messeDeadline": "30.11.2026"
+  "messeDeadline": "30.11.2026",
+  "kalender": [
+    "7n7a5eqd4pauch0r55tqhrnkvc@group.calendar.google.com",
+    "jr59s53ojli1gpnk776cj28374@group.calendar.google.com",
+    "3a38291329752986b2dfe99ab3f101507e9bcd199707c19944ffb9495746c46b@group.calendar.google.com"
+  ]
 }
