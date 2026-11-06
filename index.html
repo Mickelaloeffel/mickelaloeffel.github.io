@@ -98,7 +98,7 @@
         "name": "Was kostet eine Hochzeitssängerin in Karlsruhe?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Die Kosten für eine Hochzeitssängerin in Karlsruhe hängen von der Besetzung und dem Umfang ab. Mickela Löffel bietet verschiedene Pakete an: von Solo mit Playback über Live-Musiker-Kombinationen bis hin zum Rundum-Sorglos-Paket mit der Band ICONICS. Für ein individuelles Angebot einfach eine unverbindliche Anfrage stellen."
+          "text": "Mickela Löffel singt solo zur Trauung ab 750 €, mit Sektempfang ab 1.050 €. Im Duo mit Pianist oder Gitarrist kostet die Trauung ab 1.350 €, mit Sektempfang ab 1.750 €. Das Paket „Mickela mit Band“ für den ganzen Tag gibt es auf Anfrage. Anfahrt bis 25 km ab Karlsruhe ist inklusive."
         }
       },
       {
@@ -776,6 +776,8 @@
       .seo-footer-wrap { padding: 2rem 1.5rem !important; }
       footer { padding: 1.5rem 2rem; }
     }
+    .service-card .price-tag{font-family:var(--font-display)!important;font-size:1.5rem!important;font-variant-numeric:lining-nums;color:var(--green-deep);margin:1.25rem 0!important;line-height:1.35;border-top:1px solid rgba(201,169,110,0.35);padding-top:1rem;}
+    .service-card .price-tag span{font-family:var(--font-body);font-size:0.82rem;color:var(--text-light);}
     .nav-hamburger {
       display: none;
       flex-direction: column;
@@ -1128,7 +1130,7 @@
         </div>
         <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;">
           <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--gold-light);line-height:1;">04</span>
-          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Kompletter Tag mit Band ICONICS</h3><p style="font-size:0.92rem;margin:0;">Ihr wollt von der Trauung bis in die Nacht alles aus einer Hand? Mit meiner Band ICONICS übernehmen wir den kompletten musikalischen Tag – professionell, stimmig und mit null Koordinationsaufwand für euch.</p></div>
+          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Vom Ja bis zur Party – mit Band</h3><p style="font-size:0.92rem;margin:0;">Ihr wollt von der Trauung bis in die Nacht alles aus einer Hand? Tagsüber singe ich im Duo, abends spielt meine Partyband – professionell, stimmig und mit null Koordinationsaufwand für euch.</p></div>
         </div>
       </div>
     </div>
@@ -1152,29 +1154,32 @@
         </div>
         <h3>Mickela Solo</h3>
         <p>
-          Ich und meine Stimme – begleitet von professionellem Playback oder live am Piano. Ideal für eine intime, bewegende Trauzeremonie. Schlicht, direkt und voller Gefühl. Diese Besetzung ist besonders beliebt für standesamtliche und freie Trauungen in kleinem Rahmen.
+          Meine Stimme, live gesungen zu hochwertigen Studio-Instrumentals. Ideal für eine intime, bewegende Trauung – schlicht, direkt und voller Gefühl. Eigene Tonanlage und ein Wunschsong inklusive.</p>
+        <p class="price-tag">Trauung ab 750 €<br /><span>mit Sektempfang ab 1.050 €</span>
         </p>
         <a href="#" class="service-link" onclick="openModal(); return false;">Jetzt anfragen</a>
       </article>
 
-      <article class="service-card fade-in" aria-label="Angebot: Mickela mit Musiker">
+      <article class="service-card fade-in" aria-label="Angebot: Mickela im Duo">
         <div style="width:40px;height:40px;color:var(--gold);margin-bottom:1rem;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
         </div>
-        <h3>Mickela + Musiker</h3>
+        <h3>Mickela im Duo</h3>
         <p>
-          Mehr Klang, mehr Tiefe, mehr Gänsehaut. Ich trete gemeinsam mit einem zusätzlichen Live-Musiker auf – zum Beispiel Gitarre, Geige oder Klavier. Diese Kombination bringt mehr musikalische Wärme und Abwechslung in eure Zeremonie und eignet sich hervorragend für Trauung und Sektempfang.
+          Mehr Klang, mehr Tiefe, mehr Gänsehaut. Ich singe gemeinsam mit einem Pianisten oder Gitarristen – komplett live. Das bringt Wärme und Lebendigkeit in eure Trauung und macht den Sektempfang zum Erlebnis.</p>
+        <p class="price-tag">Trauung ab 1.350 €<br /><span>mit Sektempfang ab 1.750 €</span>
         </p>
         <a href="#" class="service-link" onclick="openModal(); return false;">Jetzt anfragen</a>
       </article>
 
-      <article class="service-card fade-in" aria-label="Angebot: Rundum-Sorglos mit Band ICONICS" style="background:var(--green-deep); color:var(--cream);">
+      <article class="service-card fade-in" aria-label="Angebot: Mickela mit Band" style="background:var(--green-deep); color:var(--cream);">
         <div style="width:40px;height:40px;color:var(--gold);margin-bottom:1rem;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3 style="color:var(--cream);">Rundum-Sorglos mit ICONICS</h3>
+        <h3 style="color:var(--cream);">Mickela mit Band</h3>
         <p style="color:rgba(250,247,242,0.75);">
-          Du möchtest vom ersten Ton bis zum letzten Tanz alles aus einer Hand? Dann ist meine Band ICONICS genau das Richtige. Von der Trauung über den Sektempfang bis zur Hochzeitsparty – ein Team, ein Sound, null Stress für euch.
+          Vom Ja bis zur Party – alles aus einer Hand. Trauung und Sektempfang singe ich im Duo, abends bringt meine Partyband die Tanzfläche zum Kochen. Eine Ansprechpartnerin, ein Sound, null Stress für euch.</p>
+        <p class="price-tag" style="color:var(--gold-light);">Preis auf Anfrage<br /><span style="color:rgba(250,247,242,0.6);">Abends mit der Band ICONICS</span>
         </p>
         <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
           <a href="https://www.iconicsband.de" target="_blank" rel="noopener noreferrer" style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.4);padding-bottom:2px;">Mehr zur Band</a>
@@ -1186,7 +1191,7 @@
 
     <div class="services-note fade-in">
       <p>
-        Du weißt noch nicht genau was du willst? Kein Problem. Im persönlichen Gespräch finden wir gemeinsam heraus, welche Songs zu welchem Moment passen – und welches Paket sich für euch richtig anfühlt. Versprochen.
+        Alle Preise zzgl. Anfahrt (bis 25 km ab Karlsruhe inklusive). Ihr wisst noch nicht genau, was ihr wollt? Kein Problem. Im persönlichen Gespräch finden wir gemeinsam heraus, welche Songs zu welchem Moment passen – und welches Paket sich für euch richtig anfühlt. Versprochen.
       </p>
     </div>
 
@@ -1366,7 +1371,7 @@
 
         <details class="faq-item">
           <summary class="faq-question">Was kostet eine Hochzeitssängerin in Karlsruhe?</summary>
-          <p class="faq-answer">Die Kosten hängen von Besetzung und Umfang ab. Solo mit Playback ist die günstigste Option, gefolgt von Kombinationen mit Live-Musikern. Das Rundum-Sorglos-Paket mit der Band ICONICS umfasst den kompletten Tag. Ich erstelle gerne ein individuelles, unverbindliches Angebot das zu eurem Budget passt – einfach anfragen.</p>
+          <p class="faq-answer">Die Kosten hängen von Besetzung und Umfang ab. Solo ab 750 € ist die günstigste Option, gefolgt von Kombinationen mit Live-Musikern. Mickela mit Band mit der Band ICONICS umfasst den kompletten Tag. Ich erstelle gerne ein individuelles, unverbindliches Angebot das zu eurem Budget passt – einfach anfragen.</p>
         </details>
 
         <details class="faq-item">
@@ -1400,8 +1405,8 @@
         </details>
 
         <details class="faq-item">
-          <summary class="faq-question">Singt Mickela mit Playback oder Live-Begleitung?</summary>
-          <p class="faq-answer">Beides ist möglich und hängt von eurem Wunsch und Budget ab. Solo trete ich mit professionellem Playback oder live am Piano auf. Auf Wunsch kommt ein zusätzlicher Live-Musiker dazu, zum Beispiel Gitarre oder Klavier. Für das volle Live-Erlebnis steht meine Band ICONICS zur Verfügung.</p>
+          <summary class="faq-question">Singt Mickela zu Instrumentals oder mit Live-Begleitung?</summary>
+          <p class="faq-answer">Beides ist möglich. Solo singe ich live zu hochwertigen Studio-Instrumentals. Im Duo begleitet mich ein Pianist oder Gitarrist komplett live. Für den ganzen Tag inklusive Party gibt es „Mickela mit Band“.</p>
         </details>
 
       </div>
@@ -1574,17 +1579,17 @@
           <h2 class="step-title">Wie soll es <em>klingen?</em></h2>
           <p class="step-sub">Wähle dein bevorzugtes Paket – alles ist flexibel anpassbar.</p>
           <div class="option-grid">
-            <div class="option-card" data-key="paket" data-val="Mickela Solo (Playback oder Piano)">
+            <div class="option-card" data-key="paket" data-val="Mickela Solo">
               <span class="option-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></span>
-              <div><div class="option-label">Mickela Solo</div><div class="option-desc">Stimme + Playback oder Piano – intim & berührend</div></div>
+              <div><div class="option-label">Mickela Solo</div><div class="option-desc">Live-Gesang zu Studio-Instrumentals – ab 750 €</div></div>
             </div>
-            <div class="option-card" data-key="paket" data-val="Mickela + Live-Musiker">
+            <div class="option-card" data-key="paket" data-val="Mickela im Duo">
               <span class="option-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
-              <div><div class="option-label">Mickela + Live-Musiker</div><div class="option-desc">Mehr Klang, mehr Tiefe – z. B. Gitarre oder Klavier</div></div>
+              <div><div class="option-label">Mickela im Duo</div><div class="option-desc">Mit Pianist oder Gitarrist – ab 1.350 €</div></div>
             </div>
-            <div class="option-card" data-key="paket" data-val="Rundum-Sorglos mit Band ICONICS">
+            <div class="option-card" data-key="paket" data-val="Mickela mit Band">
               <span class="option-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-              <div><div class="option-label">Rundum-Sorglos mit ICONICS</div><div class="option-desc">Die komplette Band – von der Trauung bis zur Party</div></div>
+              <div><div class="option-label">Mickela mit Band</div><div class="option-desc">Vom Ja bis zur Party</div></div>
             </div>
             <div class="option-card" data-key="paket" data-val="Noch nicht sicher">
               <span class="option-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
@@ -1618,19 +1623,19 @@
           <div class="option-grid">
             <div class="option-card" data-key="budget" data-val="Bis 800 €">
               <span class="option-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-              <div><div class="option-label">Bis 800 €</div><div class="option-desc">Solo mit Playback – intim & berührend</div></div>
+              <div><div class="option-label">Bis 800 €</div><div class="option-desc">Solo zur Trauung</div></div>
             </div>
             <div class="option-card" data-key="budget" data-val="800 € – 1.500 €">
               <span class="option-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-              <div><div class="option-label">800 € – 1.500 €</div><div class="option-desc">Solo mit Piano oder zusätzlichem Musiker</div></div>
+              <div><div class="option-label">800 € – 1.500 €</div><div class="option-desc">Solo mit Sektempfang oder Duo zur Trauung</div></div>
             </div>
             <div class="option-card" data-key="budget" data-val="1.500 € – 3.000 €">
               <span class="option-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-              <div><div class="option-label">1.500 € – 3.000 €</div><div class="option-desc">Mickela + Live-Musiker oder kleine Besetzung</div></div>
+              <div><div class="option-label">1.500 € – 3.000 €</div><div class="option-desc">Duo mit Sektempfang</div></div>
             </div>
             <div class="option-card" data-key="budget" data-val="Über 3.000 €">
               <span class="option-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-              <div><div class="option-label">Über 3.000 €</div><div class="option-desc">Band ICONICS – Rundum-Sorglos-Paket</div></div>
+              <div><div class="option-label">Über 3.000 €</div><div class="option-desc">Mickela mit Band – vom Ja bis zur Party</div></div>
             </div>
             <div class="option-card" data-key="budget" data-val="Möchte ich nicht angeben">
               <span class="option-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
