@@ -445,7 +445,9 @@
        ================================================ */
     .about-img {
       width: 100%;
+      height: auto;
       aspect-ratio: 3/4;
+      object-position: center 30%;
       object-fit: cover;
       display: block;
     }
@@ -794,7 +796,8 @@
       background: var(--green-deep);
       transition: all 0.2s;
     }
-    @media (max-width: 900px) { .nav-hamburger { display: flex; } }
+    @media (max-width: 900px) { .nav-hamburger { display: flex; } .unterschied-grid{grid-template-columns:1fr!important;gap:2rem!important;} }
+    @media (max-width: 700px) { .ablauf-grid{grid-template-columns:1fr 1fr!important;} }
 
     .mobile-menu {
       display: none;
@@ -1010,14 +1013,14 @@
 
     <div class="hero-content-side">
       <span class="hero-eyebrow hero-anim-1">Hochzeitssängerin Karlsruhe</span>
-      <h1 class="hero-anim-2">Deine<br /><em>Hochzeits&shy;sängerin</em><br />in Karlsruhe.</h1>
+      <h1 class="hero-anim-2">Eure<br /><em>Hochzeits&shy;sängerin</em><br />in Karlsruhe.</h1>
       <p class="hero-sub hero-anim-3">
         Momente, die unter die Haut gehen – live, mit Gefühl und aus vollem Herzen.
-        Wenn du dir wünschst, dass alle einfach nur innehalten und diesen einen Moment wirklich fühlen – dann bist du hier richtig.
+        Wenn ihr euch wünscht, dass alle einfach nur innehalten und diesen einen Moment wirklich fühlen – dann seid ihr hier richtig.
       </p>
       <div class="hero-cta-group hero-anim-4">
         <a href="#" class="btn-primary" onclick="openModal(); return false;">Jetzt unverbindlich anfragen</a>
-        <a href="#leistungen" class="btn-secondary">Angebot entdecken</a>
+        <a href="#hoerbeispiele" class="btn-secondary">Videos ansehen</a>
       </div>
     </div>
   </section>
@@ -1052,15 +1055,15 @@
       </div>
 
       <p>
-        Du kennst vielleicht dieses Gefühl: Man drückt Play – und Musik läuft einfach. Schön, aber irgendwie distanziert. Was ich dir geben möchte, ist das Gegenteil davon. Eine Stimme im Raum, die jeden berührt. Gäste, die plötzlich still werden. Ein Brautpaar, das für diese zwei, drei Minuten ganz bei sich ist.
+        Ihr kennt vielleicht dieses Gefühl: Man drückt Play – und Musik läuft einfach. Schön, aber irgendwie distanziert. Was ich euch geben möchte, ist das Gegenteil davon. Eine Stimme im Raum, die jeden berührt. Gäste, die plötzlich still werden. Ein Brautpaar, das für diese zwei, drei Minuten ganz bei sich ist.
       </p>
 
       <p>
-        Meine Musik wird oft mit der von LEA verglichen – warm, nah, ehrlich. Genau so bin ich auch als Mensch. Keine aufgesetzte Bühnenshow, kein Stargehabe. Nur ich, meine Stimme und dein schönster Tag. Vielleicht hast du mich schon im TV gesehen – im Halbfinale von The Voice of Germany 2020 oder im ZDF Fernsehgarten. Auf deiner Hochzeit bekommst du genau diese Energie – nur für dich und deine Liebsten.
+        Meine Musik wird oft mit der von LEA verglichen – warm, nah, ehrlich. Genau so bin ich auch als Mensch. Keine aufgesetzte Bühnenshow, kein Stargehabe. Nur ich, meine Stimme und euer schönster Tag. Vielleicht habt ihr mich schon im TV gesehen – im Halbfinale von The Voice of Germany 2020 oder im ZDF Fernsehgarten. Auf eurer Hochzeit bekommt ihr genau diese Energie – nur für euch und eure Liebsten.
       </p>
 
       <p>
-        Was mich von anderen Sängerinnen unterscheidet, ist nicht nur die Ausbildung oder die TV-Erfahrung. Es ist die Art wie ich an jeden Auftritt herangehe: mit echtem Interesse an eurer Geschichte, an eurem Paar, an dem was euch bewegt. Ich singe nicht einfach einen Song – ich singe euren Song, für euren Moment, für euch.
+        Was mich von anderen Sängerinnen unterscheidet, ist nicht nur die Ausbildung oder die TV-Erfahrung. Es ist die Art, wie ich an jeden Auftritt herangehe: mit echtem Interesse an eurer Geschichte, an eurem Paar, an dem, was euch bewegt. Ich singe nicht einfach einen Song – ich singe euren Song, für euren Moment, für euch.
       </p>
 
       <p>
@@ -1071,54 +1074,116 @@
     <div class="about-image-wrap fade-in">
       <img
         class="about-img"
-        src="mickela-voicegermany.jpg"
-        alt="Mickela Löffel beim The Voice of Germany Halbfinale 2020"
-        width="600"
-        height="800"
+        src="mickela-hochzeit-duo-gitarre.jpg"
+        alt="Hochzeitssängerin Mickela Löffel singt mit Gitarrist bei einer freien Trauung"
+        width="1067"
+        height="1600"
         loading="lazy"
       />
       <div class="about-img-accent" aria-hidden="true"></div>
     </div>
   </section>
 
-  <!-- ===== WARUM LIVE-MUSIK ===== -->
-  <section id="warum" aria-label="Warum Live-Musik für die Hochzeit" style="background:var(--cream-dark);">
-    <div style="max-width:900px;margin:0 auto;">
-      <span class="section-eyebrow">Der Unterschied</span>
-      <h2>Warum Live-Musik alles<br /><em>verändert.</em></h2>
-      <p style="max-width:65ch;margin-bottom:3rem;">Es gibt Momente auf einer Hochzeit, die für immer in Erinnerung bleiben. Der Einzug. Das Ja-Wort. Der erste Blick. Live-Musik macht diese Momente größer – weil sie atmet, fühlt und reagiert. Eine Playlist kann das nicht.</p>
+  <!-- ===== HÖRBEISPIELE & INSTAGRAM ===== -->
+  <section id="hoerbeispiele" aria-label="Cover-Videos und Instagram" style="background:var(--white);">
+    <div style="max-width:900px; margin:0 auto;">
+      <span class="section-eyebrow">Überzeugt euch selbst</span>
+      <h2>Schau rein – und <em>fühl es.</em></h2>
+      <p style="margin-bottom:1rem;">Worte können beschreiben, wie sich meine Musik anfühlt. Aber am besten überzeugt ihr euch selbst. Hier sind drei Cover-Videos, die zeigen, was euch auf eurer Hochzeit erwartet – live gesungen, genau so wie auf eurer Feier.</p>
+      <p style="margin-bottom:3rem;">Jeder Song wurde von mir persönlich ausgewählt und eingespielt. Die Videos zeigen die Bandbreite meines Repertoires – von deutschen Balladen über internationale Hits bis zu emotionalen Momenten, die perfekt zur Trauung passen.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:3rem;">
-        <div style="background:var(--white);padding:2rem;text-align:center;">
-          <div style="width:48px;height:48px;margin:0 auto 1rem;color:var(--gold);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-          </div>
-          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--green-deep);margin-bottom:0.5rem;">Echte Emotion</h3>
-          <p style="font-size:0.88rem;max-width:none;margin:0;">Eine lebendige Stimme berührt anders als eine Aufnahme. Sie ist im Raum, sie reagiert auf den Moment – und sie macht ihn unvergesslich.</p>
+      <!-- COVER-VIDEOS (preload="none": Videos laden erst beim Klick – hält die Seite schnell) -->
+      <style>
+        .cover-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:4rem;}
+        .cover-video{margin:0;background:var(--cream);}
+        .cover-video video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:var(--green-deep);}
+        .cover-video figcaption{padding:1rem 1.25rem;}
+        .cv-title{display:block;font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);}
+        .cv-sub{display:block;font-size:0.78rem;color:var(--text-light);}
+        @media (max-width:760px){.cover-videos{grid-template-columns:repeat(3,78%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:0.5rem;}.cover-video{scroll-snap-align:center;}}
+      </style>
+      <div class="cover-videos">
+        <figure class="cover-video">
+          <video controls playsinline preload="none" poster="mickela-video-ein-teil-von-meinem-herzen.jpg" width="720" height="1280" title="Ein Teil von meinem Herzen – Cover von Hochzeitssängerin Mickela">
+            <source src="mickela-video-ein-teil-von-meinem-herzen.mp4" type="video/mp4" />
+            Dein Browser unterstützt kein Video.
+          </video>
+          <figcaption><span class="cv-title">Ein Teil von meinem Herzen</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
+        </figure>
+
+        <figure class="cover-video">
+          <video controls playsinline preload="none" poster="mickela-video-i-wanna-dance-with-somebody.jpg" width="720" height="1280" title="I Wanna Dance with Somebody – Cover von Hochzeitssängerin Mickela">
+            <source src="mickela-video-i-wanna-dance-with-somebody.mp4" type="video/mp4" />
+            Dein Browser unterstützt kein Video.
+          </video>
+          <figcaption><span class="cv-title">I Wanna Dance with Somebody</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
+        </figure>
+
+        <figure class="cover-video">
+          <video controls playsinline preload="none" poster="mickela-video-perfect.jpg" width="720" height="1280" title="Perfect – Cover von Hochzeitssängerin Mickela">
+            <source src="mickela-video-perfect.mp4" type="video/mp4" />
+            Dein Browser unterstützt kein Video.
+          </video>
+          <figcaption><span class="cv-title">Perfect</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
+        </figure>
+      </div>
+      <script>
+        document.querySelectorAll('.cover-video video').forEach(function(v){v.addEventListener('play',function(){document.querySelectorAll('.cover-video video').forEach(function(o){if(o!==v)o.pause();});});});
+      </script>
+
+
+      <!-- GALERIE -->
+      <style>
+        .gallery{display:grid;grid-template-columns:1fr 1fr 2fr;gap:0.75rem;margin-bottom:4rem;}
+        .gallery img{width:100%;height:440px;object-fit:cover;display:block;}
+        @media (max-width:760px){.gallery{grid-template-columns:1fr 1fr;}.gallery img{height:300px;}.gallery img.wide{grid-column:1/-1;height:240px;}}
+      </style>
+      <span class="section-eyebrow">Echte Momente</span>
+      <h3 style="font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:var(--green-deep);margin-bottom:1.5rem;">So fühlt sich eine Trauung <em>mit mir</em> an.</h3>
+      <div class="gallery">
+        <img src="mickela-hochzeit-trauung-duo.jpg" alt="Mickela Löffel und Gitarrist spielen live bei einer freien Trauung im Grünen" width="1067" height="1600" loading="lazy" decoding="async" />
+        <img src="mickela-iconics-buehne.jpg" alt="Mickela Löffel live auf der Bühne mit Band" loading="lazy" decoding="async" />
+        <img class="wide" src="mickela-hochzeit-braut-umarmung.jpg" alt="Braut umarmt Hochzeitssängerin Mickela nach der Trauung" width="1600" height="1067" loading="lazy" decoding="async" />
+      </div>
+
+      <!-- INSTAGRAM -->
+      <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap; padding:2rem; background:var(--cream); border-left:2px solid var(--gold);">
+        <div style="flex:1; min-width:220px;">
+          <p style="font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">Noch mehr Eindrücke</p>
+          <p style="font-family:var(--font-display); font-size:1.6rem; font-weight:300; color:var(--green-deep); line-height:1.3; margin-bottom:0.75rem;">Folg mir auf<br /><em>Instagram.</em></p>
+          <p style="font-size:0.88rem; color:var(--text-light); margin-bottom:1.25rem;">Hinter den Kulissen, Live-Momente und Einblicke in meine Arbeit als Hochzeitssängerin.</p>
+          <a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer"
+            style="display:inline-flex; align-items:center; gap:0.6rem; background:var(--green-deep); color:var(--cream); font-family:var(--font-body); font-size:0.78rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.85rem 1.75rem; text-decoration:none; transition:background 0.2s;"
+            onmouseover="this.style.background='#4A6741'" onmouseout="this.style.background='#2C3E2D'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @mickela_music
+          </a>
         </div>
-        <div style="background:var(--green-deep);padding:2rem;text-align:center;">
-          <div style="width:48px;height:48px;margin:0 auto 1rem;color:var(--gold);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--cream);margin-bottom:0.5rem;">Stille im Raum</h3>
-          <p style="font-size:0.88rem;max-width:none;margin:0;color:rgba(250,247,242,0.75);">Wenn ich singe, werden Gespräche leiser. Gäste halten inne. Dieser Moment der gemeinsamen Stille ist ein Geschenk – für alle im Raum.</p>
-        </div>
-        <div style="background:var(--white);padding:2rem;text-align:center;">
-          <div style="width:48px;height:48px;margin:0 auto 1rem;color:var(--gold);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
-          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--green-deep);margin-bottom:0.5rem;">Bleibende Erinnerung</h3>
-          <p style="font-size:0.88rem;max-width:none;margin:0;">Brautpaare erinnern sich an Momente, nicht an To-do-Listen. Live-Musik schafft genau diese Momente – die man nie vergisst.</p>
+        <div style="flex:1; min-width:220px; text-align:center;">
+          <!-- Optionales Bild z.B. ein schönes Instagram-Screenshot -->
+          <img
+            src="mickela-voicegermany.jpg"
+            alt="Mickela Löffel – Hochzeitssängerin live auf der Bühne"
+            style="width:100%; max-width:320px; display:inline-block; object-fit:cover; aspect-ratio:1/1;"
+            width="400" height="400"
+          />
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ===== WARUM LIVE-MUSIK ===== -->
+  <section id="warum" aria-label="Warum Live-Musik für die Hochzeit" style="background:var(--cream-dark);">
+    <div style="max-width:900px;margin:0 auto;">
+      <span class="section-eyebrow">Euer Tag</span>
       <h2>So begleite ich<br /><em>euren Hochzeitstag.</em></h2>
       <p style="max-width:65ch;margin-bottom:2rem;">Jeder Teil einer Hochzeit hat seinen eigenen Charakter – und braucht die passende Musik dazu. Ich passe mich eurem Tag an, nicht umgekehrt.</p>
 
       <div style="display:flex;flex-direction:column;gap:0;">
         <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--cream-dark);">
           <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--gold-light);line-height:1;">01</span>
-          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Die Trauung – der emotionalste Moment</h3><p style="font-size:0.92rem;margin:0;">Wenn ihr euch das Ja-Wort gebt, singe ich euren Song. Der Raum wird still. Tränen fließen. Das Brautpaar hat einen Moment ganz für sich – und dieser Moment klingt nach. Ob klassische Ballade, moderner Pop-Song oder euer ganz persönlicher Lieblingssong: Ich singe was zu euch passt.</p></div>
+          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Die Trauung – der emotionalste Moment</h3><p style="font-size:0.92rem;margin:0;">Wenn ihr euch das Ja-Wort gebt, singe ich euren Song. Der Raum wird still. Tränen fließen. Das Brautpaar hat einen Moment ganz für sich – und dieser Moment klingt nach. Ob klassische Ballade, moderner Pop-Song oder euer ganz persönlicher Lieblingssong: Ich singe, was zu euch passt.</p></div>
         </div>
         <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--cream-dark);">
           <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--gold-light);line-height:1;">02</span>
@@ -1126,7 +1191,7 @@
         </div>
         <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--cream-dark);">
           <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--gold-light);line-height:1;">03</span>
-          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Abendprogramm – individuell gestaltet</h3><p style="font-size:0.92rem;margin:0;">Dinner-Begleitung, besonderer Song zum Einzug ins Festzelt, Überraschungsauftritt für das Brautpaar – ich gestalte mit euch gemeinsam was zu eurem Abend passt. Kein starres Programm, sondern Musik die auf den Moment reagiert.</p></div>
+          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Abendprogramm – individuell gestaltet</h3><p style="font-size:0.92rem;margin:0;">Dinner-Begleitung, besonderer Song zum Einzug ins Festzelt, Überraschungsauftritt für das Brautpaar – ich gestalte mit euch gemeinsam, was zu eurem Abend passt. Kein starres Programm, sondern Musik, die auf den Moment reagiert.</p></div>
         </div>
         <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;">
           <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--gold-light);line-height:1;">04</span>
@@ -1140,7 +1205,7 @@
   <section id="leistungen" aria-label="Musikalisches Angebot für Hochzeiten">
     <div class="services-header fade-in">
       <span class="section-eyebrow">Mein Angebot</span>
-      <h2>So kann dein<br /><em>musikalischer Tag</em> aussehen.</h2>
+      <h2>So kann euer<br /><em>musikalischer Tag</em> aussehen.</h2>
       <p>
         Jede Hochzeit ist anders. Deshalb gibt es mich in verschiedenen Konstellationen – flexibel, persönlich und immer abgestimmt auf euer Budget und eure Vorstellung.
       </p>
@@ -1196,10 +1261,10 @@
     </div>
 
     <!-- Erweiterter Inhalt: Warum Live-Musik -->
-    <div style="max-width:900px;margin:5rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+    <div class="unterschied-grid" style="max-width:900px;margin:5rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
       <div>
         <span class="section-eyebrow">Warum Livemusik</span>
-        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);">Der Unterschied den<br /><em>jeder im Raum spürt.</em></h2>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);">Der Unterschied, den<br /><em>jeder im Raum spürt.</em></h2>
         <p>Viele Brautpaare fragen sich: Reicht nicht auch eine Playlist? Technisch gesehen – ja. Emotional gesehen – nein. Denn eine Playlist läuft. Livemusik lebt. Sie reagiert auf den Raum, auf die Stimmung, auf den Moment. Sie hat eine menschliche Energie, die keine Aufnahme ersetzen kann.</p>
         <p>Wenn ich singe, passiert etwas im Raum. Gäste, die sich eben noch unterhalten haben, werden still. Menschen, die sich kaum kennen, schauen sich an. Das Brautpaar hat für diese zwei, drei Minuten einen Moment ganz für sich – während alle anderen einfach nur da sind und fühlen.</p>
         <p>Genau das ist der Unterschied. Und genau dafür bin ich da.</p>
@@ -1208,7 +1273,7 @@
         <div style="background:var(--white);padding:1.5rem;border-top:2px solid var(--gold);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:0.75rem;display:block;" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
           <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--green-deep);margin-bottom:0.4rem;">Individuelle Songauswahl</h3>
-          <p style="font-size:0.88rem;margin:0;">Kein festes Repertoire. Wir wählen gemeinsam die Songs die zu eurer Geschichte passen – für jeden Moment des Tages.</p>
+          <p style="font-size:0.88rem;margin:0;">Kein festes Repertoire. Wir wählen gemeinsam die Songs, die zu eurer Geschichte passen – für jeden Moment des Tages.</p>
         </div>
         <div style="background:var(--white);padding:1.5rem;border-top:2px solid var(--gold);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:0.75rem;display:block;" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -1227,7 +1292,7 @@
     <div style="max-width:900px;margin:5rem auto 0;">
       <span class="section-eyebrow">Der Ablauf</span>
       <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:2rem;">Von der Anfrage bis<br /><em>zum ersten Ton.</em></h2>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
+      <div class="ablauf-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
         <div style="background:var(--white);padding:1.75rem 1.5rem;border-top:2px solid var(--cream-dark);position:relative;">
           <span style="font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--gold-light);display:block;margin-bottom:0.75rem;line-height:1;">01</span>
           <h3 style="font-family:var(--font-display);font-size:1.05rem;color:var(--green-deep);margin-bottom:0.4rem;">Anfrage</h3>
@@ -1236,7 +1301,7 @@
         <div style="background:var(--white);padding:1.75rem 1.5rem;border-top:2px solid var(--gold);">
           <span style="font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--gold-light);display:block;margin-bottom:0.75rem;line-height:1;">02</span>
           <h3 style="font-family:var(--font-display);font-size:1.05rem;color:var(--green-deep);margin-bottom:0.4rem;">Beratung</h3>
-          <p style="font-size:0.85rem;margin:0;color:var(--text-mid);">Wir sprechen über eure Wünsche, den Ablauf des Tages und wählen gemeinsam die Songs die zu euch passen.</p>
+          <p style="font-size:0.85rem;margin:0;color:var(--text-mid);">Wir sprechen über eure Wünsche, den Ablauf des Tages und wählen gemeinsam die Songs, die zu euch passen.</p>
         </div>
         <div style="background:var(--white);padding:1.75rem 1.5rem;border-top:2px solid var(--cream-dark);">
           <span style="font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--gold-light);display:block;margin-bottom:0.75rem;line-height:1;">03</span>
@@ -1251,22 +1316,6 @@
       </div>
     </div>
 
-    <!-- Regionen -->
-    <div style="max-width:900px;margin:5rem auto 0;background:var(--cream-dark);padding:2.5rem;">
-      <span class="section-eyebrow">Auftrittsorte</span>
-      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:1rem;">Wo ich singe –<br /><em>von Karlsruhe bis deutschlandweit.</em></h2>
-      <p style="max-width:60ch;">Karlsruhe ist meine Heimat, aber ich trete deutschlandweit auf. Hier sind die Regionen in denen ich besonders häufig zu Gast bin:</p>
-      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;">
-        <a href="hochzeitssaengerin-karlsruhe.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Karlsruhe</a>
-        <a href="hochzeitssaengerin-stuttgart.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Stuttgart</a>
-        <a href="hochzeitssaengerin-mannheim.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Mannheim</a>
-        <a href="hochzeitssaengerin-heidelberg.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Heidelberg</a>
-        <a href="hochzeitssaengerin-baden-baden.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Baden-Baden</a>
-        <a href="hochzeitssaengerin-freiburg.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Freiburg</a>
-        <a href="hochzeitssaengerin-rastatt.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Rastatt</a>
-        <a href="hochzeitssaengerin-deutschlandweit.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Deutschlandweit</a>
-      </div>
-    </div>
   </section>
 
   <!-- ===== EMOTION SECTION ===== -->
@@ -1287,79 +1336,6 @@
     </div>
   </section>
 
-  <!-- ===== HÖRBEISPIELE & INSTAGRAM ===== -->
-  <section id="hoerbeispiele" aria-label="Cover-Videos und Instagram" style="background:var(--white);">
-    <div style="max-width:900px; margin:0 auto;">
-      <span class="section-eyebrow">Überzeug dich selbst</span>
-      <h2>Schau rein – und <em>fühl es.</em></h2>
-      <p style="margin-bottom:1rem;">Worte können beschreiben, wie sich meine Musik anfühlt. Aber am besten überzeugst du dich selbst. Hier sind drei Cover-Videos, die zeigen, was dich auf deiner Hochzeit erwartet – live gesungen, ohne Playback, genau so wie auf deiner Feier.</p>
-      <p style="margin-bottom:3rem;">Jeder Song wurde von mir persönlich ausgewählt und eingespielt. Die Videos zeigen die Bandbreite meines Repertoires – von deutschen Balladen über internationale Hits bis zu emotionalen Momenten die perfekt zur Trauung passen.</p>
-
-      <!-- COVER-VIDEOS (preload="none": Videos laden erst beim Klick – hält die Seite schnell) -->
-      <style>
-        .cover-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:4rem;}
-        .cover-video{margin:0;background:var(--cream);}
-        .cover-video video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:var(--green-deep);}
-        .cover-video figcaption{padding:1rem 1.25rem;}
-        .cv-title{display:block;font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);}
-        .cv-sub{display:block;font-size:0.78rem;color:var(--text-light);}
-        @media (max-width:760px){.cover-videos{grid-template-columns:repeat(3,78%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:0.5rem;}.cover-video{scroll-snap-align:center;}}
-      </style>
-      <div class="cover-videos">
-        <figure class="cover-video">
-          <video controls playsinline preload="none" poster="mickela-video-ein-teil-von-meinem-herzen.jpg" width="720" height="1280" title="Ein Teil von meinem Herzen – Cover von Hochzeitssängerin Mickela">
-            <source src="mickela-video-ein-teil-von-meinem-herzen.mp4" type="video/mp4" />
-            Dein Browser unterstützt kein Video.
-          </video>
-          <figcaption><span class="cv-title">Ein Teil von meinem Herzen</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
-        </figure>
-
-        <figure class="cover-video">
-          <video controls playsinline preload="none" poster="mickela-video-i-wanna-dance-with-somebody.jpg" width="720" height="1280" title="I Wanna Dance with Somebody – Cover von Hochzeitssängerin Mickela">
-            <source src="mickela-video-i-wanna-dance-with-somebody.mp4" type="video/mp4" />
-            Dein Browser unterstützt kein Video.
-          </video>
-          <figcaption><span class="cv-title">I Wanna Dance with Somebody</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
-        </figure>
-
-        <figure class="cover-video">
-          <video controls playsinline preload="none" poster="mickela-video-perfect.jpg" width="720" height="1280" title="Perfect – Cover von Hochzeitssängerin Mickela">
-            <source src="mickela-video-perfect.mp4" type="video/mp4" />
-            Dein Browser unterstützt kein Video.
-          </video>
-          <figcaption><span class="cv-title">Perfect</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
-        </figure>
-      </div>
-      <script>
-        document.querySelectorAll('.cover-video video').forEach(function(v){v.addEventListener('play',function(){document.querySelectorAll('.cover-video video').forEach(function(o){if(o!==v)o.pause();});});});
-      </script>
-
-      <!-- INSTAGRAM -->
-      <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap; padding:2rem; background:var(--cream); border-left:2px solid var(--gold);">
-        <div style="flex:1; min-width:220px;">
-          <p style="font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">Noch mehr Eindrücke</p>
-          <p style="font-family:var(--font-display); font-size:1.6rem; font-weight:300; color:var(--green-deep); line-height:1.3; margin-bottom:0.75rem;">Folg mir auf<br /><em>Instagram.</em></p>
-          <p style="font-size:0.88rem; color:var(--text-light); margin-bottom:1.25rem;">Hinter den Kulissen, Live-Momente und Einblicke in meine Arbeit als Hochzeitssängerin.</p>
-          <a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer"
-            style="display:inline-flex; align-items:center; gap:0.6rem; background:var(--green-deep); color:var(--cream); font-family:var(--font-body); font-size:0.78rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.85rem 1.75rem; text-decoration:none; transition:background 0.2s;"
-            onmouseover="this.style.background='#4A6741'" onmouseout="this.style.background='#2C3E2D'">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            @mickela_music
-          </a>
-        </div>
-        <div style="flex:1; min-width:220px; text-align:center;">
-          <!-- Optionales Bild z.B. ein schönes Instagram-Screenshot -->
-          <img
-            src="mickela-hero.jpg"
-            alt="Mickela Löffel – Hochzeitssängerin live auf der Bühne"
-            style="width:100%; max-width:320px; display:inline-block; object-fit:cover; aspect-ratio:1/1;"
-            width="400" height="400"
-          />
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ===== FAQ ===== -->
   <section id="faq" aria-label="Häufige Fragen" style="background:var(--cream-dark);">
@@ -1396,7 +1372,7 @@
 
         <details class="faq-item">
           <summary class="faq-question">Gibt es eine Möglichkeit, Mickela vor der Buchung live zu erleben?</summary>
-          <p class="faq-answer">Schau dir gerne die Cover-Videos auf dieser Seite an und folge mir auf Instagram (@mickela_music), wo ich regelmäßig Live-Momente und Auftritte teile. Bei weiteren Fragen stehe ich jederzeit für ein persönliches Gespräch zur Verfügung – per E-Mail oder Telefon.</p>
+          <p class="faq-answer">Schaut euch gerne die Cover-Videos auf dieser Seite an und folge mir auf Instagram (@mickela_music), wo ich regelmäßig Live-Momente und Auftritte teile. Bei weiteren Fragen stehe ich jederzeit für ein persönliches Gespräch zur Verfügung – per E-Mail oder Telefon.</p>
         </details>
 
         <details class="faq-item">
@@ -1411,15 +1387,31 @@
 
       </div>
     </div>
+    <!-- Regionen -->
+    <div style="max-width:900px;margin:4rem auto 0;background:var(--white);padding:2.5rem;">
+      <span class="section-eyebrow">Auftrittsorte</span>
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:1rem;">Wo ich singe –<br /><em>von Karlsruhe bis deutschlandweit.</em></h2>
+      <p style="max-width:60ch;">Karlsruhe ist meine Heimat, aber ich trete deutschlandweit auf. Hier sind die Regionen, in denen ich besonders häufig zu Gast bin:</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;">
+        <a href="hochzeitssaengerin-karlsruhe.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Karlsruhe</a>
+        <a href="hochzeitssaengerin-stuttgart.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Stuttgart</a>
+        <a href="hochzeitssaengerin-mannheim.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Mannheim</a>
+        <a href="hochzeitssaengerin-heidelberg.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Heidelberg</a>
+        <a href="hochzeitssaengerin-baden-baden.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Baden-Baden</a>
+        <a href="hochzeitssaengerin-freiburg.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Freiburg</a>
+        <a href="hochzeitssaengerin-rastatt.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Rastatt</a>
+        <a href="hochzeitssaengerin-deutschlandweit.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Deutschlandweit</a>
+      </div>
+    </div>
   </section>
 
   <!-- ===== KONTAKT ===== -->
   <section id="kontakt" aria-label="Kontakt und Anfrage">
     <div class="contact-info fade-in">
       <span class="section-eyebrow">Kontakt</span>
-      <h2>Lass uns über deinen<br /><em>schönsten Tag</em> sprechen.</h2>
+      <h2>Lasst uns über euren<br /><em>schönsten Tag</em> sprechen.</h2>
       <p>
-        Deine Hochzeit verdient Musik, die wirklich zu euch passt. Schreib mir einfach – ich melde mich persönlich, unkompliziert und ohne Verkaufsdruck.
+        Eure Hochzeit verdient Musik, die wirklich zu euch passt. Schreibt mir einfach – ich melde mich persönlich, unkompliziert und ohne Verkaufsdruck.
       </p>
       <div class="contact-detail">
         <span>E-Mail</span>
@@ -1484,8 +1476,8 @@
   </section>
 
   <!-- ===== SEO FOOTER LINKS ===== -->
-  <div style="background:var(--green-deep); border-top:1px solid rgba(201,169,110,0.15); padding:3rem 4rem 2rem;">
-    <div style="max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-bottom:2.5rem;">
+  <div class="seo-footer-wrap" style="background:var(--green-deep); border-top:1px solid rgba(201,169,110,0.15); padding:3rem 4rem 2rem;">
+    <div class="seo-footer-grid" style="max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-bottom:2.5rem;">
 
       <div>
         <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-family:var(--font-body);">Hochzeiten</p>
@@ -1603,7 +1595,7 @@
         <div class="wstep" id="wstep3">
           <span class="step-eyebrow">Schritt 3 von 6</span>
           <h2 class="step-title">Wann und <em>wo?</em></h2>
-          <p class="step-sub">Damit ich prüfen kann ob ich an eurem Tag verfügbar bin.</p>
+          <p class="step-sub">Damit ich prüfen kann, ob ich an eurem Tag verfügbar bin.</p>
           <div class="input-group">
             <div class="input-row">
               <div class="field"><label for="wdatum">Euer Hochzeitsdatum *</label><input type="date" id="wdatum" required /></div>
