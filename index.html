@@ -27,6 +27,40 @@
   <link rel="sitemap" type="application/xml" href="sitemap.xml" />
 
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "VideoObject",
+      "name": "Ein Teil von meinem Herzen – Cover von Mickela Löffel, Hochzeitssängerin Karlsruhe",
+      "description": "Hochzeitssängerin Mickela aus Karlsruhe singt Ein Teil von meinem Herzen live – Cover-Video als Eindruck für Trauung, Sektempfang und Feier.",
+      "thumbnailUrl": "https://www.mickelaloeffel.de/mickela-video-ein-teil-von-meinem-herzen.jpg",
+      "contentUrl": "https://www.mickelaloeffel.de/mickela-video-ein-teil-von-meinem-herzen.mp4",
+      "uploadDate": "2026-11-06",
+      "duration": "PT3M32S"
+    },
+    {
+      "@type": "VideoObject",
+      "name": "I Wanna Dance with Somebody – Cover von Mickela Löffel, Hochzeitssängerin Karlsruhe",
+      "description": "Hochzeitssängerin Mickela aus Karlsruhe singt I Wanna Dance with Somebody live – Cover-Video als Eindruck für Trauung, Sektempfang und Feier.",
+      "thumbnailUrl": "https://www.mickelaloeffel.de/mickela-video-i-wanna-dance-with-somebody.jpg",
+      "contentUrl": "https://www.mickelaloeffel.de/mickela-video-i-wanna-dance-with-somebody.mp4",
+      "uploadDate": "2026-11-06",
+      "duration": "PT2M26S"
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Perfect – Cover von Mickela Löffel, Hochzeitssängerin Karlsruhe",
+      "description": "Hochzeitssängerin Mickela aus Karlsruhe singt Perfect live – Cover-Video als Eindruck für Trauung, Sektempfang und Feier.",
+      "thumbnailUrl": "https://www.mickelaloeffel.de/mickela-video-perfect.jpg",
+      "contentUrl": "https://www.mickelaloeffel.de/mickela-video-perfect.mp4",
+      "uploadDate": "2026-11-06",
+      "duration": "PT3M25S"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MusicGroup",
@@ -922,7 +956,7 @@
     <ul class="nav-links">
       <li><a href="#about">Über mich</a></li>
       <li><a href="#leistungen">Angebot</a></li>
-      <li><a href="#hoerbeispiele">Hörbeispiele</a></li>
+      <li><a href="#hoerbeispiele">Videos</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer" aria-label="Mickela auf Instagram – öffnet in neuem Tab">Instagram</a></li>
       <li><a href="#kontakt">Anfragen</a></li>
@@ -938,7 +972,7 @@
     <ul>
       <li><a href="#about" onclick="toggleMobileMenu()">Über mich</a></li>
       <li><a href="#leistungen" onclick="toggleMobileMenu()">Angebot</a></li>
-      <li><a href="#hoerbeispiele" onclick="toggleMobileMenu()">Hörbeispiele</a></li>
+      <li><a href="#hoerbeispiele" onclick="toggleMobileMenu()">Videos</a></li>
       <li><a href="#faq" onclick="toggleMobileMenu()">FAQ</a></li>
       <li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer">Instagram</a></li>
       <li><a href="#kontakt" onclick="toggleMobileMenu()">Jetzt anfragen</a></li>
@@ -1248,58 +1282,51 @@
   </section>
 
   <!-- ===== HÖRBEISPIELE & INSTAGRAM ===== -->
-  <section id="hoerbeispiele" aria-label="Hörbeispiele und Instagram" style="background:var(--white);">
+  <section id="hoerbeispiele" aria-label="Cover-Videos und Instagram" style="background:var(--white);">
     <div style="max-width:900px; margin:0 auto;">
       <span class="section-eyebrow">Überzeug dich selbst</span>
-      <h2>Hör rein – und <em>fühl es.</em></h2>
-      <p style="margin-bottom:1rem;">Worte können beschreiben, wie sich meine Musik anfühlt. Aber am besten überzeugst du dich selbst. Hier sind drei Live-Aufnahmen die zeigen, was dich auf deiner Hochzeit erwartet – keine Studioaufnahmen, keine Nachbearbeitung, sondern echte Momente wie auf deiner Feier.</p>
-      <p style="margin-bottom:3rem;">Jeder Song wurde von mir persönlich ausgewählt und eingespielt. Die Aufnahmen zeigen die Bandbreite meines Repertoires – von deutschen Balladen über internationale Hits bis zu emotionalen Momenten die perfekt zur Trauung passen.</p>
+      <h2>Schau rein – und <em>fühl es.</em></h2>
+      <p style="margin-bottom:1rem;">Worte können beschreiben, wie sich meine Musik anfühlt. Aber am besten überzeugst du dich selbst. Hier sind drei Cover-Videos, die zeigen, was dich auf deiner Hochzeit erwartet – live gesungen, ohne Playback, genau so wie auf deiner Feier.</p>
+      <p style="margin-bottom:3rem;">Jeder Song wurde von mir persönlich ausgewählt und eingespielt. Die Videos zeigen die Bandbreite meines Repertoires – von deutschen Balladen über internationale Hits bis zu emotionalen Momenten die perfekt zur Trauung passen.</p>
 
-      <!-- AUDIO PLAYER -->
-      <!-- ================================================
-           DEINE MP3s HIER:
-           Lege deine MP3-Dateien in einen Ordner "audio/"
-           neben deiner HTML-Datei. Dann ersetze:
-           "audio/beispiel-1.mp3" → deinen echten Dateinamen
-           "audio/beispiel-2.mp3" → deinen echten Dateinamen
-           Die Titel kannst du frei benennen.
-           ================================================ -->
-      <div style="display:grid; gap:1rem; margin-bottom:4rem;">
+      <!-- COVER-VIDEOS (preload="none": Videos laden erst beim Klick – hält die Seite schnell) -->
+      <style>
+        .cover-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:4rem;}
+        .cover-video{margin:0;background:var(--cream);}
+        .cover-video video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:var(--green-deep);}
+        .cover-video figcaption{padding:1rem 1.25rem;}
+        .cv-title{display:block;font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);}
+        .cv-sub{display:block;font-size:0.78rem;color:var(--text-light);}
+        @media (max-width:760px){.cover-videos{grid-template-columns:repeat(3,78%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:0.5rem;}.cover-video{scroll-snap-align:center;}}
+      </style>
+      <div class="cover-videos">
+        <figure class="cover-video">
+          <video controls playsinline preload="none" poster="mickela-video-ein-teil-von-meinem-herzen.jpg" width="720" height="1280" title="Ein Teil von meinem Herzen – Cover von Hochzeitssängerin Mickela">
+            <source src="mickela-video-ein-teil-von-meinem-herzen.mp4" type="video/mp4" />
+            Dein Browser unterstützt kein Video.
+          </video>
+          <figcaption><span class="cv-title">Ein Teil von meinem Herzen</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
+        </figure>
 
-        <div style="background:var(--cream); padding:1.5rem 2rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
-          <div style="flex:1; min-width:200px;">
-            <p style="font-family:var(--font-display); font-size:1.2rem; color:var(--green-deep); margin:0 0 0.25rem;">Ein Teil von meinem Herzen</p>
-            <p style="font-size:0.78rem; color:var(--text-light); margin:0;">Cover · Live-Aufnahme</p>
-          </div>
-          <audio controls style="flex:2; min-width:240px; width:100%; accent-color:var(--green-mid);">
-            <source src="mickela-ein-teil-von-meinem-herzen.mp3" type="audio/mpeg" />
-            Dein Browser unterstützt kein Audio.
-          </audio>
-        </div>
+        <figure class="cover-video">
+          <video controls playsinline preload="none" poster="mickela-video-i-wanna-dance-with-somebody.jpg" width="720" height="1280" title="I Wanna Dance with Somebody – Cover von Hochzeitssängerin Mickela">
+            <source src="mickela-video-i-wanna-dance-with-somebody.mp4" type="video/mp4" />
+            Dein Browser unterstützt kein Video.
+          </video>
+          <figcaption><span class="cv-title">I Wanna Dance with Somebody</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
+        </figure>
 
-        <div style="background:var(--cream); padding:1.5rem 2rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
-          <div style="flex:1; min-width:200px;">
-            <p style="font-family:var(--font-display); font-size:1.2rem; color:var(--green-deep); margin:0 0 0.25rem;">Kann es wirklich Liebe sein</p>
-            <p style="font-size:0.78rem; color:var(--text-light); margin:0;">Cover · Live-Aufnahme</p>
-          </div>
-          <audio controls style="flex:2; min-width:240px; width:100%; accent-color:var(--green-mid);">
-            <source src="mickela-kann-es-wirklich-liebe-sein.mp3" type="audio/mpeg" />
-            Dein Browser unterstützt kein Audio.
-          </audio>
-        </div>
-
-        <div style="background:var(--cream); padding:1.5rem 2rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
-          <div style="flex:1; min-width:200px;">
-            <p style="font-family:var(--font-display); font-size:1.2rem; color:var(--green-deep); margin:0 0 0.25rem;">The Climb</p>
-            <p style="font-size:0.78rem; color:var(--text-light); margin:0;">Cover · ICONICS Mix</p>
-          </div>
-          <audio controls style="flex:2; min-width:240px; width:100%; accent-color:var(--green-mid);">
-            <source src="mickela-the-climb.mp3" type="audio/mpeg" />
-            Dein Browser unterstützt kein Audio.
-          </audio>
-        </div>
-
+        <figure class="cover-video">
+          <video controls playsinline preload="none" poster="mickela-video-perfect.jpg" width="720" height="1280" title="Perfect – Cover von Hochzeitssängerin Mickela">
+            <source src="mickela-video-perfect.mp4" type="video/mp4" />
+            Dein Browser unterstützt kein Video.
+          </video>
+          <figcaption><span class="cv-title">Perfect</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
+        </figure>
       </div>
+      <script>
+        document.querySelectorAll('.cover-video video').forEach(function(v){v.addEventListener('play',function(){document.querySelectorAll('.cover-video video').forEach(function(o){if(o!==v)o.pause();});});});
+      </script>
 
       <!-- INSTAGRAM -->
       <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap; padding:2rem; background:var(--cream); border-left:2px solid var(--gold);">
@@ -1363,7 +1390,7 @@
 
         <details class="faq-item">
           <summary class="faq-question">Gibt es eine Möglichkeit, Mickela vor der Buchung live zu erleben?</summary>
-          <p class="faq-answer">Höre gerne in die Hörbeispiele auf dieser Seite rein und folge mir auf Instagram (@mickela_music), wo ich regelmäßig Live-Momente und Auftritte teile. Bei weiteren Fragen stehe ich jederzeit für ein persönliches Gespräch zur Verfügung – per E-Mail oder Telefon.</p>
+          <p class="faq-answer">Schau dir gerne die Cover-Videos auf dieser Seite an und folge mir auf Instagram (@mickela_music), wo ich regelmäßig Live-Momente und Auftritte teile. Bei weiteren Fragen stehe ich jederzeit für ein persönliches Gespräch zur Verfügung – per E-Mail oder Telefon.</p>
         </details>
 
         <details class="faq-item">
@@ -1482,7 +1509,7 @@
         <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-family:var(--font-body);">Wichtiges</p>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
           <li><a href="index.html#faq" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">FAQ</a></li>
-          <li><a href="index.html#hoerbeispiele" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hörbeispiele</a></li>
+          <li><a href="index.html#hoerbeispiele" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Videos</a></li>
           <li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Instagram</a></li>
           <li><a href="https://www.iconicsband.de" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">ICONICS Band</a></li>
         </ul>
