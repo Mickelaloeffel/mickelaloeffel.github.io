@@ -36,9 +36,10 @@ h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:40px;line-he
 .tag{position:absolute;top:-10px;right:18px;background:var(--gold);color:#fff;font-size:11px;letter-spacing:.18em;font-weight:500;padding:3px 9px}
 .grp{font-size:12px;letter-spacing:.25em;color:var(--gold);font-weight:500;margin:22px 0 10px}
 label.f{display:block;margin-bottom:16px;font-size:15px;color:var(--mute)}
-input[type=text],input[type=email],input[type=tel],input[type=date],input[type=number],input[type=password],textarea{display:block;width:100%;margin-top:6px;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);padding:14px 16px;border-radius:0;-webkit-appearance:none}
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=number],input[type=password],input[type=time],select,textarea{display:block;width:100%;margin-top:6px;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);padding:14px 16px;border-radius:0;-webkit-appearance:none}
 input:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:-1px}
 textarea{min-height:150px;resize:vertical}
+select{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23B8955C' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 16px center;padding-right:40px}
 .chk{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);padding:16px 18px;margin-bottom:10px;cursor:pointer}
 .chk input{width:24px;height:24px;margin-top:2px;accent-color:var(--gold);flex:none}
 .chk span small{display:block;color:var(--mute);font-size:14px;font-weight:300}
@@ -111,7 +112,10 @@ button.b:disabled{opacity:.35}
   <section class="step" id="s4">
     <h1>Eure Wünsche</h1>
     <p class="lead">Lieblingssongs, Ablauf, alles was mir hilft. Gerne auch Stichworte.</p>
-    <label class="f">Notizen<textarea id="notizen" placeholder="z. B. Einzug zu Perfect, freie Trauung im Garten"></textarea></label>
+    <label class="f">Art der Trauung<select id="art"><option value="">Noch offen</option><option>Freie Trauung</option><option>Standesamt</option><option>Kirchliche Trauung</option></select></label>
+    <div style="display:flex;gap:12px"><label class="f" style="flex:1">Beginn der Trauung<input type="time" id="zeit"></label>
+    <label class="f" style="flex:1">Drinnen oder draußen<select id="draussen"><option value="">Noch offen</option><option>Drinnen</option><option>Draußen</option></select></label></div>
+    <label class="f">Songwünsche und Ablauf<textarea id="notizen" placeholder="z. B. Einzug zu Perfect, Auszug zu Für immer ab jetzt, Ringtausch mit Gitarre"></textarea></label>
   </section>
 
   <!-- 5 Kontakt -->
@@ -129,7 +133,7 @@ button.b:disabled{opacity:.35}
   <!-- 6 Übersicht -->
   <section class="step" id="s6">
     <h1>Alles richtig so?</h1>
-    <p class="lead">Mit dem Absenden ist euer Datum 7 Tage für euch vorgemerkt.</p>
+    <p class="lead" id="vmlead">Mit dem Absenden ist euer Datum 7 Tage für euch vorgemerkt.</p>
     <div class="sum" id="sum"></div>
     <p class="grp">GUT ZU WISSEN</p>
     <ul class="gzw" id="gzw"></ul>
@@ -214,9 +218,14 @@ function alertInline(t){
   m.textContent = t;
 }
 function extras(){ return [...document.querySelectorAll('#s2 input[type=checkbox]:checked')].map(c => c.value); }
+function notes(){
+  const z = $('zeit').value, head = [$('art').value, z ? 'Beginn ' + z + ' Uhr' : '', $('draussen').value].filter(Boolean).join(' · ');
+  const n = $('notizen').value.trim();
+  return [head, n].filter(Boolean).join('\n');
+}
 function data(){
   return { paket: paket.id, extras: extras(), gaeste: $('gaeste').value, datum: $('datum').value, ort: $('ort').value.trim(),
-    notizen: $('notizen').value.trim(), name: $('name').value.trim(), email: $('email').value.trim(), telefon: $('telefon').value.trim() };
+    notizen: notes(), name: $('name').value.trim(), email: $('email').value.trim(), telefon: $('telefon').value.trim() };
 }
 function summary(){
   const d = data(), ex = d.extras.map(x => EXTRA_TXT[x]);
@@ -226,6 +235,7 @@ function summary(){
     ex.length ? ['Zusätzlich', ex.join(', ')] : null,
     ['Datum', d.datum ? d.datum.split('-').reverse().join('.') : 'noch offen'],
     ['Ort', d.ort || 'noch offen'],
+    d.notizen ? ['Wünsche', d.notizen.replace(/[<>&]/g,'').replace(/\n/g,'<br>')] : null,
     ['Angebot an', d.email]
   ].filter(Boolean);
   $('gzw').innerHTML = (paket.ab ? [
@@ -239,6 +249,7 @@ function summary(){
     'Ein Parkplatz zum Ausladen und Getränke während des Auftritts',
     'Anfahrt bis 25 km ab Karlsruhe inklusive, darüber 0,60 € pro km'
   ]).map(x => `<li>${x}</li>`).join('');
+  $('vmlead').textContent = d.datum ? 'Mit dem Absenden ist euer Datum 7 Tage für euch vorgemerkt.' : 'Mit dem Absenden bekommt ihr euer Angebot. Sobald ihr ein Datum habt, merke ich es euch gern vor.';
   $('sum').innerHTML = rows.map(r => `<div><span>${r[0]}</span><span style="text-align:right">${r[1]}</span></div>`).join('');
 }
 
@@ -272,7 +283,7 @@ function finish(sent){
 function reset(){
   paket = null; cur = 0;
   document.querySelectorAll('.pk').forEach(x => x.classList.remove('sel'));
-  document.querySelectorAll('input,textarea').forEach(el => { if (el.id === 'pin') return; if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
+  document.querySelectorAll('input,textarea,select').forEach(el => { if (el.id === 'pin') return; if (el.type === 'checkbox') el.checked = false; else el.value = ''; }); document.querySelectorAll('select').forEach(el => el.selectedIndex = 0);
   document.querySelectorAll('.msg').forEach(m => m.textContent = '');
   $('dathint').textContent = '';
   render();
