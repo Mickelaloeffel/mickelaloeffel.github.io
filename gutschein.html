@@ -156,6 +156,19 @@ dialog.vid button{position:absolute;top:-44px;right:0;background:none;border:0;c
 .pay .nr{color:var(--mut);font-size:.9rem;margin-bottom:14px}
 .pay .btn{width:100%}
 .pay small{display:block;color:var(--mut);font-size:.82rem;margin-top:10px}
+.cobar{display:none}
+body.checkout{overflow:hidden}
+body.checkout #bestellen{position:fixed;inset:0;z-index:40;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 60px;background:var(--c2)}
+body.checkout .cobar{display:flex;position:sticky;top:0;z-index:2;align-items:center;justify-content:space-between;gap:12px;background:var(--g);color:var(--c);padding:14px 22px}
+.cobar b{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:1rem}
+.cobar button{background:none;border:0;color:var(--gl);font:500 .95rem Inter,sans-serif;cursor:pointer;padding:6px 0}
+body.checkout #bestellen .wrap{padding-top:26px}
+body.checkout #bestellen > .wrap > .eyebrow{display:none}
+body.checkout #ptitle{font-size:clamp(1.7rem,5vw,2.3rem)}
+.chip2{display:none}
+body.checkout .chip2{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--gold);border-radius:99px;padding:8px 16px;font-size:.9rem;font-weight:500;margin-top:4px}
+.chip2 b{font-family:'Inter Tight',sans-serif}
+body.checkout .sticky,body.checkout .nudge{display:none!important}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -181,11 +194,12 @@ dialog.vid button{position:absolute;top:-44px;right:0;background:none;border:0;c
   <li><b>Ab 8 Jahren</b>Anfänger und Fortgeschrittene</li>
 </ul></div></div>
 
-<section id="bestellen"><div class="wrap">
+<section id="bestellen"><div class="cobar"><button type="button" id="coBack">← Zurück</button><b>Gutschein bestellen</b><button type="button" id="coClose" aria-label="Bestellung schließen">Schließen</button></div><div class="wrap">
   <div class="eyebrow">In drei Schritten bestellt</div>
   <h2 id="ptitle">Was möchtest du <em>verschenken?</em></h2>
   <div class="stepper" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
   <div class="steplabel" id="slabel">Schritt 1 von 3</div>
+  <div class="chip2" id="chip2"></div>
 
   <form id="order" novalidate>
   <!-- STEP 1 -->
@@ -313,8 +327,12 @@ const store = {get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){re
 const saved = store.get('gs_buyer'); if (saved) for (const k in saved) if ($(k)) $(k).value = saved[k];
 
 function sel(){ return f.querySelector('input[name=gutschein]:checked'); }
-function go(n){
+function go(n, push = true){
+  if (push && n !== step) { try { history.pushState({gs: n}, ''); } catch(e){} }
   step = n;
+  document.body.classList.toggle('checkout', n >= 2);
+  const cs = sel(); document.getElementById('chip2').innerHTML = cs ? `${esc(cs.closest('.card').querySelector('h3').textContent)} <b style="white-space:nowrap">${cs.dataset.price} €</b>` : '';
+  document.getElementById('coBack').style.visibility = n === 4 ? 'hidden' : 'visible';
   panels.forEach(p => p.classList.toggle('on', +p.dataset.step === n));
   document.getElementById('ptitle').innerHTML = titles[n];
   document.querySelectorAll('.stepper span').forEach((s,i) => s.classList.toggle('on', i < n));
@@ -322,7 +340,8 @@ function go(n){
   if (n === 3) renderSum();
   document.getElementById('nav1').hidden = !sel();
   if (n === 2 && matchMedia('(hover:hover)').matches) setTimeout(() => $('empfaenger').focus({preventScroll:true}), 400);
-  document.getElementById('bestellen').scrollIntoView({behavior:'smooth'});
+  const sec = document.getElementById('bestellen');
+  if (n >= 2) sec.scrollTop = 0; else sec.scrollIntoView({behavior:'smooth'});
 }
 function need(names, msgId){
   let ok = true;
@@ -346,7 +365,7 @@ function renderPay(nr){
 function esc(t){ const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
 
 f.addEventListener('click', e => {
-  if (e.target.matches('[data-prev]')) go(step - 1);
+  if (e.target.matches('[data-prev]')) { history.back(); return; }
   if (e.target.matches('[data-next]')) {
     if (step === 1 && !sel()) { document.getElementById('m1').textContent = 'Wähle einen Gutschein aus.'; return; }
     if (step === 2 && !need(['empfaenger'], 'm2')) return;
@@ -362,7 +381,12 @@ function pickAndGo(card){
   clearTimeout(advanceT); advanceT = setTimeout(() => { if (step === 1) go(2); }, 380);
 }
 f.querySelectorAll('.card').forEach(c => c.addEventListener('click', e => {
-  if (e.target.closest('[data-video]')) return;   // Hörprobe nicht als Auswahl werten
+  if (e.target.closest('[data-video]')) return;   // Bestellmodus: Zurück/Schließen und Browser-Zurück
+document.getElementById('coBack').onclick = () => history.back();
+document.getElementById('coClose').onclick = () => { go(1, false); try { history.pushState({gs: 1}, ''); } catch(e){} };
+addEventListener('popstate', e => { const n = (e.state && e.state.gs) || 1; go(step === 4 ? 1 : n, false); });
+try { history.replaceState({gs: 1}, ''); } catch(e){}
+// Hörprobe nicht als Auswahl werten
   e.preventDefault(); pickAndGo(c);
 }));
 f.querySelectorAll('.card input').forEach(i => i.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickAndGo(i.closest('.card')); } }));
