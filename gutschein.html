@@ -322,6 +322,9 @@ const GUTSCHEIN_URL = 'https://script.google.com/macros/s/AKfycbw3Uv9yT3__yVl75M
 const f = document.getElementById('order'), panels = [...f.querySelectorAll('.panel')];
 const titles = {1:'Was möchtest du <em>verschenken?</em>',2:'Für wen ist <em>das Geschenk?</em>',3:'Fast <em>geschafft.</em>',4:'Danke, das wird <em>schön.</em>'};
 let step = 1;
+const sent = {};
+function track(ev, once = true){ if (!GUTSCHEIN_URL || (once && sent[ev])) return; sent[ev] = 1; try { navigator.sendBeacon(GUTSCHEIN_URL, new Blob([JSON.stringify({event: ev})], {type:'text/plain;charset=utf-8'})); } catch(e){} }
+track('seite');
 const $ = n => f.elements[n];
 const store = {get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const saved = store.get('gs_buyer'); if (saved) for (const k in saved) if ($(k)) $(k).value = saved[k];
@@ -337,7 +340,8 @@ function go(n, push = true){
   document.getElementById('ptitle').innerHTML = titles[n];
   document.querySelectorAll('.stepper span').forEach((s,i) => s.classList.toggle('on', i < n));
   document.getElementById('slabel').textContent = n < 4 ? `Schritt ${n} von 3` : 'Bestellt';
-  if (n === 3) renderSum();
+  if (n === 2) track('paket');
+  if (n === 3) { renderSum(); track('daten'); }
   document.getElementById('nav1').hidden = !sel();
   if (n === 2 && matchMedia('(hover:hover)').matches) setTimeout(() => $('empfaenger').focus({preventScroll:true}), 400);
   const sec = document.getElementById('bestellen');
@@ -419,18 +423,18 @@ new IntersectionObserver(([en]) => sticky.classList.toggle('show', !en.isInterse
 addEventListener('scroll', () => { if (window.scrollY < 400) sticky.classList.remove('show'); }, {passive:true});
 // Hörprobe
 const dlg = document.getElementById('vid'), vv = dlg.querySelector('video');
-f.querySelector('[data-video]').addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); dlg.showModal(); vv.play().catch(()=>{}); });
+f.querySelector('[data-video]').addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); dlg.showModal(); vv.play().catch(()=>{}); track('hoerprobe'); });
 dlg.querySelector('button').onclick = () => dlg.close();
 dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 dlg.addEventListener('close', () => vv.pause());
 // Sanfter Hinweis: einmal pro Besuch, nach 40 s ohne Auswahl oder wenn die Maus die Seite verlassen will (Desktop)
 const nudge = document.getElementById('nudge');
 let nudged = (()=>{try{return sessionStorage.getItem('gs_nudge')}catch(e){return null}})();
-function showNudge(){ if (nudged || sel() || step > 1) return; nudged = 1; try{sessionStorage.setItem('gs_nudge','1')}catch(e){} sticky.classList.remove('show'); nudge.classList.add('show'); }
+function showNudge(){ if (nudged || sel() || step > 1) return; nudged = 1; try{sessionStorage.setItem('gs_nudge','1')}catch(e){} sticky.classList.remove('show'); nudge.classList.add('show'); track('hinweis_gezeigt'); }
 setTimeout(showNudge, 40000);
 document.addEventListener('mouseout', e => { if (!e.relatedTarget && e.clientY < 10) showNudge(); });
 nudge.querySelector('.x').onclick = () => nudge.classList.remove('show');
-document.getElementById('nudgeGo').onclick = () => { nudge.classList.remove('show'); pickAndGo(f.querySelector('input[value="Schnupperstunde Gesang"]').closest('.card')); };
+document.getElementById('nudgeGo').onclick = () => { nudge.classList.remove('show'); track('hinweis_klick'); pickAndGo(f.querySelector('input[value="Schnupperstunde Gesang"]').closest('.card')); };
 </script>
 </body>
 </html>
