@@ -65,6 +65,8 @@ h2{font-size:clamp(2rem,6vw,2.8rem);margin:8px 0 14px}
 @media(min-width:880px){.cards{grid-template-columns:repeat(3,1fr)}}
 .card{position:relative;display:block;background:#fff;border:1.5px solid transparent;border-radius:var(--r);padding:24px 22px 22px;cursor:pointer;box-shadow:0 1px 2px rgba(44,62,45,.06),0 8px 24px rgba(44,62,45,.06);transition:border-color .2s,transform .2s}
 .card:hover{transform:translateY(-2px)}
+.card.pick{animation:pick .35s ease}
+@keyframes pick{50%{transform:scale(.98)}}
 .card input{position:absolute;opacity:0}
 .card:has(input:checked){border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,169,110,.18),0 8px 24px rgba(44,62,45,.08)}
 .card h3{font-size:1.4rem;margin-bottom:4px}
@@ -203,7 +205,7 @@ dialog.vid button{position:absolute;top:-44px;right:0;background:none;border:0;c
         <ul><li>Echte Fortschritte in fünf Stunden</li><li>Wir arbeiten an einem Wunschsong</li></ul><div class="bonus"><span>Nur bis 23.12.</span>Song-Aufnahme in der 5. Stunde geschenkt</div></label>
     </div>
     <div class="msg" id="m1"></div>
-    <div class="nav"><span></span><button type="button" class="btn dark" data-next>Weiter</button></div>
+    <div class="nav" id="nav1" hidden><span></span><button type="button" class="btn dark" data-next>Weiter</button></div>
   </div>
 
   <!-- STEP 2 -->
@@ -318,6 +320,8 @@ function go(n){
   document.querySelectorAll('.stepper span').forEach((s,i) => s.classList.toggle('on', i < n));
   document.getElementById('slabel').textContent = n < 4 ? `Schritt ${n} von 3` : 'Bestellt';
   if (n === 3) renderSum();
+  document.getElementById('nav1').hidden = !sel();
+  if (n === 2 && matchMedia('(hover:hover)').matches) setTimeout(() => $('empfaenger').focus({preventScroll:true}), 400);
   document.getElementById('bestellen').scrollIntoView({behavior:'smooth'});
 }
 function need(names, msgId){
@@ -350,6 +354,20 @@ f.addEventListener('click', e => {
   }
 });
 f.addEventListener('change', e => { if (e.target.name === 'gutschein') { document.getElementById('m1').textContent = ''; document.getElementById('pvType').textContent = e.target.value; } });
+// Klick auf ein Paket: kurz bestätigen, dann automatisch weiter (auch wenn es schon gewählt war)
+let advanceT;
+function pickAndGo(card){
+  const r = card.querySelector('input'); r.checked = true; r.dispatchEvent(new Event('change',{bubbles:true}));
+  card.classList.remove('pick'); void card.offsetWidth; card.classList.add('pick');
+  clearTimeout(advanceT); advanceT = setTimeout(() => { if (step === 1) go(2); }, 380);
+}
+f.querySelectorAll('.card').forEach(c => c.addEventListener('click', e => {
+  if (e.target.closest('[data-video]')) return;   // Hörprobe nicht als Auswahl werten
+  e.preventDefault(); pickAndGo(c);
+}));
+f.querySelectorAll('.card input').forEach(i => i.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickAndGo(i.closest('.card')); } }));
+// Enter im Namensfeld = weiter
+$('empfaenger').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); if (need(['empfaenger'], 'm2')) go(3); } });
 $('empfaenger').addEventListener('input', e => document.getElementById('pvName').textContent = e.target.value || ' ');
 
 f.addEventListener('submit', async e => {
@@ -388,7 +406,7 @@ function showNudge(){ if (nudged || sel() || step > 1) return; nudged = 1; try{s
 setTimeout(showNudge, 40000);
 document.addEventListener('mouseout', e => { if (!e.relatedTarget && e.clientY < 10) showNudge(); });
 nudge.querySelector('.x').onclick = () => nudge.classList.remove('show');
-document.getElementById('nudgeGo').onclick = () => { nudge.classList.remove('show'); const r = f.querySelector('input[value="Schnupperstunde Gesang"]'); r.checked = true; r.dispatchEvent(new Event('change',{bubbles:true})); go(1); };
+document.getElementById('nudgeGo').onclick = () => { nudge.classList.remove('show'); pickAndGo(f.querySelector('input[value="Schnupperstunde Gesang"]').closest('.card')); };
 </script>
 </body>
 </html>
