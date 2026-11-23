@@ -149,6 +149,11 @@ dialog.vid p{color:#e4e9e1;font-size:.88rem;text-align:center;margin-top:10px}
 dialog.vid button{position:absolute;top:-44px;right:0;background:none;border:0;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
 .bonus{margin-top:16px;border:1.5px solid var(--gold);border-radius:10px;padding:12px 14px;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:1.08rem;line-height:1.3;color:var(--gl);background:rgba(201,169,110,.12)}
 .bonus span{display:block;font-family:Inter,sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.pay{background:#fff;border-radius:var(--r);padding:22px;margin:18px auto 6px;max-width:26rem;text-align:center}
+.pay .amt{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:2rem;letter-spacing:-.02em}
+.pay .nr{color:var(--mut);font-size:.9rem;margin-bottom:14px}
+.pay .btn{width:100%}
+.pay small{display:block;color:var(--mut);font-size:.82rem;margin-top:10px}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -236,7 +241,7 @@ dialog.vid button{position:absolute;top:-44px;right:0;background:none;border:0;c
       </div>
       <div>
         <div class="sum" id="sum"></div>
-        <p class="legal">Du bekommst sofort eine Bestellbestätigung mit den Überweisungsdaten. Sobald das Geld da ist, schicke ich dir den Gutschein als PDF und die Rechnung. Einlösbar ab Januar 2027 in der Werderstraße 69, 76137 Karlsruhe. Es gelten die <a href="#bedingungen">Gutscheinbedingungen</a>. Infos zu deinem <a href="widerruf.html" target="_blank">Widerrufsrecht</a> und zum <a href="datenschutz.html" target="_blank">Datenschutz</a>.</p>
+        <p class="legal">Bezahlen kannst du direkt danach mit PayPal oder per Überweisung, alle Infos kommen auch per E-Mail. Sobald das Geld da ist, schicke ich dir den Gutschein als PDF und die Rechnung. Einlösbar ab Januar 2027 in der Werderstraße 69, 76137 Karlsruhe. Es gelten die <a href="#bedingungen">Gutscheinbedingungen</a>. Infos zu deinem <a href="widerruf.html" target="_blank">Widerrufsrecht</a> und zum <a href="datenschutz.html" target="_blank">Datenschutz</a>.</p>
         <div class="msg" id="m3" role="alert"></div>
         <div class="nav"><button type="button" class="btn ghost" data-prev>Zurück</button><button type="submit" class="btn dark" id="sendBtn">Zahlungspflichtig bestellen</button></div>
       </div>
@@ -245,8 +250,9 @@ dialog.vid button{position:absolute;top:-44px;right:0;background:none;border:0;c
 
   <!-- DONE -->
   <div class="panel" data-step="4"><div class="done">
-    <p class="lead">Deine Bestellung ist bei mir angekommen. So geht es weiter:</p>
-    <ol><li>In deinem Postfach liegt gleich die Bestätigung mit den Überweisungsdaten. Nichts da? Schau kurz in den Spam-Ordner.</li><li>Sobald die Zahlung da ist, schicke ich dir den Gutschein als PDF und die Rechnung.</li><li>Ausdrucken, einpacken, verschenken.</li></ol>
+    <p class="lead">Deine Bestellung ist bei mir angekommen. Jetzt nur noch bezahlen:</p>
+    <div class="pay" id="pay"></div>
+    <ol><li>Die Bestätigung mit allen Zahlungsdaten liegt gleich in deinem Postfach. Nichts da? Schau kurz in den Spam-Ordner.</li><li>Sobald die Zahlung da ist, schicke ich dir den Gutschein als PDF und die Rechnung.</li><li>Ausdrucken, einpacken, verschenken.</li></ol>
     <p class="legal">Kurz vor Weihnachten? Schick mir einen Screenshot der Überweisung an <a href="mailto:mickela@loeffel.de">mickela@loeffel.de</a>, dann kommt der Gutschein sofort.</p>
     <div class="nav" style="justify-content:center"><button type="button" class="btn dark" id="again">Noch einen Gutschein bestellen</button></div>
   </div></div>
@@ -258,7 +264,7 @@ dialog.vid button{position:absolute;top:-44px;right:0;background:none;border:0;c
   <h2>So <em>funktioniert's</em></h2>
   <div class="how">
     <div><h3>Bestellen</h3><p>Gutschein aussuchen, Namen eintragen, fertig. Dauert zwei Minuten.</p></div>
-    <div><h3>Überweisen</h3><p>Die Überweisungsdaten kommen sofort per E-Mail. Keine Kreditkarte, kein Kundenkonto.</p></div>
+    <div><h3>Bezahlen</h3><p>Mit PayPal oder per Überweisung. Kein Kundenkonto, kein Abo.</p></div>
     <div><h3>Verschenken</h3><p>Der Gutschein kommt als PDF zum Ausdrucken. Den Termin machen wir ab Januar direkt aus.</p></div>
   </div>
 </div></section>
@@ -280,6 +286,7 @@ dialog.vid button{position:absolute;top:-44px;right:0;background:none;border:0;c
   <details><summary>Ab wann kann der Gutschein eingelöst werden?</summary><p>Ab Januar 2027. Die beschenkte Person schreibt mir an mickela@loeffel.de und wir finden einen Termin. Bitte den ersten Termin innerhalb von 6 Monaten ab Ausstellung buchen.</p></details>
   <details><summary>Braucht man Vorkenntnisse?</summary><p>Nein. Ich unterrichte komplette Anfänger genauso wie Leute, die schon in Band oder Chor singen. Ab 8 Jahren.</p></details>
   <details><summary>Wo findet der Unterricht statt?</summary><p>In meinem Unterrichtsraum in der Werderstraße 69, 76137 Karlsruhe.</p></details>
+  <details><summary>Wie bezahle ich?</summary><p>Mit PayPal direkt nach der Bestellung oder per Überweisung. Alle Daten bekommst du sofort per E-Mail.</p></details>
   <details><summary>Bis wann kann ich bestellen?</summary><p>Bis zum 23.12. Wer spät überweist, schickt mir einfach einen Screenshot der Überweisung, dann kommt der Gutschein sofort.</p></details>
   <details><summary>Ich möchte mehrere Gutscheine verschenken.</summary><p>Gerne. Bestell einfach nacheinander, für jede Person einen. Deine Daten bleiben dabei ausgefüllt.</p></details>
   <details><summary>Was gilt für die 5er-Karte?</summary><p>Ab der ersten Stunde gelten meine Unterrichtsbedingungen: Die fünf Stunden sind 4 Monate gültig, Absagen bis 48 Stunden vorher. Der Gutschein ist auf die genannte Person ausgestellt. Keine Barauszahlung.</p></details>
@@ -323,7 +330,14 @@ function need(names, msgId){
 function renderSum(){
   const s = sel();
   document.getElementById('sum').innerHTML =
-    `<div><span>${s.value}</span><span>${s.dataset.price} €</span></div><div><span>Für</span><span>${esc($('empfaenger').value)}</span></div><div><span>Zahlung</span><span>Überweisung</span></div><div><span>Lieferung</span><span>PDF per E-Mail</span></div><div class="tot"><span>Gesamt</span><b>${s.dataset.price} €</b></div>`;
+    `<div><span>${s.value}</span><span>${s.dataset.price} €</span></div><div><span>Für</span><span>${esc($('empfaenger').value)}</span></div><div><span>Zahlung</span><span>PayPal oder Überweisung</span></div><div><span>Lieferung</span><span>PDF per E-Mail</span></div><div class="tot"><span>Gesamt</span><b>${s.dataset.price} €</b></div>`;
+}
+function renderPay(nr){
+  const s = sel();
+  document.getElementById('pay').innerHTML =
+    `<div class="amt">${s.dataset.price} €</div><div class="nr">Gutschein-Nr. ${esc(nr || '')}</div>` +
+    `<a class="btn dark" href="https://www.paypal.biz/MickelaMusicDE" target="_blank" rel="noopener">Jetzt mit PayPal zahlen</a>` +
+    `<small>Bitte ${s.dataset.price} € eingeben und als Nachricht die Gutschein-Nr. ${esc(nr || '')} angeben. Lieber überweisen? Die Bankdaten stehen in deiner E-Mail.</small>`;
 }
 function esc(t){ const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
 
@@ -349,6 +363,7 @@ f.addEventListener('submit', async e => {
     const res = await fetch(GUTSCHEIN_URL, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data) });
     const j = await res.json(); if (!j.ok) throw new Error(j.error);
     store.set('gs_buyer', { name:$('name').value, email:$('email').value, strasse:$('strasse').value, plz:$('plz').value, ort:$('ort').value });
+    renderPay(j.nr);
     go(4);
   } catch(err) {
     m.innerHTML = 'Das hat leider nicht geklappt. Bitte versuch es nochmal oder schreib mir an <a href="mailto:mickela@loeffel.de">mickela@loeffel.de</a>.';
