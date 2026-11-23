@@ -35,4 +35,8 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://mickelaloeffel.de/gutschein</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
 </urlset>
