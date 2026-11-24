@@ -196,6 +196,7 @@ h2{font-size:clamp(2rem,5.5vw,3rem);margin:10px 0 16px}
 .hero p{max-width:31rem;font-size:1.12rem;color:#f3eee5}
 .hero .btn.ghost{color:var(--c)}
 @media(min-width:900px){.hero{min-height:100vh}.hero img{left:auto;width:60%}.hero:after{background:linear-gradient(90deg,#1c281d 0%,#1c281d 40%,rgba(28,40,29,.75) 48%,rgba(28,40,29,.2) 62%,rgba(28,40,29,0) 75%)}.hero .in{align-self:center;padding:0 22px}.hero .in>*{max-width:min(46vw,560px)}.hero h1{font-size:clamp(3.2rem,5.2vw,4.6rem)}}
+@media(max-width:899px){.hero{display:block;min-height:0;background:#1c281d}.hero img{position:relative;height:56svh;min-height:340px;object-position:50% 20%}.hero:after{inset:0 0 auto 0;height:56svh;min-height:340px;background:linear-gradient(180deg,rgba(20,26,20,.45) 0%,rgba(20,26,20,0) 25%,rgba(20,26,20,0) 60%,#1c281d 100%)}.hero .in{margin-top:-70px;padding-bottom:44px}}
 /* trust */
 .trust{background:var(--g);color:var(--c);padding:30px 0}
 .trust ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -217,8 +218,8 @@ h2{font-size:clamp(2rem,5.5vw,3rem);margin:10px 0 16px}
 .vids figcaption{padding:14px 18px}
 .vids b{display:block;font-family:'Inter Tight',sans-serif;font-size:1.1rem}
 .vids small{color:var(--mut)}
-.yt{display:grid;gap:16px;margin-top:34px}
-@media(min-width:900px){.yt{grid-template-columns:repeat(3,1fr)}}
+.yt{display:grid;grid-auto-flow:column;grid-auto-columns:80%;gap:16px;margin-top:28px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.yt figure{scroll-snap-align:center}
+@media(min-width:900px){.yt{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible}}
 .yt figure{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 8px 24px rgba(44,62,45,.08)}
 .yt .pl{position:relative;aspect-ratio:16/9;background:#141a14;cursor:pointer;border:0;width:100%;display:block;padding:0;color:var(--c)}
 .yt .pl img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:opacity .2s}
@@ -232,7 +233,8 @@ h2{font-size:clamp(2rem,5.5vw,3rem);margin:10px 0 16px}
 .gal{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;gap:10px;margin-top:34px}
 .gal img{width:100%;height:100%;object-fit:cover;border-radius:10px}
 .gal .t{grid-row:span 2}.gal .w{grid-column:span 2}
-@media(min-width:900px){.gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}.gal .w{grid-column:span 2}}
+@media(min-width:900px){.gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:14px}.gal .w{grid-column:span 2}.gal .b{grid-column:span 2;grid-row:span 2}}
+@media(max-width:899px){.gal .b{grid-column:span 2;grid-row:span 1}}
 /* offer cards */
 .cards{display:grid;gap:16px;margin-top:34px}
 @media(min-width:900px){.cards{grid-template-columns:repeat(3,1fr)}}
@@ -318,10 +320,18 @@ details p{color:var(--mut);margin-top:10px;max-width:42rem}
 .voucher{margin-top:26px;border:1.5px solid var(--gold);border-radius:12px;padding:16px 18px;background:rgba(201,169,110,.1);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
 .voucher b{font-family:'Inter Tight',sans-serif;font-size:1.1rem;color:var(--gl)}
 .voucher .btn{padding:12px 20px;font-size:.92rem}
+#unterricht.alt .facts{border-color:rgba(201,169,110,.5)}#unterricht.alt .facts b{color:var(--g)}#unterricht.alt .facts span{color:var(--mut)}#unterricht.alt .voucher{background:#fff}#unterricht.alt .voucher b{color:var(--g)}
 /* regions */
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .chips a{background:#fff;border:1px solid rgba(44,62,45,.15);border-radius:99px;padding:9px 16px;font-size:.9rem;text-decoration:none;transition:background .2s,color .2s}
 .chips a:hover{background:var(--g);color:var(--c)}
+.hq{display:block;margin-top:26px;max-width:30rem;text-decoration:none;font-size:.9rem;color:#d6ddd3;border-left:2px solid var(--gold);padding-left:14px}
+.hq span{display:block;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:1.05rem;color:var(--c);margin-bottom:2px}
+.steps{list-style:none;display:grid;gap:14px;margin:30px auto 0;max-width:860px;text-align:left;counter-reset:k}
+@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+.steps li{counter-increment:k;border-top:1px solid rgba(201,169,110,.5);padding-top:12px;color:#c9d2c6;font-size:.93rem}
+.steps li:before{content:counter(k,decimal-leading-zero);font-family:'Inter Tight',sans-serif;font-weight:700;color:var(--gold);display:block}
+.steps b{display:block;color:var(--c);font-family:'Inter Tight',sans-serif;font-size:1.08rem}
 /* final cta */
 .cta{text-align:center}
 .cta .lead{margin:0 auto}
@@ -402,28 +412,28 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
 <header class="top" id="top"><div class="wrap">
   <a class="logo" href="/">Mickela Löffel</a>
   <ul class="menu">
-    <li><a href="#angebot">Hochzeit</a></li>
     <li><a href="#videos">Videos</a></li>
+    <li><a href="#angebot">Preise</a></li>
     <li><a href="#stimmen">Stimmen</a></li>
     <li><a href="#live">Live</a></li>
     <li><a href="#bands">Bands</a></li>
     <li><a href="#unterricht">Unterricht</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a class="btn hd" href="#" onclick="openModal();return false;">Termin anfragen</a>
+  <a class="btn hd" href="#" onclick="openModal();return false;">Verfügbarkeit prüfen</a>
   <button class="burger" type="button" aria-label="Menü öffnen" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
 </div></header>
 
 <nav class="mnav" id="mobileMenu" aria-label="Mobile Navigation">
   <button class="x" type="button" onclick="toggleMobileMenu()" aria-label="Menü schließen">&times;</button>
-  <a href="#angebot" onclick="toggleMobileMenu()">Hochzeit</a>
   <a href="#videos" onclick="toggleMobileMenu()">Videos</a>
+  <a href="#angebot" onclick="toggleMobileMenu()">Preise</a>
   <a href="#stimmen" onclick="toggleMobileMenu()">Stimmen</a>
   <a href="#live" onclick="toggleMobileMenu()">Live</a>
   <a href="#bands" onclick="toggleMobileMenu()">Bands</a>
   <a href="#unterricht" onclick="toggleMobileMenu()">Unterricht</a>
   <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
-  <a class="btn" href="#" onclick="toggleMobileMenu();openModal();return false;">Termin anfragen</a>
+  <a class="btn" href="#" onclick="toggleMobileMenu();openModal();return false;">Verfügbarkeit prüfen</a>
 </nav>
 
 <main>
@@ -434,9 +444,10 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
     <h1>Eure Hochzeits&shy;sängerin <em>in Karlsruhe.</em></h1>
     <p>Live gesungen, mit Gefühl und aus vollem Herzen. Für den Moment, in dem alle innehalten: eure Trauung, euer Sektempfang, eure Party.</p>
     <div class="btns">
-      <a class="btn" href="#" onclick="openModal();return false;">Unverbindlich anfragen</a>
+      <a class="btn" href="#" onclick="openModal();return false;">Verfügbarkeit prüfen</a>
       <a class="btn ghost" href="#videos">Videos ansehen</a>
     </div>
+    <a class="hq" href="#stimmen"><span>„Mickela war das Highlight unserer Hochzeit!“</span> Elena &amp; Can, ganzer Tag mit Band</a>
   </div>
 </section>
 
@@ -447,51 +458,26 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
   <li><b>Seit 2018</b>Hauptberuflich Sängerin</li>
 </ul></div></div>
 
-<section id="about" aria-label="Über Mickela Löffel"><div class="wrap about">
-  <img class="rv" src="mickela-hochzeit-duo-gitarre.jpg" alt="Hochzeitssängerin Mickela Löffel singt mit Gitarrist bei einer freien Trauung" width="1067" height="1600" loading="lazy" decoding="async">
-  <div class="rv">
-    <div class="eyebrow">Über mich</div>
-    <h2>Musik, die vom Herzen kommt. <em>Nicht von der Playlist.</em></h2>
-    <p>Ich bin Mickela, Hochzeitssängerin aus Karlsruhe. Ich habe an der Popakademie Baden-Württemberg Gesang &amp; Songwriting studiert und begleite seit 2018 Brautpaare an einem der wichtigsten Tage ihres Lebens.</p>
-    <p class="quote">„Einfach nur sein und den Moment genießen. Genau das möchte ich euch schenken.“</p>
-    <p>Meine Stimme wird oft mit LEA verglichen: warm, nah, ehrlich. Vielleicht kennt ihr mich aus dem Halbfinale von The Voice of Germany oder dem ZDF Fernsehgarten. Auf eurer Hochzeit bekommt ihr genau diese Energie, nur für euch und eure Liebsten.</p>
-    <p>Kein Stargehabe, keine aufgesetzte Show. Ich interessiere mich für eure Geschichte und singe nicht irgendeinen Song, sondern euren.</p>
-    <div class="btns"><a class="btn g" href="#" onclick="openModal();return false;">Lasst uns sprechen</a></div>
-  </div>
-</div></section>
-
 <section id="videos" class="alt" aria-label="Cover-Videos"><div class="wrap">
   <div class="eyebrow">Hör rein</div>
   <h2>Schau rein. <em>Und fühl es.</em></h2>
-  <p class="lead">Von der Blind Audition bei The Voice bis zum Cover für eure Trauung: So klingt es, wenn ich live singe.</p>
+  <p class="lead">So klingt es, wenn ich live singe: erst die Hochzeitsklassiker, dann meine Auftritte bei The Voice of Germany.</p>
+  <div class="vids" style="margin-top:28px">
+    <figure><video controls playsinline preload="none" poster="mickela-video-ein-teil-von-meinem-herzen.jpg" width="720" height="1280" title="Ein Teil von meinem Herzen – Cover von Hochzeitssängerin Mickela"><source src="mickela-video-ein-teil-von-meinem-herzen.mp4" type="video/mp4"></video><figcaption><b>Ein Teil von meinem Herzen</b><small>Cover &middot; perfekt für die Trauung</small></figcaption></figure>
+    <figure><video controls playsinline preload="none" poster="mickela-video-perfect.jpg" width="720" height="1280" title="Perfect – Cover von Hochzeitssängerin Mickela"><source src="mickela-video-perfect.mp4" type="video/mp4"></video><figcaption><b>Perfect</b><small>Cover &middot; der Klassiker zum Einzug</small></figcaption></figure>
+    <figure><video controls playsinline preload="none" poster="mickela-video-i-wanna-dance-with-somebody.jpg" width="720" height="1280" title="I Wanna Dance with Somebody – Cover von Hochzeitssängerin Mickela"><source src="mickela-video-i-wanna-dance-with-somebody.mp4" type="video/mp4"></video><figcaption><b>I Wanna Dance with Somebody</b><small>Cover &middot; Sektempfang &amp; Party</small></figcaption></figure>
+  </div>
+  <h3 class="sub">Bekannt aus The Voice of Germany</h3>
   <div class="yt">
     <figure><button class="pl" type="button" data-yt="CUcwacwObuI" aria-label="Video abspielen: Blind Audition"><img src="yt-voice-blind-audition.jpg" alt="" width="441" height="248" loading="lazy" decoding="async"></button><figcaption><b>Blind Audition</b><small>The Voice of Germany 2020</small></figcaption></figure>
     <figure><button class="pl" type="button" data-yt="oSawL-jDTB0" aria-label="Video abspielen: Halbfinale, Live-Show"><img src="yt-voice-halbfinale.jpg" alt="" width="441" height="248" loading="lazy" decoding="async"></button><figcaption><b>Halbfinale, Live-Show</b><small>The Voice of Germany 2020</small></figcaption></figure>
     <figure><button class="pl" type="button" data-yt="AbnTJ40jRe4" aria-label="Video abspielen: Live Session Heimlich traurig"><img src="yt-live-session-heimlich-traurig.jpg" alt="" width="441" height="248" loading="lazy" decoding="async"></button><figcaption><b>Live Session: Heimlich traurig</b><small>Eigener Song, komplett live</small></figcaption></figure>
   </div>
   <p class="note" style="font-size:.82rem">YouTube wird erst beim Klick auf Abspielen geladen.</p>
-  <h3 class="sub">Cover für eure Hochzeit</h3>
-  <div class="vids">
-    <figure><video controls playsinline preload="none" poster="mickela-video-ein-teil-von-meinem-herzen.jpg" width="720" height="1280" title="Ein Teil von meinem Herzen – Cover von Hochzeitssängerin Mickela"><source src="mickela-video-ein-teil-von-meinem-herzen.mp4" type="video/mp4"></video><figcaption><b>Ein Teil von meinem Herzen</b><small>Cover &middot; perfekt für die Trauung</small></figcaption></figure>
-    <figure><video controls playsinline preload="none" poster="mickela-video-perfect.jpg" width="720" height="1280" title="Perfect – Cover von Hochzeitssängerin Mickela"><source src="mickela-video-perfect.mp4" type="video/mp4"></video><figcaption><b>Perfect</b><small>Cover &middot; der Klassiker zum Einzug</small></figcaption></figure>
-    <figure><video controls playsinline preload="none" poster="mickela-video-i-wanna-dance-with-somebody.jpg" width="720" height="1280" title="I Wanna Dance with Somebody – Cover von Hochzeitssängerin Mickela"><source src="mickela-video-i-wanna-dance-with-somebody.mp4" type="video/mp4"></video><figcaption><b>I Wanna Dance with Somebody</b><small>Cover &middot; Sektempfang &amp; Party</small></figcaption></figure>
-  </div>
   <p class="note">Mehr Live-Momente auf Instagram: <a class="lnk" href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer">@mickela_music</a></p>
 </div></section>
 
-<section id="live" aria-label="Live-Bilder"><div class="wrap">
-  <div class="eyebrow">Live erlebt</div>
-  <h2>Echte Momente. <em>Echte Bühne.</em></h2>
-  <p class="lead">Ob leise bei der Trauung im Grünen, im Kerzenlicht mit Streichern oder auf der Partybühne: So sieht es aus, wenn ich singe.</p>
-  <div class="gal">
-    <img class="t rv" src="mickela-hochzeit-trauung-duo.jpg" alt="Mickela Löffel und Gitarrist live bei einer freien Trauung im Grünen" width="1067" height="1600" loading="lazy" decoding="async">
-    <img class="w rv" src="mickela-acoustic-vibration-konzert.jpg" alt="Konzert von Acoustic Vibration mit Mickela Löffel, Streichern und Kerzenlicht" width="1800" height="1203" loading="lazy" decoding="async">
-    <img class="t rv" src="mickela-iconics-live-gefuehl.jpg" alt="Mickela Löffel singt voller Emotion live mit der Band ICONICS" width="1200" height="1800" loading="lazy" decoding="async" style="object-position:50% 30%">
-    <img class="w rv" src="mickela-hochzeit-braut-umarmung.jpg" alt="Braut umarmt Hochzeitssängerin Mickela nach der Trauung" width="1600" height="1067" loading="lazy" decoding="async">
-  </div>
-</div></section>
-
-<section id="angebot" class="alt" aria-label="Angebot für Hochzeiten"><div class="wrap">
+<section id="angebot" aria-label="Angebot für Hochzeiten"><div class="wrap">
   <div class="eyebrow">Mein Angebot</div>
   <h2>So klingt <em>euer Tag.</em></h2>
   <p class="lead">Solo, im Duo oder mit ganzer Band. Immer mit eigener Tonanlage und abgestimmt auf eure Vorstellung.</p>
@@ -504,7 +490,6 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
       <a class="btn g" href="#" onclick="openModal();return false;">Anfragen</a>
     </article>
     <article class="card rv">
-      <span class="badge">Am beliebtesten</span>
       <h3>Mickela im Duo</h3>
       <div class="price">ab 1.350 €</div>
       <div class="meta">Mit Pianist oder Gitarrist, komplett live</div>
@@ -539,7 +524,7 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
   </div>
 </section>
 
-<section class="dark" aria-label="Ablauf eures Hochzeitstags"><div class="wrap">
+<section class="alt" aria-label="Ablauf eures Hochzeitstags"><div class="wrap">
   <div class="eyebrow">Euer Tag</div>
   <h2>Vom ersten Ton <em>bis zur Tanzfläche.</em></h2>
   <div class="day">
@@ -550,44 +535,42 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
   </div>
 </div></section>
 
+<section id="about" aria-label="Über Mickela Löffel"><div class="wrap about">
+  <img class="rv" src="mickela-hochzeit-duo-gitarre.jpg" alt="Hochzeitssängerin Mickela Löffel singt mit Gitarrist bei einer freien Trauung" width="1067" height="1600" loading="lazy" decoding="async">
+  <div class="rv">
+    <div class="eyebrow">Über mich</div>
+    <h2>Musik, die vom Herzen kommt. <em>Nicht von der Playlist.</em></h2>
+    <p>Ich bin Mickela, Hochzeitssängerin aus Karlsruhe. Ich habe an der Popakademie Baden-Württemberg Gesang &amp; Songwriting studiert und begleite seit 2018 Brautpaare an einem der wichtigsten Tage ihres Lebens.</p>
+    <p class="quote">„Einfach nur sein und den Moment genießen. Genau das möchte ich euch schenken.“</p>
+    <p>Meine Stimme wird oft mit LEA verglichen: warm, nah, ehrlich. Kein Stargehabe, keine aufgesetzte Show. Ich interessiere mich für eure Geschichte und singe nicht irgendeinen Song, sondern euren.</p>
+    <div class="btns"><a class="btn g" href="#" onclick="openModal();return false;">Verfügbarkeit prüfen</a></div>
+  </div>
+</div></section>
+
+<section id="live" class="alt" aria-label="Live-Bilder"><div class="wrap">
+  <div class="eyebrow">Live erlebt</div>
+  <h2>Echte Momente. <em>Echte Bühne.</em></h2>
+  <p class="lead">Von der Trauung im Grünen bis zur Party am Abend: So sieht es aus, wenn ich singe.</p>
+  <div class="gal">
+    <img class="t rv" src="mickela-hochzeit-trauung-duo.jpg" alt="Mickela Löffel und Gitarrist live bei einer freien Trauung im Grünen" width="1067" height="1600" loading="lazy" decoding="async">
+    <img class="b rv" src="mickela-hochzeit-braut-umarmung.jpg" alt="Braut umarmt Hochzeitssängerin Mickela nach der Trauung" width="1600" height="1067" loading="lazy" decoding="async">
+    <img class="t rv" src="mickela-iconics-live-gefuehl.jpg" alt="Mickela Löffel singt voller Emotion live mit der Band ICONICS" width="1200" height="1800" loading="lazy" decoding="async" style="object-position:50% 30%">
+  </div>
+</div></section>
+
 <section id="bands" aria-label="Bands"><div class="wrap">
   <div class="eyebrow">Auf der Bühne</div>
   <h2>Mehr als Solo. <em>Meine Bands.</em></h2>
-  <p class="lead">Wenn es größer werden darf: Mit diesen beiden Bands stehe ich regelmäßig auf Hochzeiten, Firmenevents, Galas und großen Bühnen.</p>
+  <p class="lead">Wenn es größer werden darf: Mit diesen Bands stehe ich regelmäßig auf Hochzeiten, Firmenevents, Galas und großen Bühnen.</p>
   <div class="bands">
     <a class="band rv" href="https://www.iconicsband.de" target="_blank" rel="noopener">
       <img src="mickela-iconics-live-buehne.jpg" alt="Mickela Löffel singt live vor dem leuchtenden ICONICS-Logo" width="1200" height="1800" loading="lazy" decoding="async" style="object-position:50% 35%">
-      <div class="in"><div class="eyebrow">Mitgründerin &amp; Sängerin</div><h3>ICONICS</h3><p>Party- und Eventband für Hochzeiten, Firmenevents und Galas. Abends die perfekte Ergänzung zu meinem Trauungsgesang.</p><span class="go">Zur Bandseite &rarr;</span></div>
+      <div class="in"><div class="eyebrow">Mitgründerin &amp; Sängerin</div><h3>ICONICS</h3><p>Party- und Eventband für Hochzeiten, Firmenevents und Galas. Buchbar im Paket „Mickela mit Band“: tagsüber Trauung, abends Party.</p><span class="go">Zur Bandseite &rarr;</span></div>
     </a>
-    <a class="band rv" href="https://acoustic-vibration.de" target="_blank" rel="noopener">
+    <div class="band rv">
       <img src="mickela-acoustic-vibration-konzert.jpg" alt="Mickela Löffel live als Frontsängerin von Acoustic Vibration beim Kirchenkonzert mit Streichern und Kerzen" width="1800" height="1203" loading="lazy" decoding="async" style="object-position:38% 50%">
-      <div class="in"><div class="eyebrow">Frontsängerin</div><h3>Acoustic Vibration</h3><p>Coverband aus der Pfalz mit eigenen Konzertformaten wie „Erlebnis der Sinne“ und „Unter die Haut“.</p><span class="go">Zur Bandseite &rarr;</span></div>
-    </a>
-  </div>
-</div></section>
-
-<section class="alt" aria-label="Warum Livemusik"><div class="wrap why">
-  <div class="rv">
-    <div class="eyebrow">Warum Livemusik</div>
-    <h2>Eine Playlist läuft. <em>Livemusik lebt.</em></h2>
-    <p>Livemusik reagiert auf den Raum, auf die Stimmung, auf den Moment. Gäste, die sich eben noch unterhalten haben, werden still. Ihr habt für diese drei Minuten einen Moment ganz für euch.</p>
-    <p>Genau das ist der Unterschied. Und genau dafür bin ich da.</p>
-  </div>
-  <div class="feats rv">
-    <div><h3>Individuelle Songauswahl</h3><p>Kein starres Repertoire. Wir wählen die Songs, die zu eurer Geschichte passen.</p></div>
-    <div><h3>Direkt mit mir</h3><p>Keine Agentur, kein Manager. Ihr plant direkt mit mir.</p></div>
-    <div><h3>Verlässlich &amp; professionell</h3><p>Seit 2018 auf der Bühne. Klarer Vertrag, eigene Technik, pünktlich vor Ort.</p></div>
-  </div>
-</div></section>
-
-<section aria-label="Ablauf der Buchung"><div class="wrap">
-  <div class="eyebrow">Der Ablauf</div>
-  <h2>Von der Anfrage <em>zum ersten Ton.</em></h2>
-  <div class="day">
-    <div><h3>Anfrage</h3><p>Formular ausfüllen oder per WhatsApp schreiben. Ich melde mich innerhalb von 24 bis 48 Stunden.</p></div>
-    <div><h3>Beratung</h3><p>Wir sprechen über eure Wünsche, den Ablauf und eure Songs.</p></div>
-    <div><h3>Buchung</h3><p>Klarer Vertrag, transparente Konditionen, keine versteckten Kosten.</p></div>
-    <div><h3>Euer Tag</h3><p>Ich bin da und singe. Ihr genießt euren Tag ohne Stress.</p></div>
+      <div class="in"><div class="eyebrow">Frontsängerin</div><h3>Acoustic Vibration</h3><p>Coverband aus der Pfalz mit eigenen Konzertformaten wie „Erlebnis der Sinne“ und „Unter die Haut“.</p></div>
+    </div>
   </div>
 </div></section>
 
@@ -601,22 +584,6 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
   <details><summary>Können wir dich nur für die Trauung buchen?</summary><p>Ja, das ist sehr beliebt. Auf Wunsch begleite ich auch Sektempfang und Abend, oder wir übernehmen mit meiner Band ICONICS den ganzen musikalischen Tag.</p></details>
   <details><summary>Singst du zu Playback oder mit Live-Begleitung?</summary><p>Beides. Solo singe ich live zu hochwertigen Studio-Instrumentals, im Duo begleitet mich ein Pianist oder Gitarrist komplett live.</p></details>
   <details><summary>Wie läuft die Planung nach der Buchung ab?</summary><p>Wir besprechen eure Wünsche, wählen die Songs und klären alle Details zu Location und Ablauf. Gerne stimme ich mich auch direkt mit eurer Hochzeitsplanerin oder der Location ab.</p></details>
-</div></section>
-
-<section id="unterricht" class="dark" aria-label="Gesangsunterricht in Karlsruhe"><div class="wrap teach">
-  <div>
-    <div class="eyebrow">Gesangsunterricht Karlsruhe</div>
-    <h2>Von Sängerin <em>zu Sängerin.</em></h2>
-    <p class="lead">Du willst deine Stimme entdecken, weiterentwickeln oder für einen besonderen Anlass trainieren? Ich unterrichte mit Fokus auf Pop, Ausdruck und Authentizität, für Kinder ab 8 Jahren und Erwachsene.</p>
-    <div class="btns"><a class="btn" href="#" onclick="openUnterrichtModal();return false;">Unterricht anfragen</a></div>
-    <div class="voucher"><b>Musik verschenken?</b><a class="btn" href="gutschein">Zu den Gutscheinen</a></div>
-  </div>
-  <div class="facts">
-    <div><b>Für wen?</b><span>Anfänger bis Fortgeschrittene, ab 8 Jahren</span></div>
-    <div><b>Schwerpunkte</b><span>Pop, Ausdruck, Atemtechnik, Bühnenpräsenz</span></div>
-    <div><b>Format</b><span>Einzelstunden oder 5er-Karte, in Karlsruhe oder online</span></div>
-    <div><b>Erfahrung</b><span>Popakademie BW &middot; The Voice of Germany</span></div>
-  </div>
 </div></section>
 
 <section aria-label="Auftrittsorte"><div class="wrap">
@@ -638,13 +605,30 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
 <section id="kontakt" class="dark cta" aria-label="Kontakt und Anfrage"><div class="wrap">
   <div class="eyebrow">Kontakt</div>
   <h2>Lasst uns über euren <em>schönsten Tag</em> sprechen.</h2>
-  <p class="lead">Datum, Location, Wünsche: in wenigen Schritten erledigt. Ich melde mich persönlich innerhalb von 24 bis 48 Stunden.</p>
+  <p class="lead">Schickt mir euer Datum, ich melde mich persönlich innerhalb von 24 bis 48 Stunden.</p>
+  <ol class="steps"><li><b>Datum anfragen</b>Formular oder WhatsApp, dauert zwei Minuten.</li><li><b>Kennenlernen</b>Wir sprechen über euren Tag und eure Songs.</li><li><b>Termin sichern</b>Klarer Vertrag, keine versteckten Kosten.</li></ol>
   <div class="btns">
-    <a class="btn" href="#" onclick="openModal();return false;">Anfrage starten</a>
+    <a class="btn" href="#" onclick="openModal();return false;">Verfügbarkeit prüfen</a>
     <a class="btn ghost" href="https://wa.me/message/XOIMY47MGWYZN1" target="_blank" rel="noopener">WhatsApp</a>
   </div>
   <small>Oder per E-Mail: <a href="mailto:mickela@loeffel.de">mickela@loeffel.de</a></small>
 </div></section>
+<section id="unterricht" class="alt" aria-label="Gesangsunterricht in Karlsruhe"><div class="wrap teach">
+  <div>
+    <div class="eyebrow">Gesangsunterricht Karlsruhe</div>
+    <h2>Von Sängerin <em>zu Sängerin.</em></h2>
+    <p class="lead">Du willst deine Stimme entdecken, weiterentwickeln oder für einen besonderen Anlass trainieren? Ich unterrichte mit Fokus auf Pop, Ausdruck und Authentizität, für Kinder ab 8 Jahren und Erwachsene.</p>
+    <div class="btns"><a class="btn" href="#" onclick="openUnterrichtModal();return false;">Unterricht anfragen</a></div>
+    <div class="voucher"><b>Musik verschenken?</b><a class="btn" href="gutschein">Zu den Gutscheinen</a></div>
+  </div>
+  <div class="facts">
+    <div><b>Für wen?</b><span>Anfänger bis Fortgeschrittene, ab 8 Jahren</span></div>
+    <div><b>Schwerpunkte</b><span>Pop, Ausdruck, Atemtechnik, Bühnenpräsenz</span></div>
+    <div><b>Format</b><span>Einzelstunden oder 5er-Karte, in Karlsruhe oder online</span></div>
+    <div><b>Erfahrung</b><span>Popakademie BW &middot; The Voice of Germany</span></div>
+  </div>
+</div></section>
+
 </main>
 
 <footer><div class="wrap">
@@ -663,7 +647,7 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
   <div class="fbot"><span>&copy; 2026 Mickela Löffel &middot; Hochzeitssängerin Karlsruhe</span><span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></span></div>
 </div></footer>
 
-<div class="sticky" id="sticky"><a class="btn" href="#" onclick="openModal();return false;">Termin anfragen</a></div>
+<div class="sticky" id="sticky"><a class="btn" href="#" onclick="openModal();return false;">Verfügbarkeit prüfen</a></div>
 
 <script>
 function toggleMobileMenu(){var m=document.getElementById('mobileMenu');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
