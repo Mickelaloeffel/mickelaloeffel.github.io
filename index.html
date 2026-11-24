@@ -252,6 +252,24 @@ h2{font-size:clamp(2rem,5.5vw,3rem);margin:10px 0 16px}
 .card.feat{background:var(--g);color:var(--c)}.card.feat .meta{color:#c9d2c6}.card.feat em{color:var(--gold)}
 .badge{position:absolute;top:-11px;left:24px;background:var(--gold);color:var(--g);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:5px 11px;border-radius:99px}
 .note{margin-top:22px;color:var(--mut);font-size:.95rem}
+.rev figcaption:empty{display:none}
+.emo .wrap{max-width:900px}
+.slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:30px;outline:none}
+.slider::-webkit-scrollbar{display:none}
+.sl{flex:0 0 100%;scroll-snap-align:center;margin:0;padding:0 6px}
+.sl .tag{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--gl);border:1px solid rgba(232,213,176,.45);border-radius:99px;padding:5px 12px}
+.sl blockquote{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(1.5rem,4vw,2.3rem);line-height:1.25;letter-spacing:-.015em;color:var(--c);margin:20px auto 16px;max-width:760px}
+.sl figcaption{color:var(--gold);font-weight:600}
+.sl details{border:0;padding:0;margin-top:14px}
+.sl summary{display:inline-flex;font:500 .9rem Inter,sans-serif;color:#d6ddd3;text-decoration:underline;text-underline-offset:3px}
+.sl summary:after{content:none}
+.sl details p{color:#e4e9e1;margin:12px auto 0;max-width:640px;font-size:.98rem}
+.sctl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:30px}
+.sbtn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(232,213,176,.5);background:transparent;color:var(--gl);font-size:1.1rem;cursor:pointer;transition:background .2s}
+.sbtn:hover{background:rgba(232,213,176,.15)}
+.dots{display:flex;gap:8px}
+.dots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:rgba(232,213,176,.35);cursor:pointer;transition:width .25s,background .25s}
+.dots button.on{width:24px;background:var(--gold)}
 /* day timeline */
 .day{display:grid;gap:22px;margin-top:34px;counter-reset:s}
 @media(min-width:760px){.day{grid-template-columns:repeat(2,1fr);gap:30px 44px}}
@@ -390,6 +408,7 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
   <ul class="menu">
     <li><a href="#angebot">Hochzeit</a></li>
     <li><a href="#videos">Videos</a></li>
+    <li><a href="#stimmen">Stimmen</a></li>
     <li><a href="#live">Live</a></li>
     <li><a href="#bands">Bands</a></li>
     <li><a href="#unterricht">Unterricht</a></li>
@@ -403,6 +422,7 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
   <button class="x" type="button" onclick="toggleMobileMenu()" aria-label="Menü schließen">&times;</button>
   <a href="#angebot" onclick="toggleMobileMenu()">Hochzeit</a>
   <a href="#videos" onclick="toggleMobileMenu()">Videos</a>
+  <a href="#stimmen" onclick="toggleMobileMenu()">Stimmen</a>
   <a href="#live" onclick="toggleMobileMenu()">Live</a>
   <a href="#bands" onclick="toggleMobileMenu()">Bands</a>
   <a href="#unterricht" onclick="toggleMobileMenu()">Unterricht</a>
@@ -512,6 +532,22 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
   <p class="note">Noch unsicher, was passt? Im persönlichen Gespräch finden wir es gemeinsam heraus. Unverbindlich und ohne Verkaufsdruck.</p>
 </div></section>
 
+<section id="stimmen" class="emo" aria-label="Stimmen von Brautpaaren">
+  <img src="mickela-braut-umarmung.jpg" alt="" width="2000" height="1336" loading="lazy" decoding="async">
+  <div class="wrap">
+    <div class="eyebrow">Stimmen von Brautpaaren</div>
+    <h2>Was bleibt, <em>sagen die Paare.</em></h2>
+    <div class="slider" id="slider" tabindex="0" aria-label="Bewertungen, zum Weiterblättern wischen">
+      <figure class="sl"><span class="tag">Freie Trauung &middot; Solo</span><blockquote>„Gänsehaut von der ersten bis zur letzten Sekunde.“</blockquote><figcaption>Selin &amp; Patrick</figcaption><details><summary>Ganze Bewertung lesen</summary><p>„Wow, einfach wow! Mickela hat unsere freie Trauung zu etwas ganz Besonderem gemacht. Schon im ersten Gespräch hat man gemerkt, wie viel Herz sie in ihre Arbeit steckt. Als sie beim Einzug angefangen hat zu singen, war es um uns geschehen. Gänsehaut von der ersten bis zur letzten Sekunde. Wir sind so froh, dass wir dich gefunden haben!“</p></details></figure>
+      <figure class="sl"><span class="tag">Trauung &middot; Duo</span><blockquote>„Sogar unseren etwas ungewöhnlichen Wunschsong hat sie ohne Zögern möglich gemacht, und er klang schöner als das Original.“</blockquote><figcaption>Niklas &amp; Julian</figcaption><details><summary>Ganze Bewertung lesen</summary><p>„Wir sind immer noch total geflasht! Mickela und ihr Pianist haben unsere Trauung so wunderschön begleitet, dass wir es kaum in Worte fassen können. Sogar unseren etwas ungewöhnlichen Wunschsong hat sie ohne Zögern möglich gemacht, und er klang schöner als das Original. Dazu so herzlich und unkompliziert. Wir würden sie sofort wieder buchen!“</p></details></figure>
+      <figure class="sl"><span class="tag">Trauung im Duo + Sektempfang</span><blockquote>„Unsere Gäste haben uns noch Wochen später auf die Musik angesprochen.“</blockquote><figcaption>Mira &amp; Kevin</figcaption><details><summary>Ganze Bewertung lesen</summary><p>„Beste Entscheidung ever! Bei der Trauung kamen uns die Tränen, beim Sektempfang wurde gelacht, gesungen und getanzt. Mickela hat genau gespürt, was in welchem Moment passt. Unsere Gäste haben uns noch Wochen später auf die Musik angesprochen. Danke, danke, danke für diesen traumhaften Tag!“</p></details></figure>
+      <figure class="sl"><span class="tag">Kirchliche Trauung + Sektempfang</span><blockquote>„In der Kirche hat Mickela eine Atmosphäre geschaffen, die wir nie vergessen werden.“</blockquote><figcaption>Jana &amp; Dominik</figcaption><details><summary>Ganze Bewertung lesen</summary><p>„Was für eine Stimme! In der Kirche hat Mickela eine Atmosphäre geschaffen, die wir nie vergessen werden. Die Mischung aus klassischen und modernen Songs war perfekt abgestimmt, und die Absprache mit dem Pfarrer lief völlig problemlos. Beim Sektempfang danach war die Stimmung einfach herrlich. Von Herzen: Danke, liebe Mickela!“</p></details></figure>
+      <figure class="sl"><span class="tag">Ganzer Tag &middot; mit Band</span><blockquote>„Mickela war das Highlight unserer Hochzeit!“</blockquote><figcaption>Elena &amp; Can</figcaption><details><summary>Ganze Bewertung lesen</summary><p>„Wir können es nicht oft genug sagen: Mickela war das Highlight unserer Hochzeit! Sie hat uns den ganzen Tag begleitet, von der emotionalen Trauung über den entspannten Sektempfang bis zur Party am Abend. Mit ihrer Band war die Tanzfläche keine Sekunde leer, und der DJ hat danach nahtlos weitergemacht. Wir hatten eine Ansprechpartnerin für alles und konnten unseren Tag einfach nur genießen. Wenn ihr überlegt, sie zu buchen: Macht es! Ihr werdet es nicht bereuen.“</p></details></figure>
+    </div>
+    <div class="sctl"><button type="button" class="sbtn" data-d="-1" aria-label="Vorherige Bewertung">&larr;</button><div class="dots" id="dots"></div><button type="button" class="sbtn" data-d="1" aria-label="Nächste Bewertung">&rarr;</button></div>
+  </div>
+</section>
+
 <section class="dark" aria-label="Ablauf eures Hochzeitstags"><div class="wrap">
   <div class="eyebrow">Euer Tag</div>
   <h2>Vom ersten Ton <em>bis zur Tanzfläche.</em></h2>
@@ -563,15 +599,6 @@ footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
     <div><h3>Euer Tag</h3><p>Ich bin da und singe. Ihr genießt euren Tag ohne Stress.</p></div>
   </div>
 </div></section>
-
-<section class="emo" aria-label="Was bleibt">
-  <img src="mickela-braut-umarmung.jpg" alt="" width="2000" height="1336" loading="lazy" decoding="async">
-  <div class="wrap">
-    <div class="eyebrow">Was bleibt</div>
-    <h2>Der Moment, in dem <em>alle einfach nur da sind.</em></h2>
-    <p>Immer wieder schreiben mir Brautpaare nach ihrer Hochzeit. Nicht, weil die Musik lief, sondern weil man sie fühlen konnte. Und weil ihre Gäste noch Monate später davon sprechen.</p>
-  </div>
-</section>
 
 <section id="faq" class="alt" aria-label="Häufige Fragen"><div class="wrap faq">
   <div class="eyebrow">Häufige Fragen</div>
@@ -658,6 +685,14 @@ function toggleMobileMenu(){var m=document.getElementById('mobileMenu');m.classL
   var vs=document.querySelectorAll('.vids video');
   vs.forEach(function(v){v.addEventListener('play',function(){vs.forEach(function(o){if(o!==v)o.pause();});});});
   document.querySelectorAll('.pl[data-yt]').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;vs.forEach(function(o){o.pause();});b.replaceWith(f);});});
+  var sl=document.getElementById('slider');if(sl){var it=sl.children,dw=document.getElementById('dots');
+    for(var i=0;i<it.length;i++){var d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Bewertung '+(i+1));(function(i){d.onclick=function(){go(i)};})(i);dw.appendChild(d);}
+    function cur(){return Math.round(sl.scrollLeft/sl.clientWidth);}
+    function go(i){i=(i+it.length)%it.length;sl.scrollTo({left:i*sl.clientWidth,behavior:'smooth'});}
+    function mark(){var c=cur();[].forEach.call(dw.children,function(b,j){b.classList.toggle('on',j===c);});}
+    sl.addEventListener('scroll',function(){clearTimeout(sl._t);sl._t=setTimeout(mark,60);},{passive:true});mark();
+    document.querySelectorAll('.sbtn').forEach(function(b){b.onclick=function(){go(cur()+ +b.dataset.d);};});
+    sl.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(cur()+1);if(e.key==='ArrowLeft')go(cur()-1);});}
 })();
 </script>
 
