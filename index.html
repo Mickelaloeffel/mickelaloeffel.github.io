@@ -13,7 +13,6 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="alternate icon" href="favicon.ico" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Hochzeitssängerin Karlsruhe – Mickela Löffel" />
@@ -67,7 +66,7 @@
     "name": "Mickela Löffel – Hochzeitssängerin",
     "url": "https://mickelaloeffel.de",
     "description": "Hochzeitssängerin aus Karlsruhe. Pop-Balladen, live gesungen für Trauung, Sektempfang & mehr. Bekannt aus The Voice of Germany 2020 und dem ZDF Fernsehgarten. Bachelor-Absolventin der Popakademie Baden-Württemberg.",
-    "image": "https://mickelaloeffel.de/img/mickela-hero.jpg",
+    "image": "https://mickelaloeffel.de/mickela-hero.jpg",
     "email": "mickela@loeffel.de",
     "address": {
       "@type": "PostalAddress",
@@ -82,6 +81,7 @@
     "genre": ["Pop", "Balladen", "Soul"],
     "sameAs": [
       "https://www.iconicsband.de",
+      "https://acoustic-vibration.de",
       "https://www.instagram.com/mickela_music"
     ]
   }
@@ -137,1396 +137,528 @@
   }
   </script>
 
-  <!-- Google Fonts – optimiert -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <!-- Hero-Bild vorladen für schnelleren LCP -->
-  <link rel="preload" as="image" href="mickela-hero.jpg" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="mickela-hero.jpg" fetchpriority="high" />
+  <meta name="theme-color" content="#2C3E2D" />
   <style>
-    /* ===== DESIGN SYSTEM ===== */
-    :root {
-      --cream:       #FAF7F2;
-      --cream-dark:  #F0EBE1;
-      --green-deep:  #2C3E2D;
-      --green-mid:   #4A6741;
-      --green-light: #8AAE84;
-      --gold:        #C9A96E;
-      --gold-light:  #E8D5B0;
-      --text-dark:   #1C1C1C;
-      --text-mid:    #4A4A4A;
-      --text-light:  #7A7A7A;
-      --white:       #FFFFFF;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'Jost', sans-serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* font-display: swap verhindert unsichtbaren Text während Fonts laden */
-    @font-face { font-display: swap; }
-
-    html { scroll-behavior: smooth; }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    }
-
-    body {
-      font-family: var(--font-body);
-      background-color: var(--cream);
-      color: var(--text-dark);
-      font-size: 16px;
-      line-height: 1.75;
-      font-weight: 300;
-    }
-
-    /* ===== NAVIGATION ===== */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.25rem 4rem;
-      background: rgba(250, 247, 242, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
-      transition: padding 0.3s ease;
-    }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: var(--green-deep);
-      letter-spacing: 0.04em;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--green-deep); }
-
-    /* ===== HERO ===== */
-    /* ================================================
-       BILD-HINWEIS:
-       Ersetze "YOUR_HERO_IMAGE.jpg" mit deinem echten
-       Hochzeitsfoto. Ideal: du singst bei einer Trauung,
-       natürliches Licht, querformat (16:9 oder breiter).
-       ================================================ */
-    #hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 80px;
-    }
-
-    .hero-image-side {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(44,62,45,0.15) 0%, transparent 60%);
-    }
-
-    .hero-content-side {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: 5rem 5rem 5rem 4rem;
-      padding-top: 7rem;
-      background: var(--cream);
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-
-    /* ================================================
-       SEO: H1 - Die wichtigste Überschrift der Seite!
-       Das Keyword "Hochzeitssängerin Karlsruhe" steht
-       ganz am Anfang – das liebt Google.
-       ================================================ */
-    h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 5vw, 4.2rem);
-      font-weight: 300;
-      line-height: 1.15;
-      color: var(--green-deep);
-      margin-bottom: 1.5rem;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--green-mid);
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: var(--text-mid);
-      max-width: 38ch;
-      margin-bottom: 2.5rem;
-      line-height: 1.8;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--green-deep);
-      color: var(--cream);
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 1rem 2.5rem;
-      border: none;
-      cursor: pointer;
-      transition: background 0.25s ease, transform 0.2s ease;
-    }
-
-    .btn-primary:hover {
-      background: var(--green-mid);
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      display: inline-block;
-      background: transparent;
-      color: var(--green-deep);
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 1rem 2.5rem;
-      border: 1px solid var(--green-deep);
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .btn-secondary:hover {
-      background: var(--green-deep);
-      color: var(--cream);
-    }
-
-    .hero-cta-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* ===== TRUST BAR ===== */
-    #trust {
-      background: var(--green-deep);
-      padding: 1.1rem 4rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .trust-item {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      white-space: nowrap;
-    }
-
-    .trust-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-
-    /* ===== SECTIONS GENERAL ===== */
-    section { padding: 7rem 4rem; }
-
-    .section-eyebrow {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 300;
-      line-height: 1.2;
-      color: var(--green-deep);
-      margin-bottom: 1.5rem;
-    }
-
-    h2 em { font-style: italic; }
-
-    h3 {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: var(--green-deep);
-      margin-bottom: 0.75rem;
-    }
-
-    p {
-      color: var(--text-mid);
-      max-width: 65ch;
-      margin-bottom: 1.25rem;
-    }
-
-    /* ===== ABOUT ===== */
-    #about {
-      background: var(--white);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-
-    .about-text p:last-child { margin-bottom: 0; }
-
-    .about-image-wrap {
-      position: relative;
-    }
-
-    /* ================================================
-       BILD-HINWEIS:
-       Ersetze das Platzhalterbild mit einem schönen
-       Portrait von dir. Ideal: natürliches Licht,
-       du schaust in die Kamera oder singst.
-       Format: Hochformat (3:4 oder 2:3).
-       ================================================ */
-    .about-img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 3/4;
-      object-position: center 30%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .about-img-accent {
-      position: absolute;
-      bottom: -1.5rem;
-      left: -1.5rem;
-      width: 60%;
-      aspect-ratio: 1;
-      border: 2px solid var(--gold-light);
-      z-index: -1;
-    }
-
-    .quote-block {
-      margin: 2rem 0;
-      padding: 1.5rem 2rem;
-      border-left: 2px solid var(--gold);
-      background: var(--cream);
-    }
-
-    .quote-block p {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--green-deep);
-      max-width: none;
-      margin: 0;
-      line-height: 1.6;
-    }
-
-    /* ===== SERVICES ===== */
-    #leistungen {
-      background: var(--cream-dark);
-    }
-
-    .services-header {
-      max-width: 600px;
-      margin-bottom: 4rem;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .service-card {
-      background: var(--white);
-      padding: 2.5rem 2rem;
-      position: relative;
-      transition: transform 0.25s ease;
-    }
-
-    .service-card:hover { transform: translateY(-4px); }
-
-    .service-number {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--gold-light);
-      line-height: 1;
-      margin-bottom: 1.25rem;
-      display: block;
-    }
-
-    .service-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .service-card p {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      max-width: none;
-      margin-bottom: 0;
-    }
-
-    .service-link {
-      display: inline-block;
-      margin-top: 1.25rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--green-mid);
-      text-decoration: none;
-      border-bottom: 1px solid var(--green-light);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .service-link:hover {
-      color: var(--green-deep);
-      border-color: var(--green-deep);
-    }
-
-    .services-note {
-      margin-top: 3rem;
-      padding: 2rem;
-      background: var(--white);
-      border-left: 2px solid var(--gold);
-    }
-
-    .services-note p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--text-mid);
-      max-width: none;
-    }
-
-    /* ===== EMOTION SECTION ===== */
-    #gefuehl {
-      background: var(--green-deep);
-      text-align: center;
-      padding: 8rem 4rem;
-    }
-
-    #gefuehl .section-eyebrow { color: var(--gold); }
-
-    #gefuehl h2 {
-      color: var(--cream);
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-
-    #gefuehl p {
-      color: rgba(250, 247, 242, 0.75);
-      max-width: 55ch;
-      margin: 0 auto 1.25rem;
-    }
-
-    /* ===== CONTACT ===== */
-    #kontakt {
-      background: var(--cream);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .form-group label {
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-light);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--text-dark);
-      background: var(--white);
-      border: 1px solid var(--cream-dark);
-      padding: 0.85rem 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-      width: 100%;
-      appearance: none;
-      border-radius: 0;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--green-mid);
-    }
-
-    .form-group textarea { min-height: 130px; resize: vertical; }
-
-    .contact-info h2 { margin-bottom: 1rem; }
-
-    .contact-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      margin-bottom: 2rem;
-    }
-
-    .contact-detail span:first-child {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .contact-detail a {
-      color: var(--text-mid);
-      text-decoration: none;
-      font-size: 1rem;
-    }
-
-    .contact-detail a:hover { color: var(--green-deep); }
-
-    .response-note {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      margin-top: -0.5rem;
-      margin-bottom: 0;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--green-deep);
-      padding: 2rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-copy {
-      font-size: 0.8rem;
-      color: rgba(250, 247, 242, 0.5);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .footer-links a {
-      font-size: 0.8rem;
-      color: rgba(250, 247, 242, 0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--gold-light); }
-
-    /* ===== PLACEHOLDER IMAGE ===== */
-    .img-placeholder {
-      background: var(--cream-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-light);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-family: var(--font-body);
-    }
-
-    /* ===== SCROLL ANIMATION ===== */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      nav { padding: 1.25rem 2rem; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      #hero {
-        grid-template-columns: 1fr;
-        min-height: 100vh;
-        position: relative;
-      }
-      .hero-image-side {
-        position: absolute;
-        inset: 0;
-        height: 100%;
-        z-index: 0;
-      }
-      .hero-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-      }
-      .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(44,62,45,0.55) 0%, rgba(44,62,45,0.75) 100%);
-      }
-      .hero-content-side {
-        position: relative;
-        z-index: 1;
-        padding: 8rem 2rem 4rem;
-        background: transparent;
-      }
-      .hero-content-side h1 { color: var(--cream); }
-      .hero-content-side h1 em { color: var(--gold); }
-      .hero-eyebrow { display: none; }
-      .hero-sub { color: rgba(250,247,242,0.85); }
-      .hero-content-side .btn-secondary {
-        border-color: rgba(250,247,242,0.6);
-        color: var(--cream);
-        background: rgba(255,255,255,0.08);
-      }
-      .hero-content-side .btn-secondary:hover {
-        background: rgba(255,255,255,0.2);
-        color: var(--cream);
-      }
-      .about-image-wrap { order: -1; }
-      .about-img-accent { display: none; }
-      .services-grid { grid-template-columns: 1fr; }
-      #trust { gap: 1.5rem; padding: 1.25rem 2rem; }
-      #about, #kontakt { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
-      section { padding: 5rem 2rem; }
-      #gefuehl { padding: 5rem 2rem; }
-      #gesangsunterricht > div { grid-template-columns: 1fr !important; gap: 2rem; }
-      #gesangsunterricht > div > div:last-child { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(201,169,110,0.2); padding-top: 2rem; }
-      .seo-footer-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
-      .seo-footer-wrap { padding: 2rem 1.5rem !important; }
-      footer { padding: 1.5rem 2rem; }
-    }
-    .service-card .price-tag{font-family:var(--font-display)!important;font-size:1.5rem!important;font-variant-numeric:lining-nums;color:var(--green-deep);margin:1.25rem 0!important;line-height:1.35;border-top:1px solid rgba(201,169,110,0.35);padding-top:1rem;}
-    .service-card .price-tag span{font-family:var(--font-body);font-size:0.82rem;color:var(--text-light);}
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--green-deep);
-      transition: all 0.2s;
-    }
-    @media (max-width: 900px) { .nav-hamburger { display: flex; } .unterschied-grid{grid-template-columns:1fr!important;gap:2rem!important;} }
-    @media (max-width: 700px) { .ablauf-grid{grid-template-columns:1fr 1fr!important;} }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--green-deep);
-      z-index: 300;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: none;
-      border: none;
-      color: var(--cream);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .mobile-menu ul { list-style: none; text-align: center; }
-    .mobile-menu ul li { padding: 1rem 0; }
-    .mobile-menu ul li a {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--cream);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      transition: color 0.2s;
-    }
-    .mobile-menu ul li a:hover { color: var(--gold); }
-    .mobile-menu ul li:last-child a {
-      color: var(--gold);
-      font-size: 1.2rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    /* ===== ANIMATIONEN ===== */
-    @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-anim-1 { opacity: 0; animation: heroFadeUp 0.7s ease 0.1s forwards; }
-    .hero-anim-2 { opacity: 0; animation: heroFadeUp 0.8s ease 0.3s forwards; }
-    .hero-anim-3 { opacity: 0; animation: heroFadeUp 0.8s ease 0.5s forwards; }
-    .hero-anim-4 { opacity: 0; animation: heroFadeUp 0.8s ease 0.7s forwards; }
-
-    .hero-parallax {
-      will-change: transform;
-      transition: transform 0.1s linear;
-    }
-
-    /* ===== FAQ ===== */
-    .faq-item {
-      background: var(--white);
-      border-left: 2px solid transparent;
-      transition: border-color 0.2s;
-    }
-    .faq-item[open] { border-left-color: var(--gold); }
-    .faq-question {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--green-deep);
-      padding: 1.25rem 1.5rem;
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-    .faq-question::-webkit-details-marker { display: none; }
-    .faq-question::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--gold); flex-shrink: 0; transition: transform 0.2s; }
-    .faq-item[open] .faq-question::after { transform: rotate(45deg); }
-    .faq-answer { padding: 0 1.5rem 1.25rem; font-size: 0.92rem; color: var(--text-mid); line-height: 1.8; max-width: none; margin: 0; }
-
-    /* ===== MODAL OVERLAY ===== */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(28, 28, 28, 0.7);
-      backdrop-filter: blur(6px);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-box {
-      background: var(--white);
-      width: 100%;
-      max-width: 640px;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.35s ease;
-    }
-
-    .modal-overlay.open .modal-box {
-      transform: translateY(0);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      width: 36px;
-      height: 36px;
-      background: var(--cream);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      color: var(--text-mid);
-      z-index: 10;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .modal-close:hover {
-      background: var(--cream-dark);
-      color: var(--text-dark);
-    }
-
-    /* Wizard inside modal */
-    .modal-box .wizard {
-      padding: 3rem;
-      border: none;
-      max-width: none;
-    }
-
-    @media (max-width: 600px) {
-      .modal-box .wizard { padding: 2rem 1.5rem; }
-      .modal-overlay { padding: 0; align-items: flex-end; }
-      .modal-box { max-height: 95vh; border-radius: 0; }
-    }
+:root{--g:#2C3E2D;--g2:#4A6741;--c:#FAF7F2;--c2:#F2ECE1;--gold:#C9A96E;--gl:#E8D5B0;--ink:#2C3E2D;--mut:#4b584c;--r:14px;
+/* Alias-Variablen fuer die bestehenden Wizard-/Modal-Styles */
+--cream:#FAF7F2;--cream-dark:#F2ECE1;--green-deep:#2C3E2D;--green-mid:#4A6741;--green-light:#8AAE84;--gold-light:#E8D5B0;--text-dark:#2C3E2D;--text-mid:#4b584c;--text-light:#6b766c;--white:#fff;--font-display:'Inter Tight',Inter,sans-serif;--font-body:Inter,system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:Inter,system-ui,sans-serif;font-size:17px;color:var(--ink);background:var(--c);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Inter Tight',Inter,sans-serif;font-weight:600;line-height:1.08;letter-spacing:-.02em}
+em{font-style:normal;color:var(--g2)}
+a{color:inherit}
+img{max-width:100%;display:block}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;font-weight:500;text-transform:uppercase;color:var(--gold)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+h2{font-size:clamp(2rem,5.5vw,3rem);margin:10px 0 16px}
+.lead{color:var(--mut);max-width:36rem;font-size:1.05rem}
+.dark{background:var(--g);color:var(--c)}.dark em{color:var(--gold)}.dark .lead{color:#d6ddd3}
+.alt{background:var(--c2)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--g);font:600 1rem Inter,sans-serif;padding:16px 28px;border-radius:99px;border:0;cursor:pointer;text-decoration:none;transition:transform .15s,background .2s}
+.btn:hover{background:var(--gl)}.btn:active{transform:scale(.98)}
+.btn.g{background:var(--g);color:var(--c)}.btn.g:hover{background:var(--g2)}
+.btn.ghost{background:transparent;color:inherit;border:1px solid currentColor}
+.btn.ghost:hover{background:rgba(255,255,255,.08)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.lnk{font-weight:600;color:var(--g2);text-decoration:none;border-bottom:1.5px solid var(--gold);padding-bottom:2px}
+/* header */
+.top{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,box-shadow .3s}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;color:var(--c)}
+.top.solid{background:rgba(250,247,242,.96);backdrop-filter:blur(8px);box-shadow:0 1px 0 rgba(44,62,45,.08)}
+.top.solid .wrap{color:var(--g)}
+.logo{text-decoration:none;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:1.15rem;letter-spacing:-.01em}
+.menu{display:none;list-style:none;gap:26px;font-size:.93rem;font-weight:500}
+.menu a{text-decoration:none;opacity:.9}.menu a:hover{opacity:1;color:var(--gold)}
+.top .btn{padding:11px 20px;font-size:.9rem}
+.burger{background:none;border:0;color:inherit;width:40px;height:40px;cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:5px;align-items:center}
+.burger span{width:22px;height:2px;background:currentColor;border-radius:2px}
+.top .btn.hd{display:none}
+@media(min-width:960px){.menu{display:flex}.burger{display:none}.top .btn.hd{display:inline-flex}}
+.mnav{position:fixed;inset:0;z-index:60;background:var(--g);color:var(--c);padding:90px 28px 40px;display:flex;flex-direction:column;gap:6px;transform:translateY(-100%);transition:transform .35s ease}
+.mnav.open{transform:none}
+.mnav a{font-family:'Inter Tight',sans-serif;font-size:1.8rem;font-weight:600;text-decoration:none;padding:6px 0}
+.mnav .x{position:absolute;top:16px;right:18px;background:none;border:0;color:var(--gl);font-size:2rem;cursor:pointer}
+.mnav .btn{margin-top:22px;font-size:1rem}
+/* hero */
+.hero{position:relative;min-height:92svh;display:grid;align-items:end;background:#141a14;color:var(--c);overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 15%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,26,20,.45) 0%,rgba(20,26,20,0) 22%,rgba(20,26,20,.78) 45%,rgba(28,40,29,.97) 70%)}
+.hero .in{position:relative;z-index:2;padding:0 22px 60px;max-width:1140px;margin:0 auto;width:100%}
+.hero h1{font-size:clamp(2.3rem,10vw,5.4rem);margin:12px 0 18px;letter-spacing:-.035em;font-weight:700}
+.hero h1 em{color:var(--gold);white-space:nowrap}
+.hero p{max-width:31rem;font-size:1.12rem;color:#f3eee5}
+.hero .btn.ghost{color:var(--c)}
+@media(min-width:900px){.hero{min-height:100vh}.hero img{left:auto;width:60%}.hero:after{background:linear-gradient(90deg,#1c281d 0%,#1c281d 40%,rgba(28,40,29,.75) 48%,rgba(28,40,29,.2) 62%,rgba(28,40,29,0) 75%)}.hero .in{align-self:center;padding:0 56% 0 22px}.hero h1{font-size:clamp(3.2rem,5.2vw,4.6rem)}}
+/* marquee */
+.mq{background:var(--gold);color:var(--g);overflow:hidden;white-space:nowrap;padding:14px 0;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:1.05rem}
+.mq div{display:inline-block;animation:mq 38s linear infinite}
+.mq span{padding:0 22px}.mq span:after{content:"\2022";padding-left:44px;opacity:.5}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* trust */
+.trust{background:var(--g);color:var(--c);padding:30px 0}
+.trust ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.trust li{font-size:.88rem;line-height:1.4;color:#e4e9e1}
+.trust b{display:block;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:1.12rem;color:var(--gl);margin-bottom:2px}
+@media(min-width:760px){.trust ul{grid-template-columns:repeat(4,1fr)}}
+/* about */
+.about{display:grid;gap:34px;align-items:center}
+@media(min-width:900px){.about{grid-template-columns:5fr 6fr;gap:64px}}
+.about img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.about p{margin-bottom:14px;color:var(--mut)}
+.quote{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:1.4rem;line-height:1.35;border-left:3px solid var(--gold);padding-left:18px;color:var(--g);margin:22px 0}
+/* videos */
+.vids{display:grid;grid-auto-flow:column;grid-auto-columns:68%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:34px;padding-bottom:6px}
+@media(min-width:760px){.vids{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible}}
+.vids figure{scroll-snap-align:center;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 8px 24px rgba(44,62,45,.08)}
+.vids video{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;background:var(--g)}
+.vids video:fullscreen{object-fit:contain}
+.vids figcaption{padding:14px 18px}
+.vids b{display:block;font-family:'Inter Tight',sans-serif;font-size:1.1rem}
+.vids small{color:var(--mut)}
+.yt{display:grid;gap:16px;margin-top:34px}
+@media(min-width:900px){.yt{grid-template-columns:repeat(3,1fr)}}
+.yt figure{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 8px 24px rgba(44,62,45,.08)}
+.yt .pl{position:relative;aspect-ratio:16/9;background:#141a14;cursor:pointer;border:0;width:100%;display:block;padding:0;color:var(--c)}
+.yt .pl img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:opacity .2s}
+.yt .pl:hover img{opacity:.85}
+.yt .pl:before{content:"";position:absolute;z-index:2;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l9 5-9 5z' fill='%232C3E2D'/%3E%3C/svg%3E") 55% 50%/26px no-repeat}
+.yt .pl small{position:absolute;left:12px;right:12px;bottom:10px;z-index:2;font-size:.72rem;color:#e4e9e1;text-align:left}
+.yt iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+.yt figcaption{padding:14px 18px}.yt b{display:block;font-family:'Inter Tight',sans-serif;font-size:1.1rem}.yt figcaption small{color:var(--mut)}
+.sub{font-size:1.35rem;margin-top:54px}
+/* live gallery */
+.gal{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;gap:10px;margin-top:34px}
+.gal img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.gal .t{grid-row:span 2}.gal .w{grid-column:span 2}
+@media(min-width:900px){.gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}.gal .w{grid-column:span 2}}
+/* offer cards */
+.cards{display:grid;gap:16px;margin-top:34px}
+@media(min-width:900px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{position:relative;background:#fff;border-radius:var(--r);padding:28px 24px 26px;box-shadow:0 1px 2px rgba(44,62,45,.06),0 8px 24px rgba(44,62,45,.06);display:flex;flex-direction:column}
+.card h3{font-size:1.45rem}
+.card .price{font-family:'Inter Tight',sans-serif;font-size:2.1rem;font-weight:700;letter-spacing:-.02em;line-height:1;margin:16px 0 6px}
+.card .meta{font-size:.88rem;color:var(--mut)}
+.card ul{list-style:none;margin:16px 0 22px;font-size:.96rem;flex:1}
+.card li{padding:5px 0 5px 22px;position:relative}
+.card li:before{content:"";position:absolute;left:2px;top:14px;width:9px;height:1.5px;background:var(--gold)}
+.card .btn{width:100%}
+.card.feat{background:var(--g);color:var(--c)}.card.feat .meta{color:#c9d2c6}.card.feat em{color:var(--gold)}
+.badge{position:absolute;top:-11px;left:24px;background:var(--gold);color:var(--g);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:5px 11px;border-radius:99px}
+.note{margin-top:22px;color:var(--mut);font-size:.95rem}
+/* day timeline */
+.day{display:grid;gap:22px;margin-top:34px;counter-reset:s}
+@media(min-width:760px){.day{grid-template-columns:repeat(2,1fr);gap:30px 44px}}
+@media(min-width:1000px){.day{grid-template-columns:repeat(4,1fr)}}
+.day div{counter-increment:s;border-top:1px solid var(--gold);padding-top:16px}
+.day div:before{content:counter(s,decimal-leading-zero);font-family:'Inter Tight',sans-serif;font-weight:700;font-size:1.5rem;color:var(--gold);display:block;line-height:1;margin-bottom:10px}
+.day h3{font-size:1.2rem;margin-bottom:6px}
+.day p{color:var(--mut);font-size:.95rem}
+.dark .day p{color:#c9d2c6}
+/* bands */
+.bands{display:grid;gap:18px;margin-top:34px}
+@media(min-width:900px){.bands{grid-template-columns:1fr 1fr;gap:22px}.band{min-height:540px}}
+.band{position:relative;border-radius:var(--r);overflow:hidden;min-height:440px;display:flex;align-items:flex-end;color:var(--c);text-decoration:none;background:#141a14}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.band:hover img{transform:scale(1.04)}
+.band:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,26,20,0) 35%,rgba(20,26,20,.92) 100%)}
+.band .in{position:relative;z-index:2;padding:26px}
+.band h3{font-size:2rem;margin:6px 0 8px}
+.band p{color:#e4e9e1;font-size:.96rem;max-width:30rem}
+.band .go{display:inline-flex;margin-top:16px;font-weight:600;color:var(--gl);border-bottom:1.5px solid var(--gold);padding-bottom:2px}
+/* why */
+.why{display:grid;gap:30px;margin-top:10px}
+@media(min-width:900px){.why{grid-template-columns:6fr 5fr;gap:64px;align-items:start}}
+.why p{color:var(--mut);margin-bottom:14px}
+.feats{display:grid;gap:12px}
+.feats div{background:#fff;border-radius:var(--r);padding:20px 22px}
+.feats h3{font-size:1.12rem;margin-bottom:4px}
+.feats p{margin:0;font-size:.93rem}
+/* emotion */
+.emo{position:relative;color:var(--c);text-align:center;padding:120px 0;overflow:hidden}
+.emo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.emo:after{content:"";position:absolute;inset:0;background:rgba(28,40,29,.8)}
+.emo .wrap{position:relative;z-index:2;max-width:760px}
+.emo h2 em{color:var(--gold)}
+.emo p{color:#e4e9e1;margin-top:10px}
+/* faq */
+.faq{max-width:780px}
+details{border-bottom:1px solid rgba(44,62,45,.14);padding:20px 0}
+summary{cursor:pointer;list-style:none;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:1.14rem;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--g2);font-weight:400;font-size:1.4rem;line-height:1}
+details[open] summary:after{content:"\2013"}
+details p{color:var(--mut);margin-top:10px;max-width:42rem}
+/* unterricht */
+.teach{display:grid;gap:30px}
+@media(min-width:900px){.teach{grid-template-columns:6fr 5fr;gap:64px;align-items:center}}
+.facts{display:grid;gap:16px;border-left:1px solid rgba(201,169,110,.3);padding-left:24px}
+.facts b{display:block;font-family:'Inter Tight',sans-serif;color:var(--gl);font-size:1.08rem}
+.facts span{color:#c9d2c6;font-size:.93rem}
+.voucher{margin-top:26px;border:1.5px solid var(--gold);border-radius:12px;padding:16px 18px;background:rgba(201,169,110,.1);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.voucher b{font-family:'Inter Tight',sans-serif;font-size:1.1rem;color:var(--gl)}
+.voucher .btn{padding:12px 20px;font-size:.92rem}
+/* regions */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips a{background:#fff;border:1px solid rgba(44,62,45,.15);border-radius:99px;padding:9px 16px;font-size:.9rem;text-decoration:none;transition:background .2s,color .2s}
+.chips a:hover{background:var(--g);color:var(--c)}
+/* final cta */
+.cta{text-align:center}
+.cta .lead{margin:0 auto}
+.cta .btns{justify-content:center}
+.cta small{display:block;margin-top:16px;color:#c9d2c6}
+/* footer */
+footer{background:#1f2c20;color:#c9d2c6;padding:56px 0 30px;font-size:.92rem}
+.fgrid{display:grid;gap:28px;grid-template-columns:1fr 1fr}
+@media(min-width:900px){.fgrid{grid-template-columns:2fr 1fr 1fr 1fr}}
+.fgrid .logo{color:var(--c);display:block;margin-bottom:8px}
+.fgrid h4{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:12px}
+.fgrid ul{list-style:none;display:grid;gap:7px}
+.fgrid a{text-decoration:none}.fgrid a:hover{color:var(--gl)}
+.fbot{border-top:1px solid rgba(201,169,110,.18);margin-top:40px;padding-top:20px;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;font-size:.84rem}
+.fbot a{text-decoration:none}
+/* floating */
+.sticky{position:fixed;left:12px;right:82px;bottom:12px;z-index:40;transform:translateY(150%);transition:transform .35s}
+.sticky.show{transform:none}.sticky .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+@media(min-width:900px){.sticky{display:none}}
+.wa-float{position:fixed;right:12px;bottom:12px;z-index:40;width:56px;height:56px;border-radius:50%;background:var(--g);color:var(--c);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(44,62,45,.35);transition:transform .2s}
+.wa-float:hover{transform:scale(1.06)}
+@media(min-width:900px){.wa-float{right:24px;bottom:24px}}
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.rv.on{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+/* ===== Modal + Wizard (neu gestylt, Logik unveraendert) ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,20,15,.72);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--c);width:100%;max-width:640px;max-height:90vh;overflow-y:auto;position:relative;border-radius:18px;transform:translateY(20px);transition:transform .35s}
+.modal-overlay.open .modal-box{transform:none}
+.modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;background:#fff;border:0;cursor:pointer;font-size:1rem;color:var(--mut);z-index:10}
+.modal-box .wizard{padding:2.6rem}
+.progress-bar{display:flex;gap:6px;margin-bottom:26px;padding-right:44px}
+.progress-step{flex:1;height:3px;border-radius:3px;background:rgba(44,62,45,.12);transition:background .3s}
+.progress-step.active,.progress-step.done{background:var(--gold)}
+.step-eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:6px}
+.step-title{font-size:1.9rem;margin-bottom:6px}
+.step-sub{font-size:.92rem;color:var(--mut);margin-bottom:22px}
+.wstep{display:none;animation:fadeSlide .3s ease}.wstep.active{display:block}
+.option-grid{display:grid;gap:10px}
+.option-card{border:1.5px solid transparent;border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;align-items:flex-start;gap:12px;background:#fff;position:relative;box-shadow:0 1px 2px rgba(44,62,45,.06);transition:border-color .2s,transform .15s}
+.option-card:hover{transform:translateY(-1px)}
+.option-card.selected{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,169,110,.18)}
+.option-card.selected::after{content:"\2713";position:absolute;top:10px;right:14px;font-size:.8rem;color:var(--g2);font-weight:600}
+.option-icon{font-size:1.3rem;flex-shrink:0}
+.option-label{font-size:.96rem;font-weight:500;line-height:1.3}
+.option-desc{font-size:.84rem;color:var(--mut);margin-top:2px}
+.input-group{display:flex;flex-direction:column;gap:14px;margin-bottom:6px}
+.input-row{display:flex;gap:14px}.input-row .field{flex:1}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:.88rem;font-weight:500}
+.field input,.field textarea,.field select{font:400 1rem Inter,sans-serif;color:var(--ink);background:#fff;border:1.5px solid rgba(44,62,45,.15);border-radius:10px;padding:13px 14px;outline:none;width:100%;transition:border-color .2s}
+.field input:focus,.field textarea:focus{border-color:var(--gold)}
+.field textarea{min-height:100px;resize:vertical}
+.wizard-nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:10px}
+.btn-back{font:500 .95rem Inter,sans-serif;color:var(--mut);background:none;border:0;cursor:pointer;padding:8px 0}
+.btn-next{font:600 1rem Inter,sans-serif;color:var(--c);background:var(--g);border:0;border-radius:99px;padding:14px 26px;cursor:pointer;transition:background .2s}
+.btn-next:hover{background:var(--g2)}
+.btn-next:disabled{background:rgba(44,62,45,.15);color:var(--mut);cursor:not-allowed}
+.summary-grid{display:grid;background:#fff;border-radius:12px;margin-bottom:18px;overflow:hidden}
+.summary-row{display:flex;gap:14px;padding:11px 16px;border-bottom:1px solid rgba(44,62,45,.08);font-size:.93rem}
+.summary-row:last-child{border-bottom:0}
+.summary-label{color:var(--mut);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;width:110px;flex-shrink:0;padding-top:2px}
+.status-msg{font-size:.9rem;padding:12px 14px;margin-top:14px;display:none;border-radius:10px}
+.status-msg.error{background:#fdf0ef;color:#a32d2d}
+.status-msg.loading{background:var(--c2);color:var(--mut)}
+.success-state{text-align:center;padding:2rem 0}
+.success-icon{width:56px;height:56px;border-radius:50%;background:var(--gold);color:var(--g);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.3rem}
+.success-state h2{font-size:1.9rem;margin-bottom:10px}
+.success-state p{color:var(--mut);max-width:38ch;margin:0 auto}
+@keyframes fadeSlide{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+@media(max-width:600px){.input-row{flex-direction:column}.modal-box .wizard{padding:2rem 1.3rem}.modal-overlay{padding:0;align-items:flex-end}.modal-box{max-height:94vh;border-radius:18px 18px 0 0}}
   </style>
 </head>
 <body>
 
-  <!-- ===== NAVIGATION ===== -->
-  <nav aria-label="Hauptnavigation">
-    <a href="index.html" class="nav-logo">Mickela Löffel</a>
-    <ul class="nav-links">
-      <li><a href="#about">Über mich</a></li>
-      <li><a href="#leistungen">Angebot</a></li>
-      <li><a href="#hoerbeispiele">Videos</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer" aria-label="Mickela auf Instagram – öffnet in neuem Tab">Instagram</a></li>
-      <li><a href="#kontakt">Anfragen</a></li>
-    </ul>
-    <button class="nav-hamburger" aria-label="Menü öffnen" onclick="toggleMobileMenu()">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+<header class="top" id="top"><div class="wrap">
+  <a class="logo" href="/">Mickela Löffel</a>
+  <ul class="menu">
+    <li><a href="#angebot">Hochzeit</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#live">Live</a></li>
+    <li><a href="#bands">Bands</a></li>
+    <li><a href="#unterricht">Unterricht</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a class="btn hd" href="#" onclick="openModal();return false;">Termin anfragen</a>
+  <button class="burger" type="button" aria-label="Menü öffnen" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+</div></header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Menü schließen">✕</button>
-    <ul>
-      <li><a href="#about" onclick="toggleMobileMenu()">Über mich</a></li>
-      <li><a href="#leistungen" onclick="toggleMobileMenu()">Angebot</a></li>
-      <li><a href="#hoerbeispiele" onclick="toggleMobileMenu()">Videos</a></li>
-      <li><a href="#faq" onclick="toggleMobileMenu()">FAQ</a></li>
-      <li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-      <li><a href="#kontakt" onclick="toggleMobileMenu()">Jetzt anfragen</a></li>
-    </ul>
-  </div>
+<nav class="mnav" id="mobileMenu" aria-label="Mobile Navigation">
+  <button class="x" type="button" onclick="toggleMobileMenu()" aria-label="Menü schließen">&times;</button>
+  <a href="#angebot" onclick="toggleMobileMenu()">Hochzeit</a>
+  <a href="#videos" onclick="toggleMobileMenu()">Videos</a>
+  <a href="#live" onclick="toggleMobileMenu()">Live</a>
+  <a href="#bands" onclick="toggleMobileMenu()">Bands</a>
+  <a href="#unterricht" onclick="toggleMobileMenu()">Unterricht</a>
+  <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
+  <a class="btn" href="#" onclick="toggleMobileMenu();openModal();return false;">Termin anfragen</a>
+</nav>
 
-  <!-- ===== HERO ===== -->
-  <!-- ================================================
-       SEO & AUFBAU:
-       Die H1 enthält das Haupt-Keyword "Hochzeitssängerin
-       Karlsruhe". Sie steht ganz oben – das ist perfekt.
-       ================================================ -->
-  <section id="hero" aria-label="Startseite">
-    <div class="hero-image-side">
-      <!-- 
-        DEIN FOTO HIER:
-        Ersetze das img-Tag unten mit deinem echten Bild.
-        Beispiel: <img src="mickela-trauung.jpg" ...>
-        Lass das alt-Attribut genau so stehen – es ist SEO-optimiert!
-      -->
-      <img
-        class="hero-img hero-parallax"
-        src="mickela-hero.jpg"
-        alt="Mickela Löffel singt als Hochzeitssängerin bei einer Trauung in Karlsruhe"
-        width="900"
-        height="1100"
-        fetchpriority="high"
-        decoding="async"
-      />
-      <div class="hero-overlay" aria-hidden="true"></div>
-    </div>
-
-    <div class="hero-content-side">
-      <span class="hero-eyebrow hero-anim-1">Hochzeitssängerin Karlsruhe</span>
-      <h1 class="hero-anim-2">Eure<br /><em>Hochzeits&shy;sängerin</em><br />in Karlsruhe.</h1>
-      <p class="hero-sub hero-anim-3">
-        Momente, die unter die Haut gehen – live, mit Gefühl und aus vollem Herzen.
-        Wenn ihr euch wünscht, dass alle einfach nur innehalten und diesen einen Moment wirklich fühlen – dann seid ihr hier richtig.
-      </p>
-      <div class="hero-cta-group hero-anim-4">
-        <a href="#" class="btn-primary" onclick="openModal(); return false;">Jetzt unverbindlich anfragen</a>
-        <a href="#hoerbeispiele" class="btn-secondary">Videos ansehen</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TRUST BAR ===== -->
-  <!-- ================================================
-       Diese Leiste schafft sofort Vertrauen.
-       Credentials sichtbar machen = weniger Zögern.
-       ================================================ -->
-  <div id="trust" aria-label="Referenzen und Credentials">
-    <span class="trust-item">The Voice of Germany – Halbfinale 2020</span>
-    <div class="trust-dot" aria-hidden="true"></div>
-    <span class="trust-item">ZDF Fernsehgarten</span>
-    <div class="trust-dot" aria-hidden="true"></div>
-    <span class="trust-item">Popakademie Mannheim</span>
-    <div class="trust-dot" aria-hidden="true"></div>
-    <span class="trust-item">Selbstständige Sängerin seit 2018</span>
-  </div>
-
-  <!-- ===== ÜBER MICH ===== -->
-  <section id="about" aria-label="Über Mickela Löffel">
-    <div class="about-text fade-in">
-      <span class="section-eyebrow">Über mich</span>
-      <h2>Musik, die vom Herzen kommt –<br /><em>nicht von der Playlist.</em></h2>
-
-      <p>
-        Ich bin Mickela Löffel – Hochzeitssängerin aus Karlsruhe, mit einem Bachelor-Abschluss der Popakademie Baden-Württemberg in Mannheim, Hauptfach Gesang & Songwriting. Seit 2018 begleite ich Brautpaare an einem der bedeutsamsten Tage ihres Lebens.
-      </p>
-
-      <div class="quote-block">
-        <p>„Einfach nur sein und den Moment genießen – genau das möchte ich euch schenken."</p>
-      </div>
-
-      <p>
-        Ihr kennt vielleicht dieses Gefühl: Man drückt Play – und Musik läuft einfach. Schön, aber irgendwie distanziert. Was ich euch geben möchte, ist das Gegenteil davon. Eine Stimme im Raum, die jeden berührt. Gäste, die plötzlich still werden. Ein Brautpaar, das für diese zwei, drei Minuten ganz bei sich ist.
-      </p>
-
-      <p>
-        Meine Musik wird oft mit der von LEA verglichen – warm, nah, ehrlich. Genau so bin ich auch als Mensch. Keine aufgesetzte Bühnenshow, kein Stargehabe. Nur ich, meine Stimme und euer schönster Tag. Vielleicht habt ihr mich schon im TV gesehen – im Halbfinale von The Voice of Germany 2020 oder im ZDF Fernsehgarten. Auf eurer Hochzeit bekommt ihr genau diese Energie – nur für euch und eure Liebsten.
-      </p>
-
-      <p>
-        Was mich von anderen Sängerinnen unterscheidet, ist nicht nur die Ausbildung oder die TV-Erfahrung. Es ist die Art, wie ich an jeden Auftritt herangehe: mit echtem Interesse an eurer Geschichte, an eurem Paar, an dem, was euch bewegt. Ich singe nicht einfach einen Song – ich singe euren Song, für euren Moment, für euch.
-      </p>
-
-      <p>
-        Menschlichkeit, Ehrlichkeit, Vertrauen und Professionalität sind mir dabei genauso wichtig wie die Musik selbst. Ihr sollt euch mit eurer Buchung sicher fühlen – von der ersten Anfrage bis zum letzten Ton.
-      </p>
-    </div>
-
-    <div class="about-image-wrap fade-in">
-      <img
-        class="about-img"
-        src="mickela-hochzeit-duo-gitarre.jpg"
-        alt="Hochzeitssängerin Mickela Löffel singt mit Gitarrist bei einer freien Trauung"
-        width="1067"
-        height="1600"
-        loading="lazy"
-      />
-      <div class="about-img-accent" aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <!-- ===== HÖRBEISPIELE & INSTAGRAM ===== -->
-  <section id="hoerbeispiele" aria-label="Cover-Videos und Instagram" style="background:var(--white);">
-    <div style="max-width:900px; margin:0 auto;">
-      <span class="section-eyebrow">Überzeugt euch selbst</span>
-      <h2>Schau rein – und <em>fühl es.</em></h2>
-      <p style="margin-bottom:1rem;">Worte können beschreiben, wie sich meine Musik anfühlt. Aber am besten überzeugt ihr euch selbst. Hier sind drei Cover-Videos, die zeigen, was euch auf eurer Hochzeit erwartet – live gesungen, genau so wie auf eurer Feier.</p>
-      <p style="margin-bottom:3rem;">Jeder Song wurde von mir persönlich ausgewählt und eingespielt. Die Videos zeigen die Bandbreite meines Repertoires – von deutschen Balladen über internationale Hits bis zu emotionalen Momenten, die perfekt zur Trauung passen.</p>
-
-      <!-- COVER-VIDEOS (preload="none": Videos laden erst beim Klick – hält die Seite schnell) -->
-      <style>
-        .cover-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:4rem;}
-        .cover-video{margin:0;background:var(--cream);}
-        .cover-video video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:var(--green-deep);}
-        .cover-video figcaption{padding:1rem 1.25rem;}
-        .cv-title{display:block;font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);}
-        .cv-sub{display:block;font-size:0.78rem;color:var(--text-light);}
-        @media (max-width:760px){.cover-videos{grid-template-columns:repeat(3,78%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:0.5rem;}.cover-video{scroll-snap-align:center;}}
-      </style>
-      <div class="cover-videos">
-        <figure class="cover-video">
-          <video controls playsinline preload="none" poster="mickela-video-ein-teil-von-meinem-herzen.jpg" width="720" height="1280" title="Ein Teil von meinem Herzen – Cover von Hochzeitssängerin Mickela">
-            <source src="mickela-video-ein-teil-von-meinem-herzen.mp4" type="video/mp4" />
-            Dein Browser unterstützt kein Video.
-          </video>
-          <figcaption><span class="cv-title">Ein Teil von meinem Herzen</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
-        </figure>
-
-        <figure class="cover-video">
-          <video controls playsinline preload="none" poster="mickela-video-i-wanna-dance-with-somebody.jpg" width="720" height="1280" title="I Wanna Dance with Somebody – Cover von Hochzeitssängerin Mickela">
-            <source src="mickela-video-i-wanna-dance-with-somebody.mp4" type="video/mp4" />
-            Dein Browser unterstützt kein Video.
-          </video>
-          <figcaption><span class="cv-title">I Wanna Dance with Somebody</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
-        </figure>
-
-        <figure class="cover-video">
-          <video controls playsinline preload="none" poster="mickela-video-perfect.jpg" width="720" height="1280" title="Perfect – Cover von Hochzeitssängerin Mickela">
-            <source src="mickela-video-perfect.mp4" type="video/mp4" />
-            Dein Browser unterstützt kein Video.
-          </video>
-          <figcaption><span class="cv-title">Perfect</span><span class="cv-sub">Cover · Live gesungen</span></figcaption>
-        </figure>
-      </div>
-      <script>
-        document.querySelectorAll('.cover-video video').forEach(function(v){v.addEventListener('play',function(){document.querySelectorAll('.cover-video video').forEach(function(o){if(o!==v)o.pause();});});});
-      </script>
-
-
-      <!-- GALERIE -->
-      <style>
-        .gallery{display:grid;grid-template-columns:1fr 1fr 2fr;gap:0.75rem;margin-bottom:4rem;}
-        .gallery img{width:100%;height:440px;object-fit:cover;display:block;}
-        @media (max-width:760px){.gallery{grid-template-columns:1fr 1fr;}.gallery img{height:300px;}.gallery img.wide{grid-column:1/-1;height:240px;}}
-      </style>
-      <span class="section-eyebrow">Echte Momente</span>
-      <h3 style="font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:var(--green-deep);margin-bottom:1.5rem;">So fühlt sich eine Trauung <em>mit mir</em> an.</h3>
-      <div class="gallery">
-        <img src="mickela-hochzeit-trauung-duo.jpg" alt="Mickela Löffel und Gitarrist spielen live bei einer freien Trauung im Grünen" width="1067" height="1600" loading="lazy" decoding="async" />
-        <img src="mickela-iconics-buehne.jpg" alt="Mickela Löffel live auf der Bühne mit Band" loading="lazy" decoding="async" />
-        <img class="wide" src="mickela-hochzeit-braut-umarmung.jpg" alt="Braut umarmt Hochzeitssängerin Mickela nach der Trauung" width="1600" height="1067" loading="lazy" decoding="async" />
-      </div>
-
-      <!-- INSTAGRAM -->
-      <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap; padding:2rem; background:var(--cream); border-left:2px solid var(--gold);">
-        <div style="flex:1; min-width:220px;">
-          <p style="font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">Noch mehr Eindrücke</p>
-          <p style="font-family:var(--font-display); font-size:1.6rem; font-weight:300; color:var(--green-deep); line-height:1.3; margin-bottom:0.75rem;">Folg mir auf<br /><em>Instagram.</em></p>
-          <p style="font-size:0.88rem; color:var(--text-light); margin-bottom:1.25rem;">Hinter den Kulissen, Live-Momente und Einblicke in meine Arbeit als Hochzeitssängerin.</p>
-          <a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer"
-            style="display:inline-flex; align-items:center; gap:0.6rem; background:var(--green-deep); color:var(--cream); font-family:var(--font-body); font-size:0.78rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.85rem 1.75rem; text-decoration:none; transition:background 0.2s;"
-            onmouseover="this.style.background='#4A6741'" onmouseout="this.style.background='#2C3E2D'">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            @mickela_music
-          </a>
-        </div>
-        <div style="flex:1; min-width:220px; text-align:center;">
-          <!-- Optionales Bild z.B. ein schönes Instagram-Screenshot -->
-          <img
-            src="mickela-voicegermany.jpg"
-            alt="Mickela Löffel – Hochzeitssängerin live auf der Bühne"
-            style="width:100%; max-width:320px; display:inline-block; object-fit:cover; aspect-ratio:1/1;"
-            width="400" height="400"
-          />
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== WARUM LIVE-MUSIK ===== -->
-  <section id="warum" aria-label="Warum Live-Musik für die Hochzeit" style="background:var(--cream-dark);">
-    <div style="max-width:900px;margin:0 auto;">
-      <span class="section-eyebrow">Euer Tag</span>
-      <h2>So begleite ich<br /><em>euren Hochzeitstag.</em></h2>
-      <p style="max-width:65ch;margin-bottom:2rem;">Jeder Teil einer Hochzeit hat seinen eigenen Charakter – und braucht die passende Musik dazu. Ich passe mich eurem Tag an, nicht umgekehrt.</p>
-
-      <div style="display:flex;flex-direction:column;gap:0;">
-        <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--cream-dark);">
-          <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--gold-light);line-height:1;">01</span>
-          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Die Trauung – der emotionalste Moment</h3><p style="font-size:0.92rem;margin:0;">Wenn ihr euch das Ja-Wort gebt, singe ich euren Song. Der Raum wird still. Tränen fließen. Das Brautpaar hat einen Moment ganz für sich – und dieser Moment klingt nach. Ob klassische Ballade, moderner Pop-Song oder euer ganz persönlicher Lieblingssong: Ich singe, was zu euch passt.</p></div>
-        </div>
-        <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--cream-dark);">
-          <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--gold-light);line-height:1;">02</span>
-          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Sektempfang – locker, warm, verbindend</h3><p style="font-size:0.92rem;margin:0;">Während eure Gäste sich kennenlernen, die Brautpaarsfotos entstehen und die Sektgläser klingen, sorge ich für die perfekte Atmosphäre. Nicht zu laut, nicht zu leise – genau die richtige Energie für diesen Übergangsmoment zwischen Zeremonie und Feier.</p></div>
-        </div>
-        <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--cream-dark);">
-          <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--gold-light);line-height:1;">03</span>
-          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Abendprogramm – individuell gestaltet</h3><p style="font-size:0.92rem;margin:0;">Dinner-Begleitung, besonderer Song zum Einzug ins Festzelt, Überraschungsauftritt für das Brautpaar – ich gestalte mit euch gemeinsam, was zu eurem Abend passt. Kein starres Programm, sondern Musik, die auf den Moment reagiert.</p></div>
-        </div>
-        <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;">
-          <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--gold-light);line-height:1;">04</span>
-          <div><h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--green-deep);margin-bottom:0.4rem;">Vom Ja bis zur Party – mit Band</h3><p style="font-size:0.92rem;margin:0;">Ihr wollt von der Trauung bis in die Nacht alles aus einer Hand? Tagsüber singe ich im Duo, abends spielt meine Partyband – professionell, stimmig und mit null Koordinationsaufwand für euch.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LEISTUNGEN ===== -->
-  <section id="leistungen" aria-label="Musikalisches Angebot für Hochzeiten">
-    <div class="services-header fade-in">
-      <span class="section-eyebrow">Mein Angebot</span>
-      <h2>So kann euer<br /><em>musikalischer Tag</em> aussehen.</h2>
-      <p>
-        Jede Hochzeit ist anders. Deshalb gibt es mich in verschiedenen Konstellationen – flexibel, persönlich und immer abgestimmt auf euer Budget und eure Vorstellung.
-      </p>
-    </div>
-
-    <div class="services-grid">
-
-      <article class="service-card fade-in" aria-label="Angebot: Mickela Solo">
-        <div style="width:40px;height:40px;color:var(--gold);margin-bottom:1rem;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-        </div>
-        <h3>Mickela Solo</h3>
-        <p>
-          Meine Stimme, live gesungen zu hochwertigen Studio-Instrumentals. Ideal für eine intime, bewegende Trauung – schlicht, direkt und voller Gefühl. Eigene Tonanlage und ein Wunschsong inklusive.</p>
-        <p class="price-tag">ab 750 €
-        </p>
-        <a href="#" class="service-link" onclick="openModal(); return false;">Jetzt anfragen</a>
-      </article>
-
-      <article class="service-card fade-in" aria-label="Angebot: Mickela im Duo">
-        <div style="width:40px;height:40px;color:var(--gold);margin-bottom:1rem;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-        </div>
-        <h3>Mickela im Duo</h3>
-        <p>
-          Mehr Klang, mehr Tiefe, mehr Gänsehaut. Ich singe gemeinsam mit einem Pianisten oder Gitarristen – komplett live. Das bringt Wärme und Lebendigkeit in eure Trauung und macht den Sektempfang zum Erlebnis.</p>
-        <p class="price-tag">ab 1.350 €
-        </p>
-        <a href="#" class="service-link" onclick="openModal(); return false;">Jetzt anfragen</a>
-      </article>
-
-      <article class="service-card fade-in" aria-label="Angebot: Mickela mit Band" style="background:var(--green-deep); color:var(--cream);">
-        <div style="width:40px;height:40px;color:var(--gold);margin-bottom:1rem;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 style="color:var(--cream);">Mickela mit Band</h3>
-        <p style="color:rgba(250,247,242,0.75);">
-          Vom Ja bis zur Party – alles aus einer Hand. Trauung und Sektempfang singe ich im Duo, abends bringt meine Partyband die Tanzfläche zum Kochen. Eine Ansprechpartnerin, ein Sound, null Stress für euch.</p>
-        <p class="price-tag" style="color:var(--gold-light);">Preis auf Anfrage<br /><span style="color:rgba(250,247,242,0.6);">Abends mit der Band ICONICS</span>
-        </p>
-        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-          <a href="https://www.iconicsband.de" target="_blank" rel="noopener noreferrer" style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.4);padding-bottom:2px;">Mehr zur Band</a>
-          <a href="#" style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.4);padding-bottom:2px;" onclick="openModal(); return false;">Jetzt anfragen</a>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="services-note fade-in">
-      <p>
-        Ihr wisst noch nicht genau, was ihr wollt? Kein Problem. Im persönlichen Gespräch finden wir gemeinsam heraus, welche Songs zu welchem Moment passen – und welches Paket sich für euch richtig anfühlt. Versprochen.
-      </p>
-    </div>
-
-    <!-- Erweiterter Inhalt: Warum Live-Musik -->
-    <div class="unterschied-grid" style="max-width:900px;margin:5rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
-      <div>
-        <span class="section-eyebrow">Warum Livemusik</span>
-        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);">Der Unterschied, den<br /><em>jeder im Raum spürt.</em></h2>
-        <p>Viele Brautpaare fragen sich: Reicht nicht auch eine Playlist? Technisch gesehen – ja. Emotional gesehen – nein. Denn eine Playlist läuft. Livemusik lebt. Sie reagiert auf den Raum, auf die Stimmung, auf den Moment. Sie hat eine menschliche Energie, die keine Aufnahme ersetzen kann.</p>
-        <p>Wenn ich singe, passiert etwas im Raum. Gäste, die sich eben noch unterhalten haben, werden still. Menschen, die sich kaum kennen, schauen sich an. Das Brautpaar hat für diese zwei, drei Minuten einen Moment ganz für sich – während alle anderen einfach nur da sind und fühlen.</p>
-        <p>Genau das ist der Unterschied. Und genau dafür bin ich da.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:1.5rem;">
-        <div style="background:var(--white);padding:1.5rem;border-top:2px solid var(--gold);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:0.75rem;display:block;" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--green-deep);margin-bottom:0.4rem;">Individuelle Songauswahl</h3>
-          <p style="font-size:0.88rem;margin:0;">Kein festes Repertoire. Wir wählen gemeinsam die Songs, die zu eurer Geschichte passen – für jeden Moment des Tages.</p>
-        </div>
-        <div style="background:var(--white);padding:1.5rem;border-top:2px solid var(--gold);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:0.75rem;display:block;" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--green-deep);margin-bottom:0.4rem;">Persönliche Beratung</h3>
-          <p style="font-size:0.88rem;margin:0;">Ich bin direkt erreichbar – kein Callcenter, kein Manager. Ihr sprecht mit mir, plant mit mir, vertraut mir.</p>
-        </div>
-        <div style="background:var(--white);padding:1.5rem;border-top:2px solid var(--gold);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:0.75rem;display:block;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--green-deep);margin-bottom:0.4rem;">Pünktlich und professionell</h3>
-          <p style="font-size:0.88rem;margin:0;">Seit 2018 auf hunderten von Veranstaltungen. Ihr müsst euch um die Musik keine Gedanken machen – das ist mein Job.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Ablauf -->
-    <div style="max-width:900px;margin:5rem auto 0;">
-      <span class="section-eyebrow">Der Ablauf</span>
-      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:2rem;">Von der Anfrage bis<br /><em>zum ersten Ton.</em></h2>
-      <div class="ablauf-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
-        <div style="background:var(--white);padding:1.75rem 1.5rem;border-top:2px solid var(--cream-dark);position:relative;">
-          <span style="font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--gold-light);display:block;margin-bottom:0.75rem;line-height:1;">01</span>
-          <h3 style="font-family:var(--font-display);font-size:1.05rem;color:var(--green-deep);margin-bottom:0.4rem;">Anfrage</h3>
-          <p style="font-size:0.85rem;margin:0;color:var(--text-mid);">Ihr füllt das Formular aus oder schreibt mir direkt. Ich melde mich innerhalb von 24–48 Stunden persönlich.</p>
-        </div>
-        <div style="background:var(--white);padding:1.75rem 1.5rem;border-top:2px solid var(--gold);">
-          <span style="font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--gold-light);display:block;margin-bottom:0.75rem;line-height:1;">02</span>
-          <h3 style="font-family:var(--font-display);font-size:1.05rem;color:var(--green-deep);margin-bottom:0.4rem;">Beratung</h3>
-          <p style="font-size:0.85rem;margin:0;color:var(--text-mid);">Wir sprechen über eure Wünsche, den Ablauf des Tages und wählen gemeinsam die Songs, die zu euch passen.</p>
-        </div>
-        <div style="background:var(--white);padding:1.75rem 1.5rem;border-top:2px solid var(--cream-dark);">
-          <span style="font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--gold-light);display:block;margin-bottom:0.75rem;line-height:1;">03</span>
-          <h3 style="font-family:var(--font-display);font-size:1.05rem;color:var(--green-deep);margin-bottom:0.4rem;">Buchung</h3>
-          <p style="font-size:0.85rem;margin:0;color:var(--text-mid);">Sobald alles passt, sichern wir euren Termin. Klarer Vertrag, transparente Konditionen, keine versteckten Kosten.</p>
-        </div>
-        <div style="background:var(--white);padding:1.75rem 1.5rem;border-top:2px solid var(--cream-dark);">
-          <span style="font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--gold-light);display:block;margin-bottom:0.75rem;line-height:1;">04</span>
-          <h3 style="font-family:var(--font-display);font-size:1.05rem;color:var(--green-deep);margin-bottom:0.4rem;">Euer Tag</h3>
-          <p style="font-size:0.85rem;margin:0;color:var(--text-mid);">Ich bin da, ich singe, ich sorge für den Moment – ihr genießt euren schönsten Tag ohne Stress.</p>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ===== EMOTION SECTION ===== -->
-  <section id="gefuehl" aria-label="Was Mickelas Musik bewirkt" style="background-image:url('mickela-braut-umarmung.jpg'); background-size:cover; background-position:center; position:relative;">
-    <div style="position:absolute;inset:0;background:rgba(44,62,45,0.82);"></div>
-    <div style="position:relative;z-index:1;text-align:center;">
-    <span class="section-eyebrow">Was bleibt, wenn der Tag vorbei ist</span>
-    <h2>Der Moment, in dem<br /><em>alle einfach nur da sind.</em></h2>
-    <p>
-      Immer wieder kommen Brautpaare nach ihrer Hochzeit auf mich zu. Nicht mit einer formellen Nachricht – sondern mit echter, tiefer Dankbarkeit. Dafür, dass die Musik nicht einfach lief. Dass sie zu fühlen war.
-    </p>
-    <p>
-      Dass in diesen Momenten alle Gäste einfach nur da sein konnten – ohne Ablenkung, ohne Hektik. Nur im Moment. Genau das ist es, wofür ich jeden Tag auf die Bühne gehe.
-    </p>
-    <p>
-      Was mich dabei immer wieder bewegt: Die Bestätigung, dass sie so froh sind sich für Live-Musik entschieden zu haben. Dass es ihnen das wert war. Dass ihre Gäste noch Monate später davon sprechen. Diese Momente erinnern mich daran, warum ich diesen Beruf mit ganzem Herzen lebe.
-    </p>
-    </div>
-  </section>
-
-
-  <!-- ===== FAQ ===== -->
-  <section id="faq" aria-label="Häufige Fragen" style="background:var(--cream-dark);">
-    <div style="max-width:760px; margin:0 auto;">
-      <span class="section-eyebrow">Häufige Fragen</span>
-      <h2>Was Brautpaare mich<br /><em>am häufigsten fragen.</em></h2>
-
-      <div style="display:flex; flex-direction:column; gap:2px; margin-top:2.5rem;">
-
-        <details class="faq-item">
-          <summary class="faq-question">Was kostet eine Hochzeitssängerin in Karlsruhe?</summary>
-          <p class="faq-answer">Solo ab 750 €, im Duo mit Pianist oder Gitarrist ab 1.350 €. „Mickela mit Band“ für den ganzen Tag gibt es auf Anfrage. Meine Tonanlage ist immer inklusive. Den genauen Preis für euren Tag bekommt ihr in einem persönlichen, unverbindlichen Angebot – einfach anfragen.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Wie früh sollte ich eine Hochzeitssängerin buchen?</summary>
-          <p class="faq-answer">Ich empfehle mindestens 6 bis 12 Monate vor der Hochzeit zu buchen. Besonders Sommer- und Herbsttermine sind in der Region Karlsruhe schnell vergeben. Je früher ihr bucht, desto sicherer ist euer Wunschtermin – und desto mehr Zeit haben wir für eine sorgfältige gemeinsame Vorbereitung.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Welche Songs singt Mickela auf Hochzeiten?</summary>
-          <p class="faq-answer">Emotionale Pop-Balladen auf Deutsch und Englisch, individuell abgestimmt auf euren Geschmack. Im persönlichen Gespräch finden wir gemeinsam die perfekten Songs für jeden Moment: Einzug, Trauung, Sektempfang und Abendprogramm. Ihr müsst keine genauen Vorstellungen mitbringen – ich berate euch gerne umfassend.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Singt Mickela auch außerhalb von Karlsruhe?</summary>
-          <p class="faq-answer">Ja, ich trete deutschlandweit auf. Karlsruhe ist meine Heimatstadt, aber regelmäßige Auftrittsorte sind auch Stuttgart, Mannheim, Heidelberg, Baden-Baden und viele weitere Städte. Anfahrtskosten werden individuell und fair besprochen. Einfach bei der Anfrage die Location angeben.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Kann ich Mickela nur für die Trauung buchen?</summary>
-          <p class="faq-answer">Ja, eine Buchung nur für die Trauzeremonie ist möglich und sehr beliebt. Auf Wunsch begleite ich aber auch den Sektempfang, das Abendessen oder das komplette Abendprogramm. Mit meiner Band ICONICS übernehmen wir auf Wunsch den gesamten musikalischen Tag aus einer Hand.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Gibt es eine Möglichkeit, Mickela vor der Buchung live zu erleben?</summary>
-          <p class="faq-answer">Schaut euch gerne die Cover-Videos auf dieser Seite an und folge mir auf Instagram (@mickela_music), wo ich regelmäßig Live-Momente und Auftritte teile. Bei weiteren Fragen stehe ich jederzeit für ein persönliches Gespräch zur Verfügung – per E-Mail oder Telefon.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Wie läuft die Planung nach der Buchung ab?</summary>
-          <p class="faq-answer">Nach eurer Anfrage melde ich mich persönlich. Wir besprechen eure Wünsche, wählen gemeinsam die Songs und klären alle Details zur Location und zum Ablauf. Ich koordiniere auch gerne mit eurer Weddingplanerin oder der Location, damit am großen Tag alles reibungslos funktioniert.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Singt Mickela zu Instrumentals oder mit Live-Begleitung?</summary>
-          <p class="faq-answer">Beides ist möglich. Solo singe ich live zu hochwertigen Studio-Instrumentals. Im Duo begleitet mich ein Pianist oder Gitarrist komplett live. Für den ganzen Tag inklusive Party gibt es „Mickela mit Band“.</p>
-        </details>
-
-      </div>
-    </div>
-    <!-- Regionen -->
-    <div style="max-width:900px;margin:4rem auto 0;background:var(--white);padding:2.5rem;">
-      <span class="section-eyebrow">Auftrittsorte</span>
-      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:1rem;">Wo ich singe –<br /><em>von Karlsruhe bis deutschlandweit.</em></h2>
-      <p style="max-width:60ch;">Karlsruhe ist meine Heimat, aber ich trete deutschlandweit auf. Hier sind die Regionen, in denen ich besonders häufig zu Gast bin:</p>
-      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;">
-        <a href="hochzeitssaengerin-karlsruhe.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Karlsruhe</a>
-        <a href="hochzeitssaengerin-stuttgart.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Stuttgart</a>
-        <a href="hochzeitssaengerin-mannheim.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Mannheim</a>
-        <a href="hochzeitssaengerin-heidelberg.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Heidelberg</a>
-        <a href="hochzeitssaengerin-baden-baden.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Baden-Baden</a>
-        <a href="hochzeitssaengerin-freiburg.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Freiburg</a>
-        <a href="hochzeitssaengerin-rastatt.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Hochzeitssängerin Rastatt</a>
-        <a href="hochzeitssaengerin-deutschlandweit.html" style="background:var(--white);padding:0.5rem 1.25rem;font-size:0.85rem;color:var(--green-deep);text-decoration:none;border:1px solid rgba(44,62,45,0.15);transition:all 0.2s;" onmouseover="this.style.background='var(--green-deep)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--green-deep)'">Deutschlandweit</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== KONTAKT ===== -->
-  <section id="kontakt" aria-label="Kontakt und Anfrage">
-    <div class="contact-info fade-in">
-      <span class="section-eyebrow">Kontakt</span>
-      <h2>Lasst uns über euren<br /><em>schönsten Tag</em> sprechen.</h2>
-      <p>
-        Eure Hochzeit verdient Musik, die wirklich zu euch passt. Schreibt mir einfach – ich melde mich persönlich, unkompliziert und ohne Verkaufsdruck.
-      </p>
-      <div class="contact-detail">
-        <span>E-Mail</span>
-        <a href="mailto:mickela@loeffel.de">mickela@loeffel.de</a>
-      </div>
-      <div class="contact-detail">
-        <span>WhatsApp</span>
-        <a href="https://wa.me/message/XOIMY47MGWYZN1" target="_blank" rel="noopener">Direkt im Chat schreiben</a>
-      </div>
-      <div class="contact-detail">
-        <span>Standort</span>
-        <span style="color: var(--text-mid);">Karlsruhe & deutschlandweit</span>
-      </div>
-    </div>
-
-    <div class="fade-in" style="display:flex; flex-direction:column; justify-content:center; gap:1.5rem;">
-      <p style="font-family:var(--font-display); font-size:1.4rem; font-style:italic; font-weight:300; color:var(--green-deep); line-height:1.5; max-width:38ch;">
-        „In wenigen Schritten zu eurer perfekten Hochzeitsmusik – ich melde mich danach persönlich."
-      </p>
-      <p style="font-size:0.88rem; color:var(--text-light); max-width:40ch;">
-        Euer Hochzeitsdatum, euren Veranstaltungsort, euer Budget – alles ganz einfach im Schritt-für-Schritt-Formular. Ich antworte innerhalb von 24–48 Stunden.
-      </p>
-      <div>
-        <button type="button" class="btn-primary" onclick="openModal()">Jetzt Anfrage starten</button>
-        <a href="https://wa.me/message/XOIMY47MGWYZN1" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-flex;align-items:center;gap:0.5rem;margin-left:0.75rem;margin-top:0.75rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.43 9.43 0 1 1 7.99 4.42zm8.02-17.44A11.33 11.33 0 0 0 12.05.73C5.8.73.7 5.82.7 12.08c0 2 .52 3.95 1.52 5.67L.6 23.27l5.65-1.48a11.33 11.33 0 0 0 5.8 1.48h.01c6.25 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.33-8.02z"/></svg>WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GESANGSUNTERRICHT ===== -->
-  <section id="gesangsunterricht" aria-label="Gesangsunterricht mit Mickela Löffel" style="background:var(--green-deep);">
-    <div style="max-width:900px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
-      <div class="fade-in">
-        <span class="section-eyebrow" style="color:var(--gold);">Noch ein Angebot</span>
-        <h2 style="color:var(--cream);">Gesangsunterricht –<br /><em>von Sängerin zu Sängerin.</em></h2>
-        <p style="color:rgba(250,247,242,0.75);">
-          Du möchtest deine Stimme entdecken, weiterentwickeln oder gezielt für einen besonderen Anlass trainieren? Ich gebe Gesangsunterricht mit einem klaren Fokus auf Pop, Ausdruck und Authentizität – so wie ich selbst singe.
-        </p>
-        <p style="color:rgba(250,247,242,0.75);">
-          Egal ob Anfängerin, Wiedereinsteigerin oder du schon länger singst – ich begegne dir da wo du gerade stehst.
-        </p>
-        <a href="#" onclick="openUnterrichtModal(); return false;" style="display:inline-block; margin-top:1.25rem; background:transparent; color:var(--gold-light); font-family:var(--font-body); font-size:0.78rem; letter-spacing:0.18em; text-transform:uppercase; padding:0.9rem 2rem; border:1px solid rgba(201,169,110,0.5); text-decoration:none; transition:all 0.2s;" onmouseover="this.style.background='rgba(201,169,110,0.15)'" onmouseout="this.style.background='transparent'">
-          Unterricht anfragen
-        </a>
-      </div>
-      <div class="fade-in" style="border-left:1px solid rgba(201,169,110,0.2); padding-left:3rem;">
-        <div style="display:flex; flex-direction:column; gap:1.5rem;">
-          <div>
-            <p style="font-family:var(--font-display); font-size:1.1rem; color:var(--gold-light); margin-bottom:0.25rem;">Für wen?</p>
-            <p style="font-size:0.88rem; color:rgba(250,247,242,0.65); margin:0;">Alle Levels willkommen – von Anfänger bis Fortgeschritten</p>
-          </div>
-          <div>
-            <p style="font-family:var(--font-display); font-size:1.1rem; color:var(--gold-light); margin-bottom:0.25rem;">Schwerpunkte</p>
-            <p style="font-size:0.88rem; color:rgba(250,247,242,0.65); margin:0;">Pop, Ausdruck, Atemtechnik, Bühnenpräsenz</p>
-          </div>
-          <div>
-            <p style="font-family:var(--font-display); font-size:1.1rem; color:var(--gold-light); margin-bottom:0.25rem;">Format</p>
-            <p style="font-size:0.88rem; color:rgba(250,247,242,0.65); margin:0;">Einzelstunden, Präsenz in Karlsruhe oder online</p>
-          </div>
-          <div>
-            <p style="font-family:var(--font-display); font-size:1.1rem; color:var(--gold-light); margin-bottom:0.25rem;">Erfahrung</p>
-            <p style="font-size:0.88rem; color:rgba(250,247,242,0.65); margin:0;">Bachelor Popakademie BW · The Voice of Germany</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SEO FOOTER LINKS ===== -->
-  <div class="seo-footer-wrap" style="background:var(--green-deep); border-top:1px solid rgba(201,169,110,0.15); padding:3rem 4rem 2rem;">
-    <div class="seo-footer-grid" style="max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-bottom:2.5rem;">
-
-      <div>
-        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-family:var(--font-body);">Hochzeiten</p>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
-          <li><a href="hochzeitssaengerin-karlsruhe.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Karlsruhe</a></li>
-          <li><a href="hochzeitssaengerin-stuttgart.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Stuttgart</a></li>
-          <li><a href="hochzeitssaengerin-mannheim.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Mannheim</a></li>
-          <li><a href="hochzeitssaengerin-heidelberg.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Heidelberg</a></li>
-          <li><a href="hochzeitssaengerin-baden-baden.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Baden-Baden</a></li>
-          <li><a href="hochzeitssaengerin-freiburg.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Freiburg</a></li>
-          <li><a href="hochzeitssaengerin-rastatt.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Hochzeitssängerin Rastatt</a></li>
-          <li><a href="hochzeitssaengerin-deutschlandweit.html" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Deutschlandweit</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-family:var(--font-body);">Angebot</p>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
-          <li><a href="index.html#leistungen" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Sängerin für Trauung</a></li>
-          <li><a href="index.html#leistungen" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Sektempfang & Abendprogramm</a></li>
-          <li><a href="index.html#leistungen" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Band ICONICS buchen</a></li>
-          <li><a href="index.html#gesangsunterricht" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Gesangsunterricht</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-family:var(--font-body);">Wichtiges</p>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
-          <li><a href="index.html#faq" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">FAQ</a></li>
-          <li><a href="index.html#hoerbeispiele" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Videos</a></li>
-          <li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">Instagram</a></li>
-          <li><a href="https://www.iconicsband.de" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.6)'">ICONICS Band</a></li>
-        </ul>
-      </div>
-
-    </div>
-    <div style="border-top:1px solid rgba(201,169,110,0.15);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;max-width:900px;margin:0 auto;">
-      <p style="font-size:0.78rem;color:rgba(250,247,242,0.4);">© 2026 Mickela Löffel – Hochzeitssängerin Karlsruhe</p>
-      <div style="display:flex;gap:2rem;">
-        <a href="impressum.html" style="font-size:0.78rem;color:rgba(250,247,242,0.4);text-decoration:none;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.4)'">Impressum</a>
-        <a href="datenschutz.html" style="font-size:0.78rem;color:rgba(250,247,242,0.4);text-decoration:none;" onmouseover="this.style.color='#E8D5B0'" onmouseout="this.style.color='rgba(250,247,242,0.4)'">Datenschutz</a>
-      </div>
+<main>
+<section class="hero" aria-label="Startseite" style="padding:0">
+  <img src="mickela-hero.jpg" alt="Mickela Löffel singt als Hochzeitssängerin bei einer Trauung in Karlsruhe" width="1333" height="2000" fetchpriority="high">
+  <div class="in">
+    <div class="eyebrow">Hochzeitssängerin Karlsruhe &middot; deutschlandweit</div>
+    <h1>Eure Hochzeits&shy;sängerin <em>in Karlsruhe.</em></h1>
+    <p>Live gesungen, mit Gefühl und aus vollem Herzen. Für den Moment, in dem alle innehalten: eure Trauung, euer Sektempfang, eure Party.</p>
+    <div class="btns">
+      <a class="btn" href="#" onclick="openModal();return false;">Unverbindlich anfragen</a>
+      <a class="btn ghost" href="#videos">Videos ansehen</a>
     </div>
   </div>
+</section>
+
+<div class="mq" aria-hidden="true"><div>
+  <span>Freie Trauung</span><span>Kirchliche Trauung</span><span>Sektempfang</span><span>Dinner</span><span>Party mit Band</span><span>Solo &amp; Duo</span><span>Gesangsunterricht</span>
+  <span>Freie Trauung</span><span>Kirchliche Trauung</span><span>Sektempfang</span><span>Dinner</span><span>Party mit Band</span><span>Solo &amp; Duo</span><span>Gesangsunterricht</span>
+</div></div>
+
+<div class="trust" aria-label="Referenzen"><div class="wrap"><ul>
+  <li><b>The Voice of Germany</b>Halbfinale 2020</li>
+  <li><b>ZDF Fernsehgarten</b>Live im TV</li>
+  <li><b>Popakademie</b>Bachelor Gesang &amp; Songwriting</li>
+  <li><b>Seit 2018</b>Hauptberuflich Sängerin</li>
+</ul></div></div>
+
+<section id="about" aria-label="Über Mickela Löffel"><div class="wrap about">
+  <img class="rv" src="mickela-hochzeit-duo-gitarre.jpg" alt="Hochzeitssängerin Mickela Löffel singt mit Gitarrist bei einer freien Trauung" width="1067" height="1600" loading="lazy" decoding="async">
+  <div class="rv">
+    <div class="eyebrow">Über mich</div>
+    <h2>Musik, die vom Herzen kommt. <em>Nicht von der Playlist.</em></h2>
+    <p>Ich bin Mickela, Hochzeitssängerin aus Karlsruhe. Ich habe an der Popakademie Baden-Württemberg Gesang &amp; Songwriting studiert und begleite seit 2018 Brautpaare an einem der wichtigsten Tage ihres Lebens.</p>
+    <p class="quote">„Einfach nur sein und den Moment genießen. Genau das möchte ich euch schenken.“</p>
+    <p>Meine Stimme wird oft mit LEA verglichen: warm, nah, ehrlich. Vielleicht kennt ihr mich aus dem Halbfinale von The Voice of Germany oder dem ZDF Fernsehgarten. Auf eurer Hochzeit bekommt ihr genau diese Energie, nur für euch und eure Liebsten.</p>
+    <p>Kein Stargehabe, keine aufgesetzte Show. Ich interessiere mich für eure Geschichte und singe nicht irgendeinen Song, sondern euren.</p>
+    <div class="btns"><a class="btn g" href="#" onclick="openModal();return false;">Lasst uns sprechen</a></div>
+  </div>
+</div></section>
+
+<section id="videos" class="alt" aria-label="Cover-Videos"><div class="wrap">
+  <div class="eyebrow">Hör rein</div>
+  <h2>Schau rein. <em>Und fühl es.</em></h2>
+  <p class="lead">Von der Blind Audition bei The Voice bis zum Cover für eure Trauung: So klingt es, wenn ich live singe.</p>
+  <div class="yt">
+    <figure><button class="pl" type="button" data-yt="CUcwacwObuI" aria-label="Video abspielen: Blind Audition"><img src="yt-voice-blind-audition.jpg" alt="" width="441" height="248" loading="lazy" decoding="async"></button><figcaption><b>Blind Audition</b><small>The Voice of Germany 2020</small></figcaption></figure>
+    <figure><button class="pl" type="button" data-yt="oSawL-jDTB0" aria-label="Video abspielen: Halbfinale, Live-Show"><img src="yt-voice-halbfinale.jpg" alt="" width="441" height="248" loading="lazy" decoding="async"></button><figcaption><b>Halbfinale, Live-Show</b><small>The Voice of Germany 2020</small></figcaption></figure>
+    <figure><button class="pl" type="button" data-yt="AbnTJ40jRe4" aria-label="Video abspielen: Live Session Heimlich traurig"><img src="yt-live-session-heimlich-traurig.jpg" alt="" width="441" height="248" loading="lazy" decoding="async"></button><figcaption><b>Live Session: Heimlich traurig</b><small>Eigener Song, komplett live</small></figcaption></figure>
+  </div>
+  <p class="note" style="font-size:.82rem">YouTube wird erst beim Klick auf Abspielen geladen.</p>
+  <h3 class="sub">Cover für eure Hochzeit</h3>
+  <div class="vids">
+    <figure><video controls playsinline preload="none" poster="mickela-video-ein-teil-von-meinem-herzen.jpg" width="720" height="1280" title="Ein Teil von meinem Herzen – Cover von Hochzeitssängerin Mickela"><source src="mickela-video-ein-teil-von-meinem-herzen.mp4" type="video/mp4"></video><figcaption><b>Ein Teil von meinem Herzen</b><small>Cover &middot; perfekt für die Trauung</small></figcaption></figure>
+    <figure><video controls playsinline preload="none" poster="mickela-video-perfect.jpg" width="720" height="1280" title="Perfect – Cover von Hochzeitssängerin Mickela"><source src="mickela-video-perfect.mp4" type="video/mp4"></video><figcaption><b>Perfect</b><small>Cover &middot; der Klassiker zum Einzug</small></figcaption></figure>
+    <figure><video controls playsinline preload="none" poster="mickela-video-i-wanna-dance-with-somebody.jpg" width="720" height="1280" title="I Wanna Dance with Somebody – Cover von Hochzeitssängerin Mickela"><source src="mickela-video-i-wanna-dance-with-somebody.mp4" type="video/mp4"></video><figcaption><b>I Wanna Dance with Somebody</b><small>Cover &middot; Sektempfang &amp; Party</small></figcaption></figure>
+  </div>
+  <p class="note">Mehr Live-Momente auf Instagram: <a class="lnk" href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer">@mickela_music</a></p>
+</div></section>
+
+<section id="live" aria-label="Live-Bilder"><div class="wrap">
+  <div class="eyebrow">Live erlebt</div>
+  <h2>Echte Momente. <em>Echte Bühne.</em></h2>
+  <p class="lead">Ob leise bei der Trauung im Grünen, im Kerzenlicht mit Streichern oder auf der Partybühne: So sieht es aus, wenn ich singe.</p>
+  <div class="gal">
+    <img class="t rv" src="mickela-hochzeit-trauung-duo.jpg" alt="Mickela Löffel und Gitarrist live bei einer freien Trauung im Grünen" width="1067" height="1600" loading="lazy" decoding="async">
+    <img class="w rv" src="mickela-acoustic-vibration-konzert.jpg" alt="Konzert von Acoustic Vibration mit Mickela Löffel, Streichern und Kerzenlicht" width="1800" height="1203" loading="lazy" decoding="async">
+    <img class="t rv" src="mickela-iconics-live-gefuehl.jpg" alt="Mickela Löffel singt voller Emotion live mit der Band ICONICS" width="1200" height="1800" loading="lazy" decoding="async" style="object-position:50% 30%">
+    <img class="w rv" src="mickela-hochzeit-braut-umarmung.jpg" alt="Braut umarmt Hochzeitssängerin Mickela nach der Trauung" width="1600" height="1067" loading="lazy" decoding="async">
+  </div>
+</div></section>
+
+<section id="angebot" class="alt" aria-label="Angebot für Hochzeiten"><div class="wrap">
+  <div class="eyebrow">Mein Angebot</div>
+  <h2>So klingt <em>euer Tag.</em></h2>
+  <p class="lead">Solo, im Duo oder mit ganzer Band. Immer mit eigener Tonanlage und abgestimmt auf eure Vorstellung.</p>
+  <div class="cards">
+    <article class="card rv">
+      <h3>Mickela Solo</h3>
+      <div class="price">ab 750 €</div>
+      <div class="meta">Live-Gesang zu Studio-Instrumentals</div>
+      <ul><li>Ideal für eine intime Trauung</li><li>Eigene Tonanlage inklusive</li><li>Ein Wunschsong inklusive</li></ul>
+      <a class="btn g" href="#" onclick="openModal();return false;">Anfragen</a>
+    </article>
+    <article class="card rv">
+      <span class="badge">Am beliebtesten</span>
+      <h3>Mickela im Duo</h3>
+      <div class="price">ab 1.350 €</div>
+      <div class="meta">Mit Pianist oder Gitarrist, komplett live</div>
+      <ul><li>Mehr Klang, mehr Gänsehaut</li><li>Trauung und Sektempfang</li><li>Persönliche Songauswahl</li></ul>
+      <a class="btn g" href="#" onclick="openModal();return false;">Anfragen</a>
+    </article>
+    <article class="card feat rv">
+      <h3>Mickela <em>mit Band</em></h3>
+      <div class="price">Auf Anfrage</div>
+      <div class="meta">Vom Ja bis zur Party, alles aus einer Hand</div>
+      <ul><li>Tagsüber im Duo</li><li>Abends Party mit ICONICS</li><li>Eine Ansprechpartnerin für alles</li></ul>
+      <a class="btn" href="#" onclick="openModal();return false;">Anfragen</a>
+    </article>
+  </div>
+  <p class="note">Noch unsicher, was passt? Im persönlichen Gespräch finden wir es gemeinsam heraus. Unverbindlich und ohne Verkaufsdruck.</p>
+</div></section>
+
+<section class="dark" aria-label="Ablauf eures Hochzeitstags"><div class="wrap">
+  <div class="eyebrow">Euer Tag</div>
+  <h2>Vom ersten Ton <em>bis zur Tanzfläche.</em></h2>
+  <div class="day">
+    <div><h3>Trauung</h3><p>Euer Song zum Ja-Wort. Der Raum wird still, Tränen fließen, und dieser Moment klingt nach.</p></div>
+    <div><h3>Sektempfang</h3><p>Warm und verbindend, während eure Gäste anstoßen und die ersten Fotos entstehen.</p></div>
+    <div><h3>Dinner &amp; Abend</h3><p>Dinner-Begleitung, Überraschungsauftritt oder ein besonderer Song zum Einzug.</p></div>
+    <div><h3>Party</h3><p>Abends übernimmt meine Band ICONICS und bringt die Tanzfläche zum Kochen.</p></div>
+  </div>
+</div></section>
+
+<section id="bands" aria-label="Bands"><div class="wrap">
+  <div class="eyebrow">Auf der Bühne</div>
+  <h2>Mehr als Solo. <em>Meine Bands.</em></h2>
+  <p class="lead">Wenn es größer werden darf: Mit diesen beiden Bands stehe ich regelmäßig auf Hochzeiten, Galas und großen Bühnen.</p>
+  <div class="bands">
+    <a class="band rv" href="https://www.iconicsband.de" target="_blank" rel="noopener">
+      <img src="mickela-iconics-live-buehne.jpg" alt="Mickela Löffel singt live vor dem leuchtenden ICONICS-Logo" width="1200" height="1800" loading="lazy" decoding="async" style="object-position:50% 35%">
+      <div class="in"><div class="eyebrow">Mitgründerin &amp; Sängerin</div><h3>ICONICS</h3><p>Party- und Eventband für Hochzeiten, Firmenfeiern und Galas. Abends die perfekte Ergänzung zu meinem Trauungsgesang.</p><span class="go">Zur Bandseite &rarr;</span></div>
+    </a>
+    <a class="band rv" href="https://acoustic-vibration.de" target="_blank" rel="noopener">
+      <img src="mickela-acoustic-vibration-konzert.jpg" alt="Mickela Löffel live als Frontsängerin von Acoustic Vibration beim Kirchenkonzert mit Streichern und Kerzen" width="1800" height="1203" loading="lazy" decoding="async" style="object-position:38% 50%">
+      <div class="in"><div class="eyebrow">Frontsängerin</div><h3>Acoustic Vibration</h3><p>Coverband aus der Pfalz mit eigenen Konzertformaten wie „Erlebnis der Sinne“ und „Unter die Haut“.</p><span class="go">Zur Bandseite &rarr;</span></div>
+    </a>
+  </div>
+</div></section>
+
+<section class="alt" aria-label="Warum Livemusik"><div class="wrap why">
+  <div class="rv">
+    <div class="eyebrow">Warum Livemusik</div>
+    <h2>Eine Playlist läuft. <em>Livemusik lebt.</em></h2>
+    <p>Livemusik reagiert auf den Raum, auf die Stimmung, auf den Moment. Gäste, die sich eben noch unterhalten haben, werden still. Ihr habt für diese drei Minuten einen Moment ganz für euch.</p>
+    <p>Genau das ist der Unterschied. Und genau dafür bin ich da.</p>
+  </div>
+  <div class="feats rv">
+    <div><h3>Individuelle Songauswahl</h3><p>Kein starres Repertoire. Wir wählen die Songs, die zu eurer Geschichte passen.</p></div>
+    <div><h3>Direkt mit mir</h3><p>Keine Agentur, kein Manager. Ihr plant direkt mit mir.</p></div>
+    <div><h3>Verlässlich &amp; professionell</h3><p>Seit 2018 auf der Bühne. Klarer Vertrag, eigene Technik, pünktlich vor Ort.</p></div>
+  </div>
+</div></section>
+
+<section aria-label="Ablauf der Buchung"><div class="wrap">
+  <div class="eyebrow">Der Ablauf</div>
+  <h2>Von der Anfrage <em>zum ersten Ton.</em></h2>
+  <div class="day">
+    <div><h3>Anfrage</h3><p>Formular ausfüllen oder per WhatsApp schreiben. Ich melde mich innerhalb von 24 bis 48 Stunden.</p></div>
+    <div><h3>Beratung</h3><p>Wir sprechen über eure Wünsche, den Ablauf und eure Songs.</p></div>
+    <div><h3>Buchung</h3><p>Klarer Vertrag, transparente Konditionen, keine versteckten Kosten.</p></div>
+    <div><h3>Euer Tag</h3><p>Ich bin da und singe. Ihr genießt euren Tag ohne Stress.</p></div>
+  </div>
+</div></section>
+
+<section class="emo" aria-label="Was bleibt">
+  <img src="mickela-braut-umarmung.jpg" alt="" width="2000" height="1336" loading="lazy" decoding="async">
+  <div class="wrap">
+    <div class="eyebrow">Was bleibt</div>
+    <h2>Der Moment, in dem <em>alle einfach nur da sind.</em></h2>
+    <p>Immer wieder schreiben mir Brautpaare nach ihrer Hochzeit. Nicht, weil die Musik lief, sondern weil man sie fühlen konnte. Und weil ihre Gäste noch Monate später davon sprechen.</p>
+  </div>
+</section>
+
+<section id="faq" class="alt" aria-label="Häufige Fragen"><div class="wrap faq">
+  <div class="eyebrow">Häufige Fragen</div>
+  <h2>Was Brautpaare <em>wissen wollen.</em></h2>
+  <details><summary>Was kostet eine Hochzeitssängerin in Karlsruhe?</summary><p>Solo ab 750 €, im Duo mit Pianist oder Gitarrist ab 1.350 €. „Mickela mit Band“ für den ganzen Tag gibt es auf Anfrage. Meine Tonanlage ist immer inklusive. Den genauen Preis bekommt ihr in einem persönlichen, unverbindlichen Angebot.</p></details>
+  <details><summary>Wie früh sollten wir buchen?</summary><p>Am besten 6 bis 12 Monate vor der Hochzeit. Sommer- und Herbsttermine sind in der Region Karlsruhe schnell vergeben.</p></details>
+  <details><summary>Welche Songs singst du auf Hochzeiten?</summary><p>Emotionale Pop-Balladen auf Deutsch und Englisch, abgestimmt auf euren Geschmack. Gemeinsam finden wir die passenden Songs für Einzug, Trauung, Sektempfang und Abend. <a class="lnk" href="songliste-trauung.pdf" target="_blank" rel="noopener">Songliste ansehen</a></p></details>
+  <details><summary>Singst du auch außerhalb von Karlsruhe?</summary><p>Ja, deutschlandweit. Regelmäßig in Stuttgart, Mannheim, Heidelberg, Baden-Baden und Umgebung. Anfahrtskosten besprechen wir individuell und fair.</p></details>
+  <details><summary>Können wir dich nur für die Trauung buchen?</summary><p>Ja, das ist sehr beliebt. Auf Wunsch begleite ich auch Sektempfang und Abend, oder wir übernehmen mit meiner Band ICONICS den ganzen musikalischen Tag.</p></details>
+  <details><summary>Singst du zu Playback oder mit Live-Begleitung?</summary><p>Beides. Solo singe ich live zu hochwertigen Studio-Instrumentals, im Duo begleitet mich ein Pianist oder Gitarrist komplett live.</p></details>
+  <details><summary>Wie läuft die Planung nach der Buchung ab?</summary><p>Wir besprechen eure Wünsche, wählen die Songs und klären alle Details zu Location und Ablauf. Gerne stimme ich mich auch direkt mit eurer Hochzeitsplanerin oder der Location ab.</p></details>
+</div></section>
+
+<section id="unterricht" class="dark" aria-label="Gesangsunterricht in Karlsruhe"><div class="wrap teach">
+  <div>
+    <div class="eyebrow">Gesangsunterricht Karlsruhe</div>
+    <h2>Von Sängerin <em>zu Sängerin.</em></h2>
+    <p class="lead">Du willst deine Stimme entdecken, weiterentwickeln oder für einen besonderen Anlass trainieren? Ich unterrichte mit Fokus auf Pop, Ausdruck und Authentizität, für Kinder ab 8 Jahren und Erwachsene.</p>
+    <div class="btns"><a class="btn" href="#" onclick="openUnterrichtModal();return false;">Unterricht anfragen</a></div>
+    <div class="voucher"><b>Musik verschenken?</b><a class="btn" href="gutschein">Zu den Gutscheinen</a></div>
+  </div>
+  <div class="facts">
+    <div><b>Für wen?</b><span>Anfänger bis Fortgeschrittene, ab 8 Jahren</span></div>
+    <div><b>Schwerpunkte</b><span>Pop, Ausdruck, Atemtechnik, Bühnenpräsenz</span></div>
+    <div><b>Format</b><span>Einzelstunden oder 5er-Karte, in Karlsruhe oder online</span></div>
+    <div><b>Erfahrung</b><span>Popakademie BW &middot; The Voice of Germany</span></div>
+  </div>
+</div></section>
+
+<section aria-label="Auftrittsorte"><div class="wrap">
+  <div class="eyebrow">Auftrittsorte</div>
+  <h2>Von Karlsruhe <em>bis deutschlandweit.</em></h2>
+  <p class="lead">Karlsruhe ist meine Heimat. Hier bin ich besonders oft zu Gast:</p>
+  <div class="chips">
+    <a href="hochzeitssaengerin-karlsruhe.html">Hochzeitssängerin Karlsruhe</a>
+    <a href="hochzeitssaengerin-stuttgart.html">Stuttgart</a>
+    <a href="hochzeitssaengerin-mannheim.html">Mannheim</a>
+    <a href="hochzeitssaengerin-heidelberg.html">Heidelberg</a>
+    <a href="hochzeitssaengerin-baden-baden.html">Baden-Baden</a>
+    <a href="hochzeitssaengerin-rastatt.html">Rastatt</a>
+    <a href="hochzeitssaengerin-freiburg.html">Freiburg</a>
+    <a href="hochzeitssaengerin-deutschlandweit.html">Deutschlandweit</a>
+  </div>
+</div></section>
+
+<section id="kontakt" class="dark cta" aria-label="Kontakt und Anfrage"><div class="wrap">
+  <div class="eyebrow">Kontakt</div>
+  <h2>Lasst uns über euren <em>schönsten Tag</em> sprechen.</h2>
+  <p class="lead">Datum, Location, Wünsche: in wenigen Schritten erledigt. Ich melde mich persönlich innerhalb von 24 bis 48 Stunden.</p>
+  <div class="btns">
+    <a class="btn" href="#" onclick="openModal();return false;">Anfrage starten</a>
+    <a class="btn ghost" href="https://wa.me/message/XOIMY47MGWYZN1" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <small>Oder per E-Mail: <a href="mailto:mickela@loeffel.de">mickela@loeffel.de</a></small>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div><a class="logo" href="/">Mickela Löffel</a><p>Hochzeitssängerin, Sängerin &amp; Vocal Coach aus Karlsruhe.</p></div>
+    <div><h4>Hochzeit</h4><ul>
+      <li><a href="#angebot">Angebot &amp; Preise</a></li><li><a href="#videos">Videos</a></li><li><a href="#faq">FAQ</a></li><li><a href="songliste-trauung.pdf">Songliste</a></li>
+    </ul></div>
+    <div><h4>Mehr</h4><ul>
+      <li><a href="#unterricht">Gesangsunterricht</a></li><li><a href="gutschein">Gutscheine</a></li><li><a href="https://www.iconicsband.de" target="_blank" rel="noopener">ICONICS</a></li><li><a href="https://acoustic-vibration.de" target="_blank" rel="noopener">Acoustic Vibration</a></li>
+    </ul></div>
+    <div><h4>Kontakt</h4><ul>
+      <li><a href="mailto:mickela@loeffel.de">mickela@loeffel.de</a></li><li><a href="https://wa.me/message/XOIMY47MGWYZN1" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/mickela_music" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+    </ul></div>
+  </div>
+  <div class="fbot"><span>&copy; 2026 Mickela Löffel &middot; Hochzeitssängerin Karlsruhe</span><span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></span></div>
+</div></footer>
+
+<div class="sticky" id="sticky"><a class="btn" href="#" onclick="openModal();return false;">Termin anfragen</a></div>
+
+<script>
+function toggleMobileMenu(){var m=document.getElementById('mobileMenu');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+(function(){
+  var top=document.getElementById('top'),st=document.getElementById('sticky');
+  function onS(){var y=window.scrollY;top.classList.toggle('solid',y>40);st.classList.toggle('show',y>window.innerHeight*.8);}
+  window.addEventListener('scroll',onS,{passive:true});onS();
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  var vs=document.querySelectorAll('.vids video');
+  vs.forEach(function(v){v.addEventListener('play',function(){vs.forEach(function(o){if(o!==v)o.pause();});});});
+  document.querySelectorAll('.pl[data-yt]').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;vs.forEach(function(o){o.pause();});b.replaceWith(f);});});
+})();
+</script>
 
   <!-- ===== ANFRAGE-MODAL ===== -->
   <div class="modal-overlay" id="anfrageModal" role="dialog" aria-modal="true" aria-label="Anfrage senden">
@@ -1681,112 +813,6 @@
   </div><!-- /.modal-overlay -->
 
   <!-- ===== MODAL + WIZARD STYLES (inline) ===== -->
-  <style>
-    .wizard { padding: 0; border: none; max-width: none; }
-    .step-eyebrow { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; display: block; }
-    .step-title { font-family: var(--font-display); font-size: 1.9rem; font-weight: 300; color: var(--green-deep); line-height: 1.2; margin-bottom: 0.5rem; }
-    .step-title em { font-style: italic; }
-    .step-sub { font-size: 0.88rem; color: var(--text-light); margin-bottom: 1.75rem; font-weight: 300; }
-    .wstep { display: none; animation: fadeSlide 0.3s ease; }
-    .wstep.active { display: block; }
-    .option-grid { display: grid; gap: 10px; }
-    .option-card { border: 1px solid var(--cream-dark); padding: 1rem 1.25rem; cursor: pointer; transition: border-color 0.2s, transform 0.15s; display: flex; align-items: flex-start; gap: 0.85rem; background: var(--white); position: relative; }
-    .option-card:hover { border-color: var(--green-light); transform: translateY(-1px); }
-    .option-card.selected { border-color: var(--green-deep); background: #f4f8f3; }
-    .option-card.selected::after { content: '✓'; position: absolute; top: 0.6rem; right: 0.8rem; font-size: 0.75rem; color: var(--green-mid); }
-    .option-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
-    .option-label { font-size: 0.88rem; font-weight: 400; color: var(--text-dark); line-height: 1.3; }
-    .option-desc { font-size: 0.76rem; color: var(--text-light); font-weight: 300; margin-top: 2px; }
-    .input-group { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 0.5rem; }
-    .input-row { display: flex; gap: 1rem; }
-    .input-row .field { flex: 1; }
-    .field { display: flex; flex-direction: column; gap: 0.35rem; }
-    .field label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); }
-    .field input, .field textarea { font-family: var(--font-body); font-size: 0.95rem; font-weight: 300; color: var(--text-dark); background: var(--cream); border: 1px solid var(--cream-dark); padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; width: 100%; appearance: none; border-radius: 0; }
-    .field input:focus, .field textarea:focus { border-color: var(--green-mid); background: var(--white); }
-    .field textarea { min-height: 100px; resize: vertical; }
-    .wizard-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.75rem; }
-    .btn-back { font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); background: none; border: none; cursor: pointer; padding: 0.5rem 0; transition: color 0.2s; }
-    .btn-back:hover { color: var(--text-dark); }
-    .btn-next { font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); background: var(--green-deep); border: none; padding: 0.9rem 2rem; cursor: pointer; transition: background 0.2s, transform 0.15s; }
-    .btn-next:hover { background: var(--green-mid); transform: translateY(-1px); }
-    .btn-next:disabled { background: var(--cream-dark); color: var(--text-light); cursor: not-allowed; transform: none; }
-    .summary-grid { display: grid; border: 1px solid var(--cream-dark); margin-bottom: 1.5rem; }
-    .summary-row { display: flex; gap: 1rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--cream-dark); font-size: 0.88rem; }
-    .summary-row:last-child { border-bottom: none; }
-    .summary-label { color: var(--text-light); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; width: 110px; flex-shrink: 0; padding-top: 2px; }
-    .summary-value { color: var(--text-dark); font-weight: 300; }
-    .status-msg { font-size: 0.82rem; padding: 0.75rem 1rem; margin-top: 1rem; display: none; }
-    .status-msg.error { background: #fdf0ef; color: #a32d2d; border-left: 2px solid #a32d2d; }
-    .status-msg.loading { background: var(--cream-dark); color: var(--text-mid); border-left: 2px solid var(--gold); }
-    .success-state { text-align: center; padding: 2rem 0; }
-    .success-icon { width: 52px; height: 52px; border-radius: 50%; background: #f4f8f3; border: 1px solid var(--green-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.3rem; }
-    .success-state h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--green-deep); margin-bottom: 0.75rem; }
-    .success-state p { font-size: 0.9rem; color: var(--text-light); font-weight: 300; max-width: 38ch; margin: 0 auto; line-height: 1.75; }
-    @keyframes fadeSlide { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
-    @media (max-width: 600px) { .input-row { flex-direction: column; } }
-  </style>
-
-  <!-- ===== SCROLL ANIMATION SCRIPT ===== -->
-  <script>
-    // Mobile Menu
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('open');
-      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-    }
-
-    // Fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Parallax auf Hero-Bild
-    const parallaxImg = document.querySelector('.hero-parallax');
-    if (parallaxImg) {
-      window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        if (scrollY < window.innerHeight) {
-          parallaxImg.style.transform = `translateY(${scrollY * 0.25}px)`;
-        }
-      }, { passive: true });
-    }
-
-    // Zahlen-Counter in der Trust-Bar
-    function animateCounter(el, target, duration = 1200) {
-      let start = 0;
-      const step = timestamp => {
-        if (!start) start = timestamp;
-        const progress = Math.min((timestamp - start) / duration, 1);
-        el.textContent = Math.floor(progress * target);
-        if (progress < 1) requestAnimationFrame(step);
-        else el.textContent = target;
-      };
-      requestAnimationFrame(step);
-    }
-
-    // Trust-Bar beobachten und Counter starten
-    const trustBar = document.getElementById('trust');
-    if (trustBar) {
-      const trustObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          // "seit 2018" → Zahl hochzählen
-          const trustItems = trustBar.querySelectorAll('.trust-item');
-          trustItems.forEach(item => {
-            if (item.textContent.includes('2018')) {
-              item.innerHTML = item.innerHTML.replace('2018', '<span class="counter-2018">0</span>');
-              animateCounter(item.querySelector('.counter-2018'), 2018, 1500);
-            }
-          });
-          trustObserver.disconnect();
-        }
-      }, { threshold: 0.5 });
-      trustObserver.observe(trustBar);
-    }
-  </script>
 
   <!-- ===== MODAL + WIZARD SCRIPT ===== -->
   <script>
@@ -2155,13 +1181,6 @@
       }
     }
   </script>
-
-
-  <!-- WHATSAPP FLOATING BUTTON (Kurzlink ohne Telefonnummer) -->
   <a href="https://wa.me/message/XOIMY47MGWYZN1" target="_blank" rel="noopener" class="wa-float" aria-label="Mickela per WhatsApp schreiben"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.43 9.43 0 1 1 7.99 4.42zm8.02-17.44A11.33 11.33 0 0 0 12.05.73C5.8.73.7 5.82.7 12.08c0 2 .52 3.95 1.52 5.67L.6 23.27l5.65-1.48a11.33 11.33 0 0 0 5.8 1.48h.01c6.25 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.33-8.02z"/></svg></a>
-  <style>
-    .wa-float{position:fixed;right:1.25rem;bottom:1.25rem;z-index:150;width:56px;height:56px;border-radius:50%;background:var(--green-deep);color:var(--cream);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(44,62,45,0.35);transition:transform .2s,background .2s;}
-    .wa-float:hover{background:var(--green-mid);transform:scale(1.06);}
-  </style>
 </body>
 </html>
